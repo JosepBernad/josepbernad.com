@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram @djosepbernad</title>
+  <meta name="description" content="Instagram app or web profile for @djosepbernad.">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: #111;
+      background: #fafafa;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      color: #444;
+    }
+
+    a {
+      display: inline-block;
+      margin: 0.5rem 0.75rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      background: #fff;
+      color: #111;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    a:hover,
+    a:focus {
+      border-color: rgba(0, 0, 0, 0.25);
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Instagram</h1>
+  <p id="test-note" hidden>Test mode: no auto redirect.</p>
+  <p>
+    <a href="instagram://user?username=djosepbernad">Instagram App</a>
+    <a href="https://instagram.com/djosepbernad">Instagram Web</a>
+  </p>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var autoRedirect = !params.has("manual");
+      var appUrl = "instagram://user?username=djosepbernad";
+      var webUrl = "https://instagram.com/djosepbernad";
+      var testNote = document.getElementById("test-note");
+
+      if (!autoRedirect) {
+        if (testNote) {
+          testNote.hidden = false;
+        }
+        return;
+      }
+
+      var fallback = setTimeout(function () {
+        window.location.href = webUrl;
+      }, 1200);
+
+      function cancelFallback() {
+        if (fallback) {
+          clearTimeout(fallback);
+          fallback = null;
+        }
+      }
+
+      window.addEventListener("pagehide", cancelFallback);
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          cancelFallback();
+        }
+      });
+
+      // Use a small delay to ensure the listeners above are attached first.
+      setTimeout(function () {
+        window.location.href = appUrl;
+      }, 100);
+    })();
+  </script>
+</body>
+
+</html>
