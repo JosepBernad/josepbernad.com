@@ -187,7 +187,7 @@
       font-size: clamp(1.2rem, 3vw, 1.8rem);
       font-weight: 400;
       letter-spacing: 0.05em;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
     [data-theme="light"] .subtitle {
@@ -200,20 +200,39 @@
 
     /* Navigation sections */
     .nav-sections {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.5rem;
+      margin-bottom: 4rem;
       list-style: none;
+      justify-content: center;
+    }
+
+    .nav-sections li:nth-child(odd) {
+      text-align: right;
+    }
+
+    .nav-sections li:nth-child(even) {
+      text-align: left;
     }
 
     @media (min-width: 768px) {
       .nav-sections {
+        display: flex;
         flex-direction: row;
         justify-content: center;
         gap: 2.5rem;
       }
+
+      .nav-sections li {
+        text-align: center;
+      }
+
+      /* Reorder for desktop: Films, Manifesto, Press, Contact */
+      .nav-sections li:nth-child(1) { order: 1; } /* Films */
+      .nav-sections li:nth-child(2) { order: 3; } /* Press */
+      .nav-sections li:nth-child(3) { order: 2; } /* Manifesto */
+      .nav-sections li:nth-child(4) { order: 4; } /* Contact */
     }
 
     .nav-sections a {
@@ -272,12 +291,12 @@
     /* Compact spacing for small screens */
     @media (max-height: 840px) {
       .subtitle {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
       }
 
       .nav-sections {
         gap: 0.75rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
       }
 
       .socials {
@@ -390,8 +409,8 @@
     <nav>
       <ul class="nav-sections">
         <li><a href="#" data-i18n="nav.films">Films</a></li>
-        <li><a href="#" data-i18n="nav.nonNegotiables">Manifesto</a></li>
         <li><a href="#" data-i18n="nav.press">Press</a></li>
+        <li><a href="#" data-i18n="nav.nonNegotiables">Manifesto</a></li>
         <li><a href="#" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
