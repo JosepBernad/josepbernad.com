@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2024-12-02
+
+### Fixed
+- GitHub Pages deployment: added .nojekyll file to fix image loading issues
+- CNAME file now properly copied to _site for custom domain support
+
 ## [1.2.0] - 2024-12-02
 
 ### Added

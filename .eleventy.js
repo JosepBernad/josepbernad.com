@@ -7,6 +7,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/favicon-dark.svg");
   eleventyConfig.addPassthroughCopy({ "package.json": "package.json" });
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
+  eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
 
   return {
     dir: {
