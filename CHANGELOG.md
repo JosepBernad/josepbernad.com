@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2024-12-02
+
+### Added
+- GitHub Actions workflow for automatic deployment to GitHub Pages
+
 ## [1.1.0] - 2024-12-02
 
 ### Added
