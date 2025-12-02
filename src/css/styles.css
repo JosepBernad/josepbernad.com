@@ -6,6 +6,7 @@
 
 html {
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 [data-theme="light"] {
@@ -24,6 +25,7 @@ body {
   justify-content: center;
   font-family: system-ui, -apple-system, sans-serif;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Section pages: allow scrolling */
@@ -660,9 +662,15 @@ body::before {
   width: 100%;
   max-width: 1200px;
   padding: 0 1.5rem;
-  margin-top: 11.5rem;
+  margin-top: 8rem;
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .films-grid {
+    margin-top: 11.5rem;
+  }
 }
 
 .film-card {
