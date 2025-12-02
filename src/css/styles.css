@@ -18,37 +18,55 @@ html {
 
 body {
   min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, sans-serif;
+  position: relative;
+}
+
+/* Background image as pseudo-element for opacity control */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 /* Light theme backgrounds */
-[data-theme="light"] body {
+[data-theme="light"] body::before {
   background-image: url('/images/bg-light-mobile.webp');
 }
 
 @media (min-width: 768px) {
-  [data-theme="light"] body {
+  [data-theme="light"] body::before {
     background-image: url('/images/bg-light-desktop.webp');
   }
 }
 
 /* Dark theme backgrounds */
-[data-theme="dark"] body {
+[data-theme="dark"] body::before {
   background-image: url('/images/bg-dark-mobile.webp');
 }
 
 @media (min-width: 768px) {
-  [data-theme="dark"] body {
+  [data-theme="dark"] body::before {
     background-image: url('/images/bg-dark-desktop.webp');
   }
+}
+
+/* Section pages: background at 10% opacity */
+[data-section] body::before {
+  opacity: 0.1;
 }
 
 /* Language switcher */
@@ -530,48 +548,69 @@ body {
   color: #f5f5f5;
 }
 
-/* Page title (for section pages) */
-.page-title {
-  font-family: 'Sedan', serif;
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 3rem;
-}
 
-[data-theme="light"] .page-title {
-  color: #1a1a1a;
-}
-
-[data-theme="dark"] .page-title {
-  color: #f5f5f5;
-}
-
-/* Back link */
-.back-link {
+/* Section navigation */
+.section-nav {
   position: fixed;
-  bottom: 1.5rem;
+  top: 10rem;
   left: 1.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 999;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-  z-index: 1000;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .back-link:hover {
-  opacity: 1;
+  transform: scale(1.1);
+}
+
+.back-link svg {
+  width: 24px;
+  height: 24px;
 }
 
 [data-theme="light"] .back-link {
-  color: #1a1a1a;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .back-link:hover {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="dark"] .back-link {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .back-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.section-name {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+[data-theme="light"] .back-link,
+[data-theme="light"] .section-name {
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .back-link,
+[data-theme="dark"] .section-name {
   color: #f5f5f5;
 }
 
