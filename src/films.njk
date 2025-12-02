@@ -7,5 +7,27 @@ showName: true
 sectionName: Films
 ---
 
-<!-- Film content will go here -->
+<div class="films-grid">
+  {% for film in films %}
+  <a href="{{ film.url }}" target="_blank" rel="noopener noreferrer" class="film-card">
+    <div class="film-thumbnail">
+      <img src="https://img.youtube.com/vi/{{ film.videoId }}/maxresdefault.jpg" alt="{{ film.title }}" loading="lazy">
+      <div class="film-play">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+    </div>
+    <div class="film-info">
+      <h2 class="film-title">{{ film.title }}</h2>
+      <p class="film-meta">{{ film.location }} · {{ film.date | replace("-", "/") }}</p>
+      <div class="film-tags">
+        {% for tag in film.tags %}
+        <span class="film-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
 
