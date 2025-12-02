@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2024-12-02
+
+### Added
+- Dynamic favicon that changes with theme toggle
+- Background colors for mobile overscroll prevention
+
+### Fixed
+- iOS overscroll now shows theme-matching colors instead of white
+
 ## [1.0.0] - 2024-12-02
 
 ### Added
