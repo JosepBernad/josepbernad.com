@@ -317,7 +317,7 @@ body::before {
 .nav-sections {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem 1.5rem;
+  gap: 2rem 2.5rem;
   margin-bottom: 4rem;
   list-style: none;
   justify-content: center;
@@ -342,7 +342,7 @@ body::before {
   transform: translate(-50%, -50%);
   width: 60px;
   height: 1px;
-  opacity: 0.4;
+  opacity: 0.2;
   pointer-events: none;
 }
 
@@ -354,8 +354,8 @@ body::before {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 1px;
-  height: 30px;
-  opacity: 0.4;
+  height: 50px;
+  opacity: 0.2;
   pointer-events: none;
 }
 
@@ -413,7 +413,7 @@ body::before {
 }
 
 .nav-sections a {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   text-decoration: none;
