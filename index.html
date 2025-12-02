@@ -55,10 +55,10 @@
 
     /* Language switcher */
     .lang-switcher {
+      display: none; /* Hidden for v1.0.0 */
       position: fixed;
       top: 1.5rem;
       left: 1.5rem;
-      display: flex;
       gap: 0.5rem;
       z-index: 1000;
     }
@@ -222,12 +222,48 @@
 
     /* Navigation sections */
     .nav-sections {
-      display: grid;
+      display: none; /* Hidden for v1.0.0 */
       grid-template-columns: 1fr 1fr;
       gap: 1rem 1.5rem;
       margin-bottom: 4rem;
       list-style: none;
       justify-content: center;
+    }
+
+    /* Claim section (v1.0.0) */
+    .claim-section {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .claim {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+    }
+
+    .claim-location {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.8;
+    }
+
+    [data-theme="light"] .claim,
+    [data-theme="light"] .claim-location {
+      color: #1a1a1a;
+    }
+
+    [data-theme="dark"] .claim,
+    [data-theme="dark"] .claim-location {
+      color: #f5f5f5;
+    }
+
+    @media (max-height: 840px) {
+      .claim-section {
+        margin-bottom: 2.5rem;
+      }
     }
 
     .nav-sections li:nth-child(odd) {
@@ -240,7 +276,7 @@
 
     @media (min-width: 768px) {
       .nav-sections {
-        display: flex;
+        display: none; /* Hidden for v1.0.0 */
         flex-direction: row;
         justify-content: center;
         gap: 2.5rem;
@@ -429,6 +465,11 @@
   <main class="content">
     <h1 class="title">Josep Bernad</h1>
     <p class="subtitle" data-i18n="subtitle">Live & DJ Set</p>
+
+    <div class="claim-section">
+      <p class="claim">Mainly House Music</p>
+      <p class="claim-location">Barcelona // Mallorca</p>
+    </div>
 
     <nav>
       <ul class="nav-sections">
