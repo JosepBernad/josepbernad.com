@@ -75,6 +75,26 @@ body::before {
   opacity: 0.1;
 }
 
+/* Section pages: header background overlay */
+[data-section] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15rem;
+  z-index: 998;
+  pointer-events: none;
+}
+
+[data-theme="light"][data-section] body::after {
+  background: linear-gradient(to bottom, #cadee1 90%, transparent);
+}
+
+[data-theme="dark"][data-section] body::after {
+  background: linear-gradient(to bottom, #13191a 90%, transparent);
+}
+
 /* Language switcher */
 .lang-switcher {
   position: fixed;
@@ -452,6 +472,17 @@ body::before {
   background-color: #f5f5f5;
 }
 
+/* Disabled navigation links */
+.nav-sections a.nav-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav-sections a.nav-disabled::after {
+  display: none;
+}
+
 /* Social links */
 .socials-wrapper {
   display: flex;
@@ -629,7 +660,9 @@ body::before {
   width: 100%;
   max-width: 1200px;
   padding: 0 1.5rem;
-  margin-top: 12rem;
+  margin-top: 11.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .film-card {
@@ -640,7 +673,8 @@ body::before {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   padding: 0.75rem;
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
+  position: relative;
 }
 
 @media (min-width: 640px) {
@@ -726,12 +760,22 @@ body::before {
   margin-bottom: 0.5rem;
 }
 
-.film-meta {
-  font-size: 0.8rem;
+.film-location,
+.film-date {
+  position: absolute;
+  bottom: 1rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  opacity: 0.7;
-  margin-bottom: 0.75rem;
+  opacity: 0.6;
+}
+
+.film-location {
+  left: 0.75rem;
+}
+
+.film-date {
+  right: 0.75rem;
 }
 
 .film-tags {
@@ -749,7 +793,12 @@ body::before {
   letter-spacing: 0.03em;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
-  opacity: 0.8;
+  opacity: 0.6;
+}
+
+.film-tag:first-child {
+  opacity: 0.85;
+  font-weight: 500;
 }
 
 /* Smaller tags on mobile */
