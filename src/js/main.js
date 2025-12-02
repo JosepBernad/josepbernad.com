@@ -83,6 +83,18 @@
     return 'en';
   }
 
+  function formatFilmDates(lang) {
+    document.querySelectorAll('.film-date').forEach(el => {
+      const year = el.dataset.year;
+      const month = el.dataset.month;
+      if (lang === 'en') {
+        el.textContent = `${year} / ${month}`;
+      } else {
+        el.textContent = `${month} / ${year}`;
+      }
+    });
+  }
+
   function setLang(lang) {
     html.setAttribute('lang', lang);
     localStorage.setItem(LANG_KEY, lang);
@@ -102,6 +114,9 @@
       }
       if (value) el.textContent = value;
     });
+
+    // Update film dates format
+    formatFilmDates(lang);
   }
 
   setLang(getInitialLang());

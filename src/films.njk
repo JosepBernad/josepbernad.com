@@ -20,7 +20,7 @@ sectionName: Films
     </div>
     <div class="film-info">
       <h2 class="film-title">{{ film.title }}</h2>
-      <p class="film-meta">{{ film.location }} · {{ film.date | replace("-", "/") }}</p>
+      <p class="film-meta">{{ film.location }} · <span class="film-date" data-year="{{ film.date.split('-')[0] }}" data-month="{{ film.date.split('-')[1] }}"></span></p>
       <div class="film-tags">
         {% for tag in film.tags %}
         <span class="film-tag">{{ tag }}</span>

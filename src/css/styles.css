@@ -635,10 +635,12 @@ body::before {
 .film-card {
   display: block;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
+  padding: 0.75rem;
+  padding-bottom: 1rem;
 }
 
 @media (min-width: 640px) {
@@ -661,6 +663,7 @@ body::before {
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .film-thumbnail img {
@@ -710,7 +713,7 @@ body::before {
 }
 
 .film-info {
-  padding: 1rem 0;
+  padding: 1rem 0 0 0;
   text-align: center;
 }
 
@@ -736,6 +739,8 @@ body::before {
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
+  max-width: 85%;
+  margin: 0 auto;
 }
 
 .film-tag {
@@ -749,6 +754,10 @@ body::before {
 
 /* Smaller tags on mobile */
 @media (max-width: 639px) {
+  .film-tags {
+    max-width: 95%;
+  }
+
   .film-tag {
     font-size: 0.55rem;
     padding: 0.2rem 0.4rem;
@@ -757,6 +766,11 @@ body::before {
 
 [data-theme="light"] .film-card {
   color: #1a1a1a;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .film-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] .film-thumbnail {
@@ -769,6 +783,11 @@ body::before {
 
 [data-theme="dark"] .film-card {
   color: #f5f5f5;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .film-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .film-thumbnail {
