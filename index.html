@@ -242,7 +242,7 @@
     /* Claim section (v1.0.0) */
     .claim-section {
       position: fixed;
-      top: 1.5rem;
+      top: 3rem;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -273,7 +273,22 @@
       color: #f5f5f5;
     }
 
+    @media (max-width: 700px) {
+      .claim-section {
+        top: 5rem;
+      }
 
+      .claim {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+      }
+
+      .claim-location {
+        font-size: 0.55rem;
+      }
+    }
+
+    
     .nav-sections li:nth-child(odd) {
       text-align: right;
     }
