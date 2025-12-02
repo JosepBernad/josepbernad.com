@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Josep Bernad</title>
+  <link rel="icon" id="favicon" href="/favicon-light.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
@@ -566,6 +567,10 @@
       function setTheme(theme) {
         html.setAttribute('data-theme', theme);
         localStorage.setItem(THEME_KEY, theme);
+        // Update favicon
+        document.getElementById('favicon').href = theme === 'dark' 
+          ? '/favicon-dark.svg' 
+          : '/favicon-light.svg';
       }
 
       setTheme(getInitialTheme());
