@@ -1,3 +1,76 @@
+/* 
+ * ============================================================================
+ * HOVER EFFECTS ARCHITECTURE
+ * ============================================================================
+ * 
+ * This site uses CSS custom properties to control hover effects, ensuring they
+ * only work on devices that support hover (desktop with mouse) and are disabled
+ * on touch devices (mobile, tablets).
+ * 
+ * USAGE FOR NEW INTERACTIVE ELEMENTS:
+ * 
+ * 1. Use the pre-defined hover variables in your :hover states:
+ *    - var(--hover-scale-sm)     : 1.1 scale for buttons/icons
+ *    - var(--hover-scale-md)     : 1.15 scale for larger elements  
+ *    - var(--hover-scale-img)    : 1.05 scale for images
+ *    - var(--hover-lift)         : translateY(-4px) for cards
+ *    - var(--hover-opacity-full) : opacity: 1 (for buttons, etc)
+ *    - var(--hover-opacity-show) : opacity: 0 → 1 (for showing elements)
+ *    - var(--hover-underline)    : width for underline animations (0 → 100%)
+ * 
+ * 2. For background color changes, use opacity overlays:
+ *    - var(--hover-bg-light-alpha) : background alpha for light theme (0.08 → 0.15)
+ *    - var(--hover-bg-dark-alpha)  : background alpha for dark theme (0.1 → 0.2)
+ * 
+ * 3. For box shadows:
+ *    - var(--hover-shadow-light) : box shadow for light theme
+ *    - var(--hover-shadow-dark)  : box shadow for dark theme
+ * 
+ * EXAMPLE:
+ * .my-button {
+ *   transition: transform 0.2s ease;
+ * }
+ * .my-button:hover {
+ *   transform: var(--hover-scale-sm);
+ * }
+ * 
+ * On touch devices, these variables default to "no change" values, so hover
+ * effects are automatically disabled without additional media queries.
+ * ============================================================================
+ */
+
+/* Default values for non-hover devices (mobile/touch) - NO EFFECTS */
+:root {
+  --hover-scale-sm: scale(1);
+  --hover-scale-md: scale(1);
+  --hover-scale-img: scale(1);
+  --hover-lift: translateY(0);
+  --hover-opacity-full: 0.6;
+  --hover-opacity-show: 0;
+  --hover-underline: 0;
+  --hover-bg-light-alpha: 0.08;
+  --hover-bg-dark-alpha: 0.1;
+  --hover-shadow-light: none;
+  --hover-shadow-dark: none;
+}
+
+/* Active values for hover-capable devices (desktop with mouse) */
+@media (hover: hover) {
+  :root {
+    --hover-scale-sm: scale(1.1);
+    --hover-scale-md: scale(1.15);
+    --hover-scale-img: scale(1.05);
+    --hover-lift: translateY(-4px);
+    --hover-opacity-full: 1;
+    --hover-opacity-show: 1;
+    --hover-underline: 100%;
+    --hover-bg-light-alpha: 0.15;
+    --hover-bg-dark-alpha: 0.2;
+    --hover-shadow-light: 0 8px 24px rgba(0, 0, 0, 0.1);
+    --hover-shadow-dark: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -123,7 +196,7 @@ body::before {
 }
 
 .lang-switcher button:hover {
-  opacity: 1;
+  opacity: var(--hover-opacity-full);
 }
 
 .lang-switcher button.active {
@@ -187,7 +260,7 @@ body::before {
 }
 
 .theme-toggle:hover {
-  transform: scale(1.1);
+  transform: var(--hover-scale-sm);
 }
 
 .theme-toggle:active {
@@ -455,7 +528,7 @@ body::before {
 }
 
 .nav-sections a:hover::after {
-  width: 100%;
+  width: var(--hover-underline);
 }
 
 [data-theme="light"] .nav-sections a {
@@ -538,7 +611,7 @@ body::before {
 }
 
 .socials a:hover {
-  transform: scale(1.15);
+  transform: var(--hover-scale-md);
 }
 
 .socials a svg {
@@ -567,7 +640,7 @@ body::before {
 }
 
 [data-theme="light"] .socials a:hover {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, var(--hover-bg-light-alpha));
 }
 
 [data-theme="light"] .social-label {
@@ -580,7 +653,7 @@ body::before {
 }
 
 [data-theme="dark"] .socials a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, var(--hover-bg-dark-alpha));
 }
 
 [data-theme="dark"] .social-label {
@@ -611,7 +684,7 @@ body::before {
 }
 
 .back-link:hover {
-  transform: scale(1.1);
+  transform: var(--hover-scale-sm);
 }
 
 .back-link svg {
@@ -624,7 +697,7 @@ body::before {
 }
 
 [data-theme="light"] .back-link:hover {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, var(--hover-bg-light-alpha));
 }
 
 [data-theme="dark"] .back-link {
@@ -632,7 +705,7 @@ body::before {
 }
 
 [data-theme="dark"] .back-link:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, var(--hover-bg-dark-alpha));
 }
 
 .section-name {
@@ -698,7 +771,7 @@ body::before {
 }
 
 .film-card:hover {
-  transform: translateY(-4px);
+  transform: var(--hover-lift);
 }
 
 .film-thumbnail {
@@ -716,7 +789,7 @@ body::before {
 }
 
 .film-card:hover .film-thumbnail img {
-  transform: scale(1.05);
+  transform: var(--hover-scale-img);
 }
 
 .film-play {
@@ -735,7 +808,7 @@ body::before {
 }
 
 .film-card:hover .film-play {
-  opacity: 1;
+  opacity: var(--hover-opacity-show);
 }
 
 .film-play svg {
@@ -827,7 +900,7 @@ body::before {
 }
 
 [data-theme="light"] .film-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--hover-shadow-light);
 }
 
 [data-theme="light"] .film-thumbnail {
@@ -844,7 +917,7 @@ body::before {
 }
 
 [data-theme="dark"] .film-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--hover-shadow-dark);
 }
 
 [data-theme="dark"] .film-thumbnail {
