@@ -102,6 +102,28 @@
       background-color: rgba(255, 255, 255, 0.15);
     }
 
+    /* Version label */
+    .version-label {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+      z-index: 1000;
+      cursor: default;
+    }
+
+    [data-theme="light"] .version-label {
+      color: #1a1a1a;
+    }
+
+    [data-theme="dark"] .version-label {
+      color: #ffffff;
+    }
+
     /* Theme toggle button */
     .theme-toggle {
       position: fixed;
@@ -385,6 +407,8 @@
     <button data-lang="es">ES</button>
   </div>
 
+  <span class="version-label" id="version-label"></span>
+
   <button class="theme-toggle" aria-label="Toggle dark mode">
     <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="5"></circle>
@@ -563,6 +587,14 @@
           socialLabel.classList.remove('visible');
         });
       });
+
+      // Version label (easter egg)
+      fetch('/package.json')
+        .then(res => res.json())
+        .then(pkg => {
+          document.getElementById('version-label').textContent = pkg.version;
+        })
+        .catch(() => {});
     })();
   </script>
 </body>
