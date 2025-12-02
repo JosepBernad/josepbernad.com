@@ -14,6 +14,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      min-height: 100%;
+    }
+
     body {
       min-height: 100vh;
       background-size: cover;
@@ -49,13 +53,62 @@
       }
     }
 
+    /* Language switcher */
+    .lang-switcher {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 1000;
+    }
+
+    .lang-switcher button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      height: 36px;
+      padding: 0 0.75rem;
+      border-radius: 4px;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+      opacity: 0.6;
+    }
+
+    .lang-switcher button:hover {
+      opacity: 1;
+    }
+
+    .lang-switcher button.active {
+      opacity: 1;
+    }
+
+    [data-theme="light"] .lang-switcher button {
+      color: #1a1a1a;
+    }
+
+    [data-theme="light"] .lang-switcher button.active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] .lang-switcher button {
+      color: #f5f5f5;
+    }
+
+    [data-theme="dark"] .lang-switcher button.active {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
     /* Theme toggle button */
     .theme-toggle {
       position: fixed;
       top: 1.5rem;
       right: 1.5rem;
-      width: 48px;
-      height: 48px;
+      width: 36px;
+      height: 36px;
       border: none;
       border-radius: 50%;
       cursor: pointer;
@@ -89,8 +142,8 @@
     .icon-moon {
       position: absolute;
       transition: opacity 0.2s ease;
-      width: 24px;
-      height: 24px;
+      width: 18px;
+      height: 18px;
     }
 
     [data-theme="light"] .icon-sun { opacity: 0; }
@@ -216,6 +269,32 @@
       justify-content: center;
     }
 
+    /* Compact spacing for small screens */
+    @media (max-height: 850px) {
+      .subtitle {
+        margin-bottom: 1.5rem;
+      }
+
+      .nav-sections {
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .socials {
+        gap: 1rem;
+      }
+
+      .socials a {
+        width: 40px;
+        height: 40px;
+      }
+
+      .socials a svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
     .socials a {
       display: flex;
       flex-direction: column;
@@ -281,6 +360,12 @@
   </style>
 </head>
 <body>
+  <div class="lang-switcher">
+    <button data-lang="en">EN</button>
+    <button data-lang="ca">CA</button>
+    <button data-lang="es">ES</button>
+  </div>
+
   <button class="theme-toggle" aria-label="Toggle dark mode">
     <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="5"></circle>
@@ -300,14 +385,14 @@
 
   <main class="content">
     <h1 class="title">Josep Bernad</h1>
-    <p class="subtitle">Live & DJ Set</p>
+    <p class="subtitle" data-i18n="subtitle">Live & DJ Set</p>
 
     <nav>
       <ul class="nav-sections">
-        <li><a href="#">Films</a></li>
-        <li><a href="#">Non Negotiables</a></li>
-        <li><a href="#">Press</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#" data-i18n="nav.films">Films</a></li>
+        <li><a href="#" data-i18n="nav.nonNegotiables">Manifesto</a></li>
+        <li><a href="#" data-i18n="nav.press">Press</a></li>
+        <li><a href="#" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
 
@@ -343,12 +428,45 @@
 
   <script>
     (function() {
+      // Translations
+      const translations = {
+        en: {
+          subtitle: 'Live & DJ Set',
+          nav: {
+            films: 'Films',
+            nonNegotiables: 'Manifesto',
+            press: 'Press',
+            contact: 'Contact'
+          }
+        },
+        es: {
+          subtitle: 'Live & DJ Set',
+          nav: {
+            films: 'Films',
+            nonNegotiables: 'Manifiesto',
+            press: 'Prensa',
+            contact: 'Contacto'
+          }
+        },
+        ca: {
+          subtitle: 'Live & DJ Set',
+          nav: {
+            films: 'Films',
+            nonNegotiables: 'Manifest',
+            press: 'Premsa',
+            contact: 'Contacte'
+          }
+        }
+      };
+
       const html = document.documentElement;
       const toggle = document.querySelector('.theme-toggle');
-      const STORAGE_KEY = 'theme-preference';
+      const THEME_KEY = 'theme-preference';
+      const LANG_KEY = 'lang-preference';
 
+      // Theme functions
       function getInitialTheme() {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved = localStorage.getItem(THEME_KEY);
         if (saved) return saved;
         
         return window.matchMedia('(prefers-color-scheme: dark)').matches 
@@ -358,7 +476,7 @@
 
       function setTheme(theme) {
         html.setAttribute('data-theme', theme);
-        localStorage.setItem(STORAGE_KEY, theme);
+        localStorage.setItem(THEME_KEY, theme);
       }
 
       setTheme(getInitialTheme());
@@ -369,9 +487,47 @@
       });
 
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem(STORAGE_KEY)) {
+        if (!localStorage.getItem(THEME_KEY)) {
           setTheme(e.matches ? 'dark' : 'light');
         }
+      });
+
+      // Language functions
+      function getInitialLang() {
+        const saved = localStorage.getItem(LANG_KEY);
+        if (saved) return saved;
+
+        const browserLang = navigator.language.toLowerCase();
+        if (browserLang.startsWith('ca')) return 'ca';
+        if (browserLang.startsWith('es')) return 'es';
+        return 'en';
+      }
+
+      function setLang(lang) {
+        html.setAttribute('lang', lang);
+        localStorage.setItem(LANG_KEY, lang);
+
+        // Update active button
+        document.querySelectorAll('.lang-switcher button').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        // Update text content
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.dataset.i18n;
+          const keys = key.split('.');
+          let value = translations[lang];
+          for (const k of keys) {
+            value = value[k];
+          }
+          if (value) el.textContent = value;
+        });
+      }
+
+      setLang(getInitialLang());
+
+      document.querySelectorAll('.lang-switcher button').forEach(btn => {
+        btn.addEventListener('click', () => setLang(btn.dataset.lang));
       });
 
       // Social hover label
