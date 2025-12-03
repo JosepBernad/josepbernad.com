@@ -734,14 +734,14 @@ body::before {
   width: 100%;
   max-width: 1200px;
   padding: 0 1.5rem;
-  margin-top: 8rem;
+  margin-top: 12rem;
   position: relative;
   z-index: 1;
 }
 
 @media (min-width: 768px) {
   .films-grid {
-    margin-top: 11.5rem;
+    margin-top: 12rem;
   }
 }
 

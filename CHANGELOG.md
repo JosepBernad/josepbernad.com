@@ -4,10 +4,28 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.1] - 2024-12-02
 
+### Added
+- **Films page** with complete content and responsive grid layout
+  - 7 films displayed with YouTube thumbnails (auto-fetched from video IDs)
+  - Film cards showing title, location, date, and genre tags
+  - Play button overlay on hover (desktop only)
+  - Responsive grid: 1 column (mobile), 2 columns (tablet), 3 columns (desktop)
+  - Links open YouTube videos in new tab
+- Section page layout system
+  - Header background gradient overlay for better readability
+  - Back navigation button with section title
+  - Top header showing location and artist name on section pages
+  - Background image dimmed to 10% opacity on section pages
+- Films data file (`src/_data/films.json`) for easy content management
+- Disabled navigation links styling for upcoming sections
+
 ### Changed
 - Navigation breakpoint increased from 768px to 900px (mobile 2x2 grid extends to larger screens)
 - Navigation spacing unified to 2.5rem (40px) in all directions for visual consistency
 - Hover effects disabled on mobile/touch devices using `@media (hover: hover)` detection
+- Film cards redesigned with centered info, corner-positioned location/date
+- Film tags centered with first tag emphasized
+- Section navigation separator increased (50px vertical line on mobile)
 
 ### Improved
 - Refactored hover effects architecture using CSS custom properties
@@ -18,10 +36,14 @@ All notable changes to this project will be documented in this file.
 - Navigation spacing now consistent across all screen sizes and heights
   - Removed compact gap override for screens with max-height: 840px
   - Maintains 40px spacing regardless of device orientation
+- Film card hover effects use new CSS custom property system
+  - Lift effect, image zoom, and box shadows on hover (desktop only)
+  - Touch devices show clean static cards without hover artifacts
 
 ### Fixed
 - GitHub Pages deployment: added .nojekyll file to fix image loading issues
 - CNAME file now properly copied to _site for custom domain support
+- Horizontal overflow hidden on html/body to prevent scroll issues
 
 ## [1.2.0] - 2024-12-02
 
