@@ -393,7 +393,7 @@ body::before {
 
 @media (max-width: 700px) {
   .top-header {
-    top: 4rem;
+    top: 4.5rem;
   }
 
   .header-claim {
@@ -733,7 +733,7 @@ nav {
 /* Section navigation */
 .section-nav {
   position: fixed;
-  top: 8rem;
+  top: 8.5rem;
   left: 1.5rem;
   display: flex;
   align-items: center;
@@ -1070,7 +1070,7 @@ nav {
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
-  text-align: justify;
+  text-align: left;
 }
 
 .about-content p:last-child {
