@@ -9,7 +9,7 @@ sectionName: Films
 
 <div class="films-grid">
   {% for film in films %}
-  <a href="{{ film.url }}" target="_blank" rel="noopener noreferrer" class="film-card">
+  <a href="{{ film.url }}" target="_blank" rel="noopener noreferrer" class="film-card{% if film.tags[0] == 'Live Set' %} film-card--live{% endif %}">
     <div class="film-thumbnail">
       <img src="https://img.youtube.com/vi/{{ film.videoId }}/maxresdefault.jpg" alt="{{ film.title }}" loading="lazy">
       <div class="film-play">
@@ -22,7 +22,7 @@ sectionName: Films
       <h2 class="film-title">{{ film.title }}</h2>
       <div class="film-tags">
         {% for tag in film.tags %}
-        <span class="film-tag{% if tag == 'Live Set' %} film-tag--live{% endif %}">{{ tag }}</span>
+        <span class="film-tag">{{ tag }}</span>
         {% endfor %}
       </div>
     </div>

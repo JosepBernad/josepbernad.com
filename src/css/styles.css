@@ -823,6 +823,8 @@ nav {
   padding: 0.75rem;
   padding-bottom: 2.75rem;
   position: relative;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 @media (min-width: 640px) {
@@ -950,7 +952,7 @@ nav {
   font-size: 0.7rem;
 }
 
-.film-tag--live {
+.film-card--live .film-tag:first-child {
   font-weight: 700;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
@@ -989,7 +991,12 @@ nav {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-[data-theme="light"] .film-tag--live {
+[data-theme="light"] .film-card--live {
+  background-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 24px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .film-card--live .film-tag:first-child {
   background: linear-gradient(165deg, #000000 0%, #13191a 40%, #3d4f5233 100%);
   color: #f5f5f5;
 }
@@ -1015,7 +1022,12 @@ nav {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-[data-theme="dark"] .film-tag--live {
+[data-theme="dark"] .film-card--live {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 32px rgba(255, 255, 255, 0.18), 0 0 16px rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .film-card--live .film-tag:first-child {
   background: linear-gradient(165deg, #9bbcc0 0%, #cadee1 50%, #e8f5f7 100%);
   color: #1a1a1a;
 }

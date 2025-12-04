@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2024-12-04
+
+### Added
+- **Frosted glass effect** on all film cards with backdrop blur
+- **Glow effect** on Live Set cards to highlight premium content
+
+### Changed
+- Refactored Live Set styling from tag-level to card-level differentiation
+- Film dates now display abbreviated month names (OCT, JUL) with translations
+
 ## [1.2.2] - 2024-12-04
 
 ### Added
