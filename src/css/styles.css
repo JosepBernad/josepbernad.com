@@ -638,7 +638,7 @@ nav {
 }
 
 /* Compact spacing for small screens */
-@media (max-height: 840px) {
+@media (max-height: 1000px) {
   .subtitle {
     margin-bottom: 2.5rem;
   }
@@ -673,6 +673,8 @@ nav {
   transition: transform 0.2s ease, background-color 0.2s ease;
   position: relative;
   text-decoration: none;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 .socials a:hover {

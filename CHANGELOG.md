@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - **"Soon" tooltip and lock icon** for disabled navigation links
+- **Backdrop blur** on social icon buttons (frosted glass effect)
+
+### Changed
+- Compact spacing breakpoint increased from 840px to 1000px height
 
 ## [1.2.1] - 2024-12-02
 
