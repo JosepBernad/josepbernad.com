@@ -7,7 +7,7 @@
         films: 'Films',
         nonNegotiables: 'Manifesto',
         press: 'Press',
-        contact: 'Contact',
+        about: 'About',
         soon: 'Soon'
       },
       months: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
@@ -18,7 +18,7 @@
         films: 'Films',
         nonNegotiables: 'Manifiesto',
         press: 'Prensa',
-        contact: 'Contacto',
+        about: 'Sobre mí',
         soon: 'Pronto'
       },
       months: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC']
@@ -29,7 +29,7 @@
         films: 'Films',
         nonNegotiables: 'Manifest',
         press: 'Premsa',
-        contact: 'Contacte',
+        about: 'Sobre mi',
         soon: 'Aviat'
       },
       months: ['GEN', 'FEB', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OCT', 'NOV', 'DES']
