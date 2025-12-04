@@ -9,7 +9,8 @@
         press: 'Press',
         contact: 'Contact',
         soon: 'Soon'
-      }
+      },
+      months: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
     },
     es: {
       subtitle: 'Live & DJ Set',
@@ -19,7 +20,8 @@
         press: 'Prensa',
         contact: 'Contacto',
         soon: 'Pronto'
-      }
+      },
+      months: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC']
     },
     ca: {
       subtitle: 'Live & DJ Set',
@@ -29,7 +31,8 @@
         press: 'Premsa',
         contact: 'Contacte',
         soon: 'Aviat'
-      }
+      },
+      months: ['GEN', 'FEB', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OCT', 'NOV', 'DES']
     }
   };
 
@@ -87,13 +90,15 @@
   }
 
   function formatFilmDates(lang) {
+    const months = translations[lang].months;
     document.querySelectorAll('.film-date').forEach(el => {
       const year = el.dataset.year;
-      const month = el.dataset.month;
+      const monthIndex = parseInt(el.dataset.month, 10) - 1;
+      const monthName = months[monthIndex];
       if (lang === 'en') {
-        el.textContent = `${year} / ${month}`;
+        el.textContent = `${year} ${monthName}`;
       } else {
-        el.textContent = `${month} / ${year}`;
+        el.textContent = `${monthName} ${year}`;
       }
     });
   }

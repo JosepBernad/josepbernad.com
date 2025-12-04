@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - Compact spacing breakpoint increased from 840px to 1000px height
 - Film card layout adjustments for better spacing
 - Enhanced first tag styling (DJ Set, Live Set) with increased prominence
+- Film dates now show abbreviated month names (OCT, JUL, etc.) instead of numbers, with translations for English, Spanish, and Catalan
 
 ## [1.2.1] - 2024-12-02
 
