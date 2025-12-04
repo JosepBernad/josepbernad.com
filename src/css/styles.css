@@ -557,10 +557,21 @@ nav {
   opacity: 0.35;
   pointer-events: auto;
   cursor: pointer;
+  position: relative;
 }
 
 .nav-sections a.nav-disabled::after {
   display: none;
+}
+
+/* Lock icon for disabled links */
+.lock-icon {
+  position: absolute;
+  top: -0.4rem;
+  right: -0.6rem;
+  width: 0.70rem;
+  height: 1.5rem;
+  opacity: 1;
 }
 
 /* Disabled nav tooltip - centered between nav and socials */
