@@ -7,10 +7,20 @@ All notable changes to this project will be documented in this file.
 ### Added
 - **Frosted glass effect** on all film cards with backdrop blur
 - **Glow effect** on Live Set cards to highlight premium content
+- **About page** with translatable bio, profile image, and LinkedIn/GitHub links
+- **Frosted glass effect** (backdrop blur) on all film cards
+- **Glow effect** on Live Set cards to highlight premium content
+
 
 ### Changed
 - Refactored Live Set styling from tag-level to card-level differentiation
 - Film dates now display abbreviated month names (OCT, JUL) with translations
+- Renamed "Contact" navigation item to "About"
+- Film dates now display abbreviated month names (OCT, JUL) with translations
+- Refactored Live Set styling from tag-level to card-level
+- Section header simplified: solid background with subtle border
+- Created shared `.section-container` class for section pages
+- **External translation files** for home, films, and about content
 
 ## [1.2.2] - 2024-12-04
 
