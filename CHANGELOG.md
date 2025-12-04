@@ -7,9 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Added
 - **"Soon" tooltip and lock icon** for disabled navigation links
 - **Backdrop blur** on social icon buttons (frosted glass effect)
+- **Premium "Live Set" tag styling** with diagonal gradient using opposite theme colors
 
 ### Changed
 - Compact spacing breakpoint increased from 840px to 1000px height
+- Film card layout adjustments for better spacing
+- Enhanced first tag styling (DJ Set, Live Set) with increased prominence
 
 ## [1.2.1] - 2024-12-02
 

@@ -22,7 +22,7 @@ sectionName: Films
       <h2 class="film-title">{{ film.title }}</h2>
       <div class="film-tags">
         {% for tag in film.tags %}
-        <span class="film-tag">{{ tag }}</span>
+        <span class="film-tag{% if tag == 'Live Set' %} film-tag--live{% endif %}">{{ tag }}</span>
         {% endfor %}
       </div>
     </div>
