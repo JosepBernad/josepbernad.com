@@ -1,60 +1,65 @@
-[
-  {
-    "title": "Sunset",
-    "url": "https://youtu.be/gzFcLZjel8M",
-    "videoId": "gzFcLZjel8M",
-    "date": "2025-10",
-    "location": "Mallorca",
-    "tags": ["DJ Set", "Afro House", "House", "Tech House"]
-  },
-  {
-    "title": "Drum House",
-    "url": "https://youtu.be/63OOTQeLW_s",
-    "videoId": "63OOTQeLW_s",
-    "date": "2025-07",
-    "location": "Mallorca",
-    "tags": ["Live Set", "House", "Latin House", "Percussion", "Drums"]
-  },
-  {
-    "title": "Cozy Eve",
-    "url": "https://youtu.be/JGwp1_ienCY",
-    "videoId": "JGwp1_ienCY",
-    "date": "2025-01",
-    "location": "Mallorca",
-    "tags": ["DJ Set", "Party Set", "Open Format", "House", "Melodic House"]
-  },
-  {
-    "title": "Villa Ibiza",
-    "url": "https://youtu.be/ee_Ru5vYyFM",
-    "videoId": "ee_Ru5vYyFM",
-    "date": "2024-12",
-    "location": "Ibiza",
-    "tags": ["DJ Set", "House", "Tech House"]
-  },
-  {
-    "title": "Partners in Crime",
-    "url": "https://youtu.be/ZnkXg-2UCJ0",
-    "videoId": "ZnkXg-2UCJ0",
-    "date": "2024-07",
-    "location": "France",
-    "tags": ["DJ Set", "Party Set", "Open Format", "House", "Pop"]
-  },
-  {
-    "title": "Groovie Balcony",
-    "url": "https://youtu.be/pKeDekFQJFo",
-    "videoId": "pKeDekFQJFo",
-    "date": "2024-06",
-    "location": "Barcelona",
-    "tags": ["DJ Set", "House", "Funky House"]
-  },
-  {
-    "title": "Afro House at Dinner",
-    "url": "https://youtu.be/EZPxPgtPx7M",
-    "videoId": "EZPxPgtPx7M",
-    "date": "2024-04",
-    "location": "Barcelona",
-    "tags": ["DJ Set", "Afro House"]
+{
+  "items": [
+    {
+      "title": "Sunset",
+      "url": "https://youtu.be/gzFcLZjel8M",
+      "videoId": "gzFcLZjel8M",
+      "date": "2025-10",
+      "location": "Mallorca",
+      "tags": ["DJ Set", "Afro House", "House", "Tech House"]
+    },
+    {
+      "title": "Drum House",
+      "url": "https://youtu.be/63OOTQeLW_s",
+      "videoId": "63OOTQeLW_s",
+      "date": "2025-07",
+      "location": "Mallorca",
+      "tags": ["Live Set", "House", "Latin House", "Percussion", "Drums"]
+    },
+    {
+      "title": "Cozy Eve",
+      "url": "https://youtu.be/JGwp1_ienCY",
+      "videoId": "JGwp1_ienCY",
+      "date": "2025-01",
+      "location": "Mallorca",
+      "tags": ["DJ Set", "Party Set", "Open Format", "House", "Melodic House"]
+    },
+    {
+      "title": "Villa Ibiza",
+      "url": "https://youtu.be/ee_Ru5vYyFM",
+      "videoId": "ee_Ru5vYyFM",
+      "date": "2024-12",
+      "location": "Ibiza",
+      "tags": ["DJ Set", "House", "Tech House"]
+    },
+    {
+      "title": "Partners in Crime",
+      "url": "https://youtu.be/ZnkXg-2UCJ0",
+      "videoId": "ZnkXg-2UCJ0",
+      "date": "2024-07",
+      "location": "France",
+      "tags": ["DJ Set", "Party Set", "Open Format", "House", "Pop"]
+    },
+    {
+      "title": "Groovie Balcony",
+      "url": "https://youtu.be/pKeDekFQJFo",
+      "videoId": "pKeDekFQJFo",
+      "date": "2024-06",
+      "location": "Barcelona",
+      "tags": ["DJ Set", "House", "Funky House"]
+    },
+    {
+      "title": "Afro House at Dinner",
+      "url": "https://youtu.be/EZPxPgtPx7M",
+      "videoId": "EZPxPgtPx7M",
+      "date": "2024-04",
+      "location": "Barcelona",
+      "tags": ["DJ Set", "Afro House"]
+    }
+  ],
+  "months": {
+    "en": ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+    "es": ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"],
+    "ca": ["GEN", "FEB", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OCT", "NOV", "DES"]
   }
-]
-
-
+}

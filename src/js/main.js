@@ -1,53 +1,24 @@
 (function() {
-  // Translations
-  const translations = {
-    en: {
-      subtitle: 'Live & DJ Set',
-      nav: {
-        films: 'Films',
-        nonNegotiables: 'Manifesto',
-        press: 'Press',
-        about: 'About',
-        soon: 'Soon'
-      },
-      months: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
-    },
-    es: {
-      subtitle: 'Live & DJ Set',
-      nav: {
-        films: 'Films',
-        nonNegotiables: 'Manifiesto',
-        press: 'Prensa',
-        about: 'Sobre mí',
-        soon: 'Pronto'
-      },
-      months: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC']
-    },
-    ca: {
-      subtitle: 'Live & DJ Set',
-      nav: {
-        films: 'Films',
-        nonNegotiables: 'Manifest',
-        press: 'Premsa',
-        about: 'Sobre mi',
-        soon: 'Aviat'
-      },
-      months: ['GEN', 'FEB', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OCT', 'NOV', 'DES']
-    }
-  };
+  // Translations (loaded from external JSON files)
+  const translations = { en: {}, es: {}, ca: {} };
 
-  // Load about page translations from external JSON
-  fetch('/data/about.json')
-    .then(res => res.json())
-    .then(data => {
-      translations.en.about = data.en;
-      translations.es.about = data.es;
-      translations.ca.about = data.ca;
-      // Re-apply current language to update about content
-      const currentLang = html.getAttribute('lang') || 'en';
-      updateHtmlTranslations(currentLang);
-    })
-    .catch(() => {});
+  // Load all translations from JSON files
+  Promise.all([
+    fetch('/data/home.json').then(res => res.json()),
+    fetch('/data/films.json').then(res => res.json()),
+    fetch('/data/about.json').then(res => res.json())
+  ]).then(([homeData, filmsData, aboutData]) => {
+    // Merge home translations (subtitle, nav)
+    ['en', 'es', 'ca'].forEach(lang => {
+      translations[lang].subtitle = homeData[lang].subtitle;
+      translations[lang].nav = homeData[lang].nav;
+      translations[lang].months = filmsData.months[lang];
+      translations[lang].about = aboutData[lang];
+    });
+    // Re-apply current language after loading
+    const currentLang = html.getAttribute('lang') || 'en';
+    setLang(currentLang);
+  }).catch(() => {});
 
   const html = document.documentElement;
   const toggle = document.querySelector('.theme-toggle');
@@ -104,6 +75,7 @@
 
   function formatFilmDates(lang) {
     const months = translations[lang].months;
+    if (!months) return; // Wait for translations to load
     document.querySelectorAll('.film-date').forEach(el => {
       const year = el.dataset.year;
       const monthIndex = parseInt(el.dataset.month, 10) - 1;
@@ -137,16 +109,18 @@
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 
-    // Update text content
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.dataset.i18n;
-      const keys = key.split('.');
-      let value = translations[lang];
-      for (const k of keys) {
-        if (value) value = value[k];
-      }
-      if (value) el.textContent = value;
-    });
+    // Update text content (only if translations are loaded)
+    if (translations[lang].nav) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        const keys = key.split('.');
+        let value = translations[lang];
+        for (const k of keys) {
+          if (value) value = value[k];
+        }
+        if (value) el.textContent = value;
+      });
+    }
 
     // Update HTML content (for elements with rich text like bold)
     updateHtmlTranslations(lang);
