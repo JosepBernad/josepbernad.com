@@ -7,7 +7,7 @@ showName: true
 sectionName: Films
 ---
 
-<div class="films-grid">
+<div class="section-container films-container">
   {% for film in films %}
   <a href="{{ film.url }}" target="_blank" rel="noopener noreferrer" class="film-card{% if film.tags[0] == 'Live Set' %} film-card--live{% endif %}">
     <div class="film-thumbnail">
