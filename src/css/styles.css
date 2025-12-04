@@ -413,10 +413,15 @@ body::before {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1.5rem;
   list-style: none;
   justify-content: center;
   position: relative;
+}
+
+/* Nav container to hold sections + tooltip */
+nav {
+  margin-bottom: 4rem;
 }
 
 .nav-sections li:nth-child(odd) {
@@ -550,12 +555,62 @@ body::before {
 /* Disabled navigation links */
 .nav-sections a.nav-disabled {
   opacity: 0.35;
-  pointer-events: none;
-  cursor: default;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .nav-sections a.nav-disabled::after {
   display: none;
+}
+
+/* Disabled nav tooltip - centered between nav and socials */
+.nav-tooltip {
+  display: block;
+  text-align: center;
+  font-size: 0.55rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  margin: 0 auto;
+  width: fit-content;
+  height: 1.3rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: 
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Show state - slides up to final position */
+.nav-tooltip.show {
+  opacity: 0.7;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Desktop: show tooltip on hover over disabled links */
+@media (hover: hover) {
+  .nav-sections:has(a.nav-disabled:hover) ~ .nav-tooltip {
+    opacity: 0.7;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* Light theme tooltip */
+[data-theme="light"] .nav-tooltip {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #f5f5f5;
+}
+
+/* Dark theme tooltip */
+[data-theme="dark"] .nav-tooltip {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #1a1a1a;
 }
 
 /* Social links */
@@ -577,7 +632,7 @@ body::before {
     margin-bottom: 2.5rem;
   }
 
-  .nav-sections {
+  nav {
     margin-bottom: 2.5rem;
   }
 

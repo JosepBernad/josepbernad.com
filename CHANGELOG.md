@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2024-12-04
+
+### Added
+- **"Soon" tooltip** for disabled navigation links
+
 ## [1.2.1] - 2024-12-02
 
 ### Added

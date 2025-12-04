@@ -7,7 +7,8 @@
         films: 'Films',
         nonNegotiables: 'Manifesto',
         press: 'Press',
-        contact: 'Contact'
+        contact: 'Contact',
+        soon: 'Soon'
       }
     },
     es: {
@@ -16,7 +17,8 @@
         films: 'Films',
         nonNegotiables: 'Manifiesto',
         press: 'Prensa',
-        contact: 'Contacto'
+        contact: 'Contacto',
+        soon: 'Pronto'
       }
     },
     ca: {
@@ -25,7 +27,8 @@
         films: 'Films',
         nonNegotiables: 'Manifest',
         press: 'Premsa',
-        contact: 'Contacte'
+        contact: 'Contacte',
+        soon: 'Aviat'
       }
     }
   };
@@ -152,5 +155,25 @@
       })
       .catch(() => {});
   }
+
+  // Disabled nav tooltip on click/tap
+  const navTooltip = document.querySelector('.nav-tooltip');
+  let tooltipTimeout;
+
+  document.querySelectorAll('.nav-disabled').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!navTooltip) return;
+      
+      // Show tooltip
+      navTooltip.classList.add('show');
+      
+      // Hide after 1 second
+      clearTimeout(tooltipTimeout);
+      tooltipTimeout = setTimeout(() => {
+        navTooltip.classList.remove('show');
+      }, 1000);
+    });
+  });
 })();
 
