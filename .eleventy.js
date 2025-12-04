@@ -8,6 +8,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "package.json": "package.json" });
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
+  eleventyConfig.addPassthroughCopy({ "src/_data/about.json": "data/about.json" });
 
   return {
     dir: {

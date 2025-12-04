@@ -952,12 +952,6 @@ nav {
   font-size: 0.7rem;
 }
 
-.film-card--live .film-tag:first-child {
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-}
-
 /* Smaller tags on mobile */
 @media (max-width: 639px) {
   .film-tags {
