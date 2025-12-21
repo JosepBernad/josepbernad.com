@@ -3,30 +3,24 @@
     "subtitle": "Live & DJ Set",
     "nav": {
       "films": "Films",
-      "nonNegotiables": "Manifesto",
-      "press": "Press",
       "about": "About",
-      "soon": "Soon"
+      "contact": "Contact"
     }
   },
   "es": {
     "subtitle": "Live & DJ Set",
     "nav": {
       "films": "Films",
-      "nonNegotiables": "Manifiesto",
-      "press": "Prensa",
       "about": "Sobre mí",
-      "soon": "Pronto"
+      "contact": "Contacto"
     }
   },
   "ca": {
     "subtitle": "Live & DJ Set",
     "nav": {
       "films": "Films",
-      "nonNegotiables": "Manifest",
-      "press": "Premsa",
       "about": "Sobre mi",
-      "soon": "Aviat"
+      "contact": "Contacte"
     }
   }
 }
