@@ -11,6 +11,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/_data/about.json": "data/about.json" });
   eleventyConfig.addPassthroughCopy({ "src/_data/home.json": "data/home.json" });
   eleventyConfig.addPassthroughCopy({ "src/_data/films.json": "data/films.json" });
+  eleventyConfig.addPassthroughCopy({ "src/_data/contact.json": "data/contact.json" });
 
   return {
     dir: {
