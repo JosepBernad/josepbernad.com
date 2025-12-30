@@ -3,12 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title == 'Home' %}Josep Bernad{% else %}{{ title }} | Josep Bernad{% endif %}</title>
+  
+  <!-- SEO Title -->
+  <title>{% if title == 'Home' %}Josep Bernad — DJ & Musician | Barcelona · Mallorca{% else %}{{ title }} | Josep Bernad{% endif %}</title>
+  
+  <!-- Meta Description -->
+  <meta name="description" content="{% if title == 'Home' %}Josep Bernad — Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances. Book a set or explore my latest productions.{% elif title == 'Films' %}Watch live sets and DJ performances by Josep Bernad. House music videos filmed in Barcelona, Mallorca, and beyond.{% elif title == 'About' %}Learn about Josep Bernad — musician, DJ, and multi-instrumentalist from Mallorca. Blending electronic music with live instrumentation.{% elif title == 'Contact' %}Get in touch with Josep Bernad for bookings, collaborations, or inquiries. DJ sets, live performances, and music production.{% else %}{{ title }} — Josep Bernad, musician and DJ from Mallorca based in Barcelona.{% endif %}">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://josepbernad.com{{ page.url }}">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="{% if title == 'Home' %}website{% else %}article{% endif %}">
+  <meta property="og:url" content="https://josepbernad.com{{ page.url }}">
+  <meta property="og:title" content="{% if title == 'Home' %}Josep Bernad — Musician & DJ{% else %}{{ title }} | Josep Bernad{% endif %}">
+  <meta property="og:description" content="{% if title == 'Home' %}Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances.{% elif title == 'About' %}Learn about Josep Bernad — musician, DJ, and multi-instrumentalist.{% else %}{{ title }} — Josep Bernad{% endif %}">
+  <meta property="og:image" content="https://josepbernad.com/images/og-image.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="ca_ES">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://josepbernad.com{{ page.url }}">
+  <meta name="twitter:title" content="{% if title == 'Home' %}Josep Bernad — Musician & DJ{% else %}{{ title }} | Josep Bernad{% endif %}">
+  <meta name="twitter:description" content="{% if title == 'Home' %}Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances.{% else %}{{ title }} — Josep Bernad{% endif %}">
+  <meta name="twitter:image" content="https://josepbernad.com/images/og-image.jpg">
+  
+  <!-- Additional SEO -->
+  <meta name="author" content="Josep Bernad">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="Josep Bernad, DJ, musician, house music, Barcelona, Mallorca, live set, electronic music">
+  
+  <!-- Favicon -->
   <link rel="icon" id="favicon" href="/favicon-light.svg" type="image/svg+xml">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="/css/styles.css">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Josep Bernad",
+    "url": "https://josepbernad.com",
+    "logo": "https://josepbernad.com/images/og-image.jpg",
+    "image": "https://josepbernad.com/images/about.webp",
+    "description": "Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances.",
+    "genre": ["House", "Electronic", "Deep House"],
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Mallorca, Spain"
+    },
+    "location": {
+      "@type": "Place",
+      "name": "Barcelona, Spain"
+    },
+    "sameAs": [
+      "https://www.instagram.com/djosepbernad/",
+      "https://www.youtube.com/@JosepBernad",
+      "https://open.spotify.com/artist/1f320LpftKzOM47I0RgMfJ",
+      "https://soundcloud.com/djosepbernad",
+      "https://www.linkedin.com/in/josepbernad/",
+      "https://github.com/JosepBernad"
+    ],
+    "member": {
+      "@type": "Person",
+      "name": "Josep Bernad",
+      "jobTitle": "Musician, DJ",
+      "url": "https://josepbernad.com/about/"
+    }
+  }
+  </script>
 </head>
 <body>
   {% include "header.njk" %}
@@ -22,4 +94,3 @@
   <script src="/js/main.js"></script>
 </body>
 </html>
-
