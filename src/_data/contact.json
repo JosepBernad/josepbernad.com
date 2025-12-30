@@ -1,0 +1,32 @@
+{
+  "en": {
+    "intro": "Have a project in mind or want to book a set?<br><strong>Let's talk.</strong>",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your email",
+    "subjectPlaceholder": "Subject",
+    "messagePlaceholder": "Your message...",
+    "sendButton": "Send",
+    "orEmail": "&#79;&#114;&#32;&#101;&#109;&#97;&#105;&#108;&#32;&#109;&#101;&#32;&#100;&#105;&#114;&#101;&#99;&#116;&#108;&#121;&#32;&#97;&#116;",
+    "emailAddress": "&#104;&#105;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;"
+  },
+  "es": {
+    "intro": "¿Tienes un proyecto en mente o quieres reservar un set?<br><strong>Hablemos.</strong>",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "Tu email",
+    "subjectPlaceholder": "Asunto",
+    "messagePlaceholder": "Tu mensaje...",
+    "sendButton": "Enviar",
+    "orEmail": "&#79;&#32;&#101;&#115;&#99;&#114;&#237;&#98;&#101;&#109;&#101;&#32;&#100;&#105;&#114;&#101;&#99;&#116;&#97;&#109;&#101;&#110;&#116;&#101;&#32;&#97;",
+    "emailAddress": "&#104;&#111;&#108;&#97;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;"
+  },
+  "ca": {
+    "intro": "Tens un projecte en ment o vols reservar un set?<br><strong>Parlem.</strong>",
+    "namePlaceholder": "El teu nom",
+    "emailPlaceholder": "El teu email",
+    "subjectPlaceholder": "Assumpte",
+    "messagePlaceholder": "El teu missatge...",
+    "sendButton": "Enviar",
+    "orEmail": "&#79;&#32;&#101;&#115;&#99;&#114;&#105;&#117;&#45;&#109;&#101;&#32;&#100;&#105;&#114;&#101;&#99;&#116;&#97;&#109;&#101;&#110;&#116;&#32;&#97;",
+    "emailAddress": "&#104;&#111;&#108;&#97;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;"
+  }
+}

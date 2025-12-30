@@ -6,14 +6,18 @@
   Promise.all([
     fetch('/data/home.json').then(res => res.json()),
     fetch('/data/films.json').then(res => res.json()),
-    fetch('/data/about.json').then(res => res.json())
-  ]).then(([homeData, filmsData, aboutData]) => {
+    fetch('/data/about.json').then(res => res.json()),
+    fetch('/data/contact.json').then(res => res.json()).catch(() => ({}))
+  ]).then(([homeData, filmsData, aboutData, contactData]) => {
     // Merge home translations (subtitle, nav)
     ['en', 'es', 'ca'].forEach(lang => {
       translations[lang].subtitle = homeData[lang].subtitle;
       translations[lang].nav = homeData[lang].nav;
       translations[lang].months = filmsData.months[lang];
       translations[lang].about = aboutData[lang];
+      if (contactData[lang]) {
+        translations[lang].contact = contactData[lang];
+      }
     });
     // Re-apply current language after loading
     const currentLang = html.getAttribute('lang') || 'en';
@@ -125,6 +129,29 @@
     // Update HTML content (for elements with rich text like bold)
     updateHtmlTranslations(lang);
 
+    // Update placeholder attributes
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      const keys = key.split('.');
+      let value = translations[lang];
+      for (const k of keys) {
+        if (value) value = value[k];
+      }
+      if (value) el.placeholder = value;
+    });
+
+    // Update contact email link href (decode HTML entities first, then create mailto)
+    const emailLink = document.getElementById('contact-email-link');
+    if (emailLink && translations[lang].contact && translations[lang].contact.emailAddress) {
+      // Decode HTML entities to get actual email
+      const temp = document.createElement('div');
+      temp.innerHTML = translations[lang].contact.emailAddress;
+      const decodedEmail = temp.textContent;
+      // Encode mailto link
+      const encodedMailto = 'mailto:' + decodedEmail.split('').map(c => '&#' + c.charCodeAt(0) + ';').join('');
+      emailLink.href = encodedMailto;
+    }
+
     // Update film dates format
     formatFilmDates(lang);
   }
@@ -150,17 +177,6 @@
         socialLabel.classList.remove('visible');
       });
     });
-  }
-
-  // Version label (easter egg)
-  const versionLabel = document.getElementById('version-label');
-  if (versionLabel) {
-    fetch('/package.json')
-      .then(res => res.json())
-      .then(pkg => {
-        versionLabel.textContent = pkg.version;
-      })
-      .catch(() => {});
   }
 
   // Disabled nav tooltip on click/tap

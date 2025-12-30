@@ -1,0 +1,89 @@
+---
+layout: base.njk
+title: Contact
+permalink: /contact/
+showClaim: false
+showName: true
+sectionName: Contact
+---
+
+<div class="section-container contact-container">
+  <p class="contact-intro" data-i18n-html="contact.intro"></p>
+  
+  <form class="contact-form" id="contact-form">
+    <input type="text" id="name" name="from_name" data-i18n-placeholder="contact.namePlaceholder" required>
+    <input type="email" id="email" name="reply_to" data-i18n-placeholder="contact.emailPlaceholder" required>
+    <input type="text" id="subject" name="subject" data-i18n-placeholder="contact.subjectPlaceholder" required>
+    <textarea id="message" name="message" rows="6" data-i18n-placeholder="contact.messagePlaceholder" required></textarea>
+    <button type="submit" class="form-submit" data-i18n="contact.sendButton"></button>
+  </form>
+  
+  <p class="contact-status" id="contact-status"></p>
+  
+  <p class="contact-email">
+    <span data-i18n-html="contact.orEmail"></span>
+    <a id="contact-email-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;" data-i18n-html="contact.emailAddress"></a>
+  </p>
+</div>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function() {
+  // EmailJS Configuration
+  const EMAILJS_PUBLIC_KEY = '0rAuLMUuVzUegGiS7';
+  const EMAILJS_SERVICE_ID = 'service_zc9v6ym';
+  
+  // Template IDs per language
+  const TEMPLATES = {
+    en: 'webform-en',
+    es: 'webform-ca/es',
+    ca: 'webform-ca/es'
+  };
+  
+  // Status messages per language
+  const STATUS_MESSAGES = {
+    en: { success: '✓ Message sent successfully!', error: '✗ Failed to send. Please try again.' },
+    es: { success: '✓ Mensaje enviado correctamente.', error: '✗ Error al enviar. Inténtalo de nuevo.' },
+    ca: { success: '✓ Missatge enviat correctament.', error: '✗ Error en enviar. Torna-ho a provar.' }
+  };
+  
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+  
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-status');
+  
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get current language
+      const lang = document.documentElement.getAttribute('lang') || 'en';
+      const templateId = TEMPLATES[lang] || TEMPLATES.en;
+      const messages = STATUS_MESSAGES[lang] || STATUS_MESSAGES.en;
+      
+      // Disable button while sending
+      const btn = form.querySelector('.form-submit');
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = '...';
+      
+      // Send email via EmailJS with language-specific template
+      emailjs.sendForm(EMAILJS_SERVICE_ID, templateId, form)
+        .then(function() {
+          status.textContent = messages.success;
+          status.className = 'contact-status success';
+          form.reset();
+          btn.disabled = false;
+          btn.textContent = originalText;
+        }, function(error) {
+          status.textContent = messages.error;
+          status.className = 'contact-status error';
+          btn.disabled = false;
+          btn.textContent = originalText;
+          console.error('EmailJS error:', error);
+        });
+    });
+  }
+})();
+</script>
