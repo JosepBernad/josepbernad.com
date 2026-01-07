@@ -55,9 +55,14 @@
   <!-- Favicon -->
   <link rel="icon" id="favicon" href="/favicon-light.svg" type="image/svg+xml">
   
+  <!-- Preload background images (light theme loads first before JS) -->
+  <link rel="preload" as="image" href="/images/bg-light-mobile.webp" media="(max-width: 767px)">
+  <link rel="preload" as="image" href="/images/bg-light-desktop.webp" media="(min-width: 768px)">
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
   
   <!-- Styles -->
