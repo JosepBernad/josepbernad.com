@@ -7,7 +7,8 @@
     "messagePlaceholder": "Your message...",
     "sendButton": "Send",
     "orEmail": "&#79;&#114;&#32;&#101;&#109;&#97;&#105;&#108;&#32;&#109;&#101;&#32;&#100;&#105;&#114;&#101;&#99;&#116;&#108;&#121;&#32;&#97;&#116;",
-    "emailAddress": "&#104;&#105;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;"
+    "emailAddress": "&#104;&#105;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;",
+    "recaptcha": "This site is protected by reCAPTCHA and the Google <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a> and <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Terms of Service</a> apply."
   },
   "es": {
     "intro": "¿Tienes un proyecto en mente o quieres reservar un set?<br><strong>Hablemos.</strong>",
@@ -17,7 +18,8 @@
     "messagePlaceholder": "Tu mensaje...",
     "sendButton": "Enviar",
     "orEmail": "&#79;&#32;&#101;&#115;&#99;&#114;&#237;&#98;&#101;&#109;&#101;&#32;&#100;&#105;&#114;&#101;&#99;&#116;&#97;&#109;&#101;&#110;&#116;&#101;&#32;&#97;",
-    "emailAddress": "&#104;&#111;&#108;&#97;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;"
+    "emailAddress": "&#104;&#111;&#108;&#97;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;",
+    "recaptcha": "Este sitio está protegido por reCAPTCHA y se aplican la <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Política de Privacidad</a> y los <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Términos de Servicio</a> de Google."
   },
   "ca": {
     "intro": "Tens un projecte en ment o vols reservar un set?<br><strong>Parlem.</strong>",
@@ -27,6 +29,7 @@
     "messagePlaceholder": "El teu missatge...",
     "sendButton": "Enviar",
     "orEmail": "&#79;&#32;&#101;&#115;&#99;&#114;&#105;&#117;&#45;&#109;&#101;&#32;&#100;&#105;&#114;&#101;&#99;&#116;&#97;&#109;&#101;&#110;&#116;&#32;&#97;",
-    "emailAddress": "&#104;&#111;&#108;&#97;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;"
+    "emailAddress": "&#104;&#111;&#108;&#97;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;",
+    "recaptcha": "Aquest lloc està protegit per reCAPTCHA i s'apliquen la <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Política de Privacitat</a> i els <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Termes de Servei</a> de Google."
   }
 }

@@ -1205,16 +1205,27 @@ nav {
 
 /* reCAPTCHA branding (required by Google) */
 .recaptcha-branding {
-  margin-top: 2rem;
-  font-size: 0.75rem;
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
   text-align: center;
-  opacity: 0.5;
-  max-width: 300px;
-  line-height: 1.5;
+  opacity: 0.25;
+  max-width: 320px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  z-index: 10;
 }
 
 .recaptcha-branding a {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.recaptcha-branding a:hover {
   text-decoration: underline;
+  opacity: 1;
 }
 
 [data-theme="light"] .recaptcha-branding,
@@ -1225,6 +1236,11 @@ nav {
 [data-theme="dark"] .recaptcha-branding,
 [data-theme="dark"] .recaptcha-branding a {
   color: #f5f5f5;
+}
+
+/* Hide the floating reCAPTCHA badge since we show text */
+.grecaptcha-badge {
+  visibility: hidden !important;
 }
 
 /* 404 Error Page */
