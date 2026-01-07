@@ -9,10 +9,11 @@
     fetch('/data/about.json').then(res => res.json()),
     fetch('/data/contact.json').then(res => res.json()).catch(() => ({}))
   ]).then(([homeData, filmsData, aboutData, contactData]) => {
-    // Merge home translations (subtitle, nav)
+    // Merge home translations (subtitle, nav, error)
     ['en', 'es', 'ca'].forEach(lang => {
       translations[lang].subtitle = homeData[lang].subtitle;
       translations[lang].nav = homeData[lang].nav;
+      translations[lang].error = homeData[lang].error;
       translations[lang].months = filmsData.months[lang];
       translations[lang].about = aboutData[lang];
       if (contactData[lang]) {
