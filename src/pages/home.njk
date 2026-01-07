@@ -1,21 +1,31 @@
 ---
+pagination:
+  data: languages.list
+  size: 1
+  alias: lang
+permalink: "{{ lang.prefix }}/{% if lang.prefix %}/{% endif %}"
 layout: base.njk
-title: Home
+pageId: home
+eleventyComputed:
+  currentLang: "{{ lang.code }}"
+  currentPrefix: "{{ lang.prefix }}"
+  lang: "{{ lang.code }}"
+  langPrefix: "{{ lang.prefix }}"
 ---
 
 <h1 class="title">Josep Bernad</h1>
 <p class="subtitle" data-i18n="subtitle">Live & DJ Set</p>
 
 <nav>
-  <a href="/films/" class="films-button" data-i18n="nav.films">Films</a>
+  <a href="{{ currentPrefix }}/films/" class="films-button" data-i18n="nav.films">Films</a>
   
   <ul class="nav-sections">
-    <li><a href="/about/" data-i18n="nav.about">About</a></li>
-    <li><a href="/contact/" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="{{ currentPrefix }}/about/" data-i18n="nav.about">About</a></li>
+    <li><a href="{{ currentPrefix }}/contact/" data-i18n="nav.contact">Contact</a></li>
   </ul>
 </nav>
 
-<div class="socials-wrapper">
+<div class="socials-wrapper" data-nosnippet>
   <div class="socials">
     <a href="https://www.instagram.com/djosepbernad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor">
@@ -40,5 +50,3 @@ title: Home
   </div>
   <span class="social-label" id="social-label"></span>
 </div>
-
-

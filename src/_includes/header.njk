@@ -1,7 +1,11 @@
-<div class="lang-switcher">
-  <button data-lang="en">EN</button>
-  <button data-lang="ca">CA</button>
-  <button data-lang="es">ES</button>
+{# Determine page path without language prefix for language switcher #}
+{% set pagePath = page.url | replace('/es/', '/') | replace('/ca/', '/') %}
+{% if pagePath == '/es' or pagePath == '/ca' %}{% set pagePath = '/' %}{% endif %}
+
+<div class="lang-switcher" data-nosnippet>
+  <a href="{{ pagePath }}" class="lang-link{% if urlLang == 'en' %} active{% endif %}" aria-label="English">EN</a>
+  <a href="/ca{{ pagePath }}" class="lang-link{% if urlLang == 'ca' %} active{% endif %}" aria-label="Català">CA</a>
+  <a href="/es{{ pagePath }}" class="lang-link{% if urlLang == 'es' %} active{% endif %}" aria-label="Español">ES</a>
 </div>
 
 <button class="theme-toggle" aria-label="Toggle dark mode">
@@ -21,7 +25,7 @@
   </svg>
 </button>
 
-<div class="top-header">
+<div class="top-header" data-nosnippet>
   {% if showClaim !== false %}
   <p class="header-claim">Mainly House Music</p>
   {% endif %}
@@ -32,8 +36,8 @@
 </div>
 
 {% if sectionName %}
-<nav class="section-nav">
-  <a href="/" class="back-link" aria-label="Back">
+<nav class="section-nav" data-nosnippet>
+  <a href="{{ urlLangPrefix }}/" class="back-link" aria-label="Back">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="15 18 9 12 15 6"></polyline>
     </svg>
@@ -41,4 +45,3 @@
   <span class="section-name">{{ sectionName }}</span>
 </nav>
 {% endif %}
-

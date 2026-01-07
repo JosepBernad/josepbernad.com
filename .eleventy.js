@@ -12,6 +12,24 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/_data/films.json": "data/films.json" });
   eleventyConfig.addPassthroughCopy({ "src/_data/contact.json": "data/contact.json" });
 
+  // Add global data for language prefix based on URL
+  eleventyConfig.addGlobalData("eleventyComputed", {
+    // Extract language prefix from URL for use in templates
+    urlLangPrefix: (data) => {
+      const url = data.page?.url || '';
+      if (url.startsWith('/es/') || url === '/es') return '/es';
+      if (url.startsWith('/ca/') || url === '/ca') return '/ca';
+      return '';
+    },
+    // Extract language code from URL
+    urlLang: (data) => {
+      const url = data.page?.url || '';
+      if (url.startsWith('/es/') || url === '/es') return 'es';
+      if (url.startsWith('/ca/') || url === '/ca') return 'ca';
+      return 'en';
+    }
+  });
+
   return {
     dir: {
       input: "src",
@@ -24,4 +42,3 @@ module.exports = function(eleventyConfig) {
     markdownTemplateEngine: "njk"
   };
 };
-

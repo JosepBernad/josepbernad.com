@@ -1,0 +1,23 @@
+{
+  "list": [
+    {
+      "code": "en",
+      "name": "English",
+      "prefix": "",
+      "isDefault": true
+    },
+    {
+      "code": "es",
+      "name": "Español",
+      "prefix": "/es",
+      "isDefault": false
+    },
+    {
+      "code": "ca",
+      "name": "Català",
+      "prefix": "/ca",
+      "isDefault": false
+    }
+  ]
+}
+
