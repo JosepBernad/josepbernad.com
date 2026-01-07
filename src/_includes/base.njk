@@ -51,35 +51,73 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    "name": "Josep Bernad",
-    "url": "https://josepbernad.com",
-    "logo": "https://josepbernad.com/images/og-image.jpg",
-    "image": "https://josepbernad.com/images/about.webp",
-    "description": "Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances.",
-    "genre": ["House", "Electronic", "Deep House"],
-    "foundingLocation": {
-      "@type": "Place",
-      "name": "Mallorca, Spain"
-    },
-    "location": {
-      "@type": "Place",
-      "name": "Barcelona, Spain"
-    },
-    "sameAs": [
-      "https://www.instagram.com/djosepbernad/",
-      "https://www.youtube.com/@JosepBernad",
-      "https://open.spotify.com/artist/1f320LpftKzOM47I0RgMfJ",
-      "https://soundcloud.com/djosepbernad",
-      "https://www.linkedin.com/in/josepbernad/",
-      "https://github.com/JosepBernad"
-    ],
-    "member": {
-      "@type": "Person",
-      "name": "Josep Bernad",
-      "jobTitle": "Musician, DJ",
-      "url": "https://josepbernad.com/about/"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://josepbernad.com/#website",
+        "url": "https://josepbernad.com",
+        "name": "Josep Bernad",
+        "description": "Musician and DJ from Mallorca based in Barcelona",
+        "inLanguage": ["en", "es", "ca"]
+      },
+      {
+        "@type": "MusicGroup",
+        "@id": "https://josepbernad.com/#musician",
+        "name": "Josep Bernad",
+        "url": "https://josepbernad.com",
+        "logo": "https://josepbernad.com/images/og-image.jpg",
+        "image": "https://josepbernad.com/images/about.webp",
+        "description": "Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances.",
+        "genre": ["House", "Electronic", "Deep House"],
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Mallorca, Spain"
+        },
+        "location": {
+          "@type": "Place",
+          "name": "Barcelona, Spain"
+        },
+        "sameAs": [
+          "https://www.instagram.com/djosepbernad/",
+          "https://www.youtube.com/@JosepBernad",
+          "https://open.spotify.com/artist/1f320LpftKzOM47I0RgMfJ",
+          "https://soundcloud.com/djosepbernad",
+          "https://www.linkedin.com/in/josepbernad/",
+          "https://github.com/JosepBernad"
+        ],
+        "member": {
+          "@type": "Person",
+          "name": "Josep Bernad",
+          "jobTitle": "Musician, DJ",
+          "url": "https://josepbernad.com/about/"
+        }
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "@id": "https://josepbernad.com/#navigation",
+        "name": "Main Navigation",
+        "hasPart": [
+          {
+            "@type": "WebPage",
+            "name": "Films",
+            "description": "Watch live sets and DJ performances by Josep Bernad",
+            "url": "https://josepbernad.com/films/"
+          },
+          {
+            "@type": "WebPage",
+            "name": "About",
+            "description": "Learn about Josep Bernad — musician, DJ, and multi-instrumentalist",
+            "url": "https://josepbernad.com/about/"
+          },
+          {
+            "@type": "WebPage",
+            "name": "Contact",
+            "description": "Get in touch with Josep Bernad for bookings and collaborations",
+            "url": "https://josepbernad.com/contact/"
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
