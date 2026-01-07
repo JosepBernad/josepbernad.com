@@ -1,10 +1,19 @@
 ---
+pagination:
+  data: languages.list
+  size: 1
+  alias: lang
+permalink: "{{ lang.prefix }}/films/"
 layout: base.njk
-title: Films
-permalink: /films/
+pageId: films
 showClaim: false
 showName: true
 sectionName: Films
+eleventyComputed:
+  currentLang: "{{ lang.code }}"
+  currentPrefix: "{{ lang.prefix }}"
+  lang: "{{ lang.code }}"
+  langPrefix: "{{ lang.prefix }}"
 ---
 
 <div class="section-container films-container">
@@ -31,4 +40,3 @@ sectionName: Films
   </a>
   {% endfor %}
 </div>
-

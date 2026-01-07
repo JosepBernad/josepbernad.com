@@ -1,10 +1,19 @@
 ---
+pagination:
+  data: languages.list
+  size: 1
+  alias: lang
+permalink: "{{ lang.prefix }}/contact/"
 layout: base.njk
-title: Contact
-permalink: /contact/
+pageId: contact
 showClaim: false
 showName: true
 sectionName: Contact
+eleventyComputed:
+  currentLang: "{{ lang.code }}"
+  currentPrefix: "{{ lang.prefix }}"
+  lang: "{{ lang.code }}"
+  langPrefix: "{{ lang.prefix }}"
 ---
 
 <div class="section-container contact-container">

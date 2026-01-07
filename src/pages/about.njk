@@ -1,10 +1,19 @@
 ---
+pagination:
+  data: languages.list
+  size: 1
+  alias: lang
+permalink: "{{ lang.prefix }}/about/"
 layout: base.njk
-title: About
-permalink: /about/
+pageId: about
 showClaim: false
 showName: true
 sectionName: About
+eleventyComputed:
+  currentLang: "{{ lang.code }}"
+  currentPrefix: "{{ lang.prefix }}"
+  lang: "{{ lang.code }}"
+  langPrefix: "{{ lang.prefix }}"
 ---
 
 <div class="section-container about-container">
@@ -34,4 +43,3 @@ sectionName: About
     <span class="social-label" id="social-label"></span>
   </div>
 </div>
-

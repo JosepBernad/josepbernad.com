@@ -1,0 +1,59 @@
+{
+  "home": {
+    "en": {
+      "title": "Josep Bernad — DJ & Musician | Barcelona · Mallorca",
+      "description": "Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances. Book a set or explore my latest productions."
+    },
+    "es": {
+      "title": "Josep Bernad — DJ y Músico | Barcelona · Mallorca",
+      "description": "Músico y DJ de Mallorca afincado en Barcelona. Música house, sets en directo y actuaciones de DJ. Reserva un set o explora mis últimas producciones."
+    },
+    "ca": {
+      "title": "Josep Bernad — DJ i Músic | Barcelona · Mallorca",
+      "description": "Músic i DJ de Mallorca establert a Barcelona. Música house, sets en directe i actuacions de DJ. Reserva un set o explora les meves últimes produccions."
+    }
+  },
+  "films": {
+    "en": {
+      "title": "Films | Josep Bernad",
+      "description": "Watch live sets and DJ performances by Josep Bernad. House music videos filmed in Barcelona, Mallorca, and beyond."
+    },
+    "es": {
+      "title": "Films | Josep Bernad",
+      "description": "Mira sets en directo y actuaciones de DJ de Josep Bernad. Vídeos de música house grabados en Barcelona, Mallorca y más."
+    },
+    "ca": {
+      "title": "Films | Josep Bernad",
+      "description": "Mira sets en directe i actuacions de DJ de Josep Bernad. Vídeos de música house gravats a Barcelona, Mallorca i més."
+    }
+  },
+  "about": {
+    "en": {
+      "title": "About | Josep Bernad",
+      "description": "Learn about Josep Bernad — musician, DJ, and multi-instrumentalist from Mallorca. Blending electronic music with live instrumentation."
+    },
+    "es": {
+      "title": "Sobre mí | Josep Bernad",
+      "description": "Conoce a Josep Bernad — músico, DJ y multi-instrumentista de Mallorca. Fusionando música electrónica con instrumentación en vivo."
+    },
+    "ca": {
+      "title": "Sobre mi | Josep Bernad",
+      "description": "Coneix Josep Bernad — músic, DJ i multi-instrumentista de Mallorca. Fusionant música electrònica amb instrumentació en directe."
+    }
+  },
+  "contact": {
+    "en": {
+      "title": "Contact | Josep Bernad",
+      "description": "Get in touch with Josep Bernad for bookings, collaborations, or inquiries. DJ sets, live performances, and music production."
+    },
+    "es": {
+      "title": "Contacto | Josep Bernad",
+      "description": "Ponte en contacto con Josep Bernad para reservas, colaboraciones o consultas. Sets de DJ, actuaciones en directo y producción musical."
+    },
+    "ca": {
+      "title": "Contacte | Josep Bernad",
+      "description": "Posa't en contacte amb Josep Bernad per a reserves, col·laboracions o consultes. Sets de DJ, actuacions en directe i producció musical."
+    }
+  }
+}
+

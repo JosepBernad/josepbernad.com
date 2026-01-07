@@ -1,34 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" {% if sectionName %}data-section{% endif %}>
+<html lang="{{ urlLang | default('en') }}" {% if sectionName %}data-section{% endif %}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  {# Determine page path without language prefix for hreflang #}
+  {% set pagePath = page.url | replace('/es/', '/') | replace('/ca/', '/') %}
+  {% if pagePath == '/es' or pagePath == '/ca' %}{% set pagePath = '/' %}{% endif %}
+  
+  {# Get SEO data for current page and language #}
+  {% set currentLang = urlLang | default('en') %}
+  {% set pageKey = pageId | default('home') %}
+  {% set seoData = seo[pageKey][currentLang] if seo[pageKey] and seo[pageKey][currentLang] else seo.home.en %}
+  
   <!-- SEO Title -->
-  <title>{% if title == 'Home' %}Josep Bernad — DJ & Musician | Barcelona · Mallorca{% else %}{{ title }} | Josep Bernad{% endif %}</title>
+  <title>{{ seoData.title }}</title>
   
   <!-- Meta Description -->
-  <meta name="description" content="{% if title == 'Home' %}Josep Bernad — Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances. Book a set or explore my latest productions.{% elif title == 'Films' %}Watch live sets and DJ performances by Josep Bernad. House music videos filmed in Barcelona, Mallorca, and beyond.{% elif title == 'About' %}Learn about Josep Bernad — musician, DJ, and multi-instrumentalist from Mallorca. Blending electronic music with live instrumentation.{% elif title == 'Contact' %}Get in touch with Josep Bernad for bookings, collaborations, or inquiries. DJ sets, live performances, and music production.{% else %}{{ title }} — Josep Bernad, musician and DJ from Mallorca based in Barcelona.{% endif %}">
+  <meta name="description" content="{{ seoData.description }}">
   
   <!-- Canonical URL -->
   <link rel="canonical" href="https://josepbernad.com{{ page.url }}">
   
+  <!-- Hreflang Tags for Multilingual SEO -->
+  <link rel="alternate" hreflang="en" href="https://josepbernad.com{{ pagePath }}" />
+  <link rel="alternate" hreflang="es" href="https://josepbernad.com/es{{ pagePath }}" />
+  <link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca{{ pagePath }}" />
+  <link rel="alternate" hreflang="x-default" href="https://josepbernad.com{{ pagePath }}" />
+  
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="{% if title == 'Home' %}website{% else %}article{% endif %}">
+  <meta property="og:type" content="{% if pageKey == 'home' %}website{% else %}article{% endif %}">
   <meta property="og:url" content="https://josepbernad.com{{ page.url }}">
-  <meta property="og:title" content="{% if title == 'Home' %}Josep Bernad — Musician & DJ{% else %}{{ title }} | Josep Bernad{% endif %}">
-  <meta property="og:description" content="{% if title == 'Home' %}Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances.{% elif title == 'About' %}Learn about Josep Bernad — musician, DJ, and multi-instrumentalist.{% else %}{{ title }} — Josep Bernad{% endif %}">
+  <meta property="og:title" content="{{ seoData.title }}">
+  <meta property="og:description" content="{{ seoData.description }}">
   <meta property="og:image" content="https://josepbernad.com/images/og-image.jpg">
   <meta property="og:image:alt" content="Josep Bernad — DJ and Musician from Barcelona and Mallorca">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="es_ES">
-  <meta property="og:locale:alternate" content="ca_ES">
+  <meta property="og:locale" content="{% if currentLang == 'es' %}es_ES{% elif currentLang == 'ca' %}ca_ES{% else %}en_US{% endif %}">
+  {% if currentLang != 'en' %}<meta property="og:locale:alternate" content="en_US">{% endif %}
+  {% if currentLang != 'es' %}<meta property="og:locale:alternate" content="es_ES">{% endif %}
+  {% if currentLang != 'ca' %}<meta property="og:locale:alternate" content="ca_ES">{% endif %}
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://josepbernad.com{{ page.url }}">
-  <meta name="twitter:title" content="{% if title == 'Home' %}Josep Bernad — Musician & DJ{% else %}{{ title }} | Josep Bernad{% endif %}">
-  <meta name="twitter:description" content="{% if title == 'Home' %}Musician and DJ from Mallorca based in Barcelona. House music, live sets, and DJ performances.{% else %}{{ title }} — Josep Bernad{% endif %}">
+  <meta name="twitter:title" content="{{ seoData.title }}">
+  <meta name="twitter:description" content="{{ seoData.description }}">
   <meta name="twitter:image" content="https://josepbernad.com/images/og-image.jpg">
   
   <!-- Additional SEO -->

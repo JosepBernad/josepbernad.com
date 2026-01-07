@@ -1,7 +1,11 @@
+{# Determine page path without language prefix for language switcher #}
+{% set pagePath = page.url | replace('/es/', '/') | replace('/ca/', '/') %}
+{% if pagePath == '/es' or pagePath == '/ca' %}{% set pagePath = '/' %}{% endif %}
+
 <div class="lang-switcher" data-nosnippet>
-  <button data-lang="en" aria-label="English">EN</button>
-  <button data-lang="ca" aria-label="Català">CA</button>
-  <button data-lang="es" aria-label="Español">ES</button>
+  <a href="{{ pagePath }}" class="lang-link{% if urlLang == 'en' %} active{% endif %}" aria-label="English">EN</a>
+  <a href="/ca{{ pagePath }}" class="lang-link{% if urlLang == 'ca' %} active{% endif %}" aria-label="Català">CA</a>
+  <a href="/es{{ pagePath }}" class="lang-link{% if urlLang == 'es' %} active{% endif %}" aria-label="Español">ES</a>
 </div>
 
 <button class="theme-toggle" aria-label="Toggle dark mode">
@@ -33,7 +37,7 @@
 
 {% if sectionName %}
 <nav class="section-nav" data-nosnippet>
-  <a href="/" class="back-link" aria-label="Back">
+  <a href="{{ urlLangPrefix }}/" class="back-link" aria-label="Back">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="15 18 9 12 15 6"></polyline>
     </svg>

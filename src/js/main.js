@@ -1,6 +1,14 @@
 (function() {
   // Translations (loaded from external JSON files)
   const translations = { en: {}, es: {}, ca: {} };
+  const html = document.documentElement;
+  const toggle = document.querySelector('.theme-toggle');
+  const THEME_KEY = 'theme-preference';
+
+  // Get current language from HTML lang attribute (set by server based on URL)
+  function getCurrentLang() {
+    return html.getAttribute('lang') || 'en';
+  }
 
   // Load all translations from JSON files
   Promise.all([
@@ -9,7 +17,7 @@
     fetch('/data/about.json').then(res => res.json()),
     fetch('/data/contact.json').then(res => res.json()).catch(() => ({}))
   ]).then(([homeData, filmsData, aboutData, contactData]) => {
-    // Merge home translations (subtitle, nav, error)
+    // Merge translations
     ['en', 'es', 'ca'].forEach(lang => {
       translations[lang].subtitle = homeData[lang].subtitle;
       translations[lang].nav = homeData[lang].nav;
@@ -20,15 +28,9 @@
         translations[lang].contact = contactData[lang];
       }
     });
-    // Re-apply current language after loading
-    const currentLang = html.getAttribute('lang') || 'en';
-    setLang(currentLang);
+    // Apply translations for current language
+    applyTranslations(getCurrentLang());
   }).catch(() => {});
-
-  const html = document.documentElement;
-  const toggle = document.querySelector('.theme-toggle');
-  const THEME_KEY = 'theme-preference';
-  const LANG_KEY = 'lang-preference';
 
   // Theme functions
   function getInitialTheme() {
@@ -67,20 +69,10 @@
     }
   });
 
-  // Language functions
-  function getInitialLang() {
-    const saved = localStorage.getItem(LANG_KEY);
-    if (saved) return saved;
-
-    const browserLang = navigator.language.toLowerCase();
-    if (browserLang.startsWith('ca')) return 'ca';
-    if (browserLang.startsWith('es')) return 'es';
-    return 'en';
-  }
-
+  // Translation functions
   function formatFilmDates(lang) {
-    const months = translations[lang].months;
-    if (!months) return; // Wait for translations to load
+    const months = translations[lang]?.months;
+    if (!months) return;
     document.querySelectorAll('.film-date').forEach(el => {
       const year = el.dataset.year;
       const monthIndex = parseInt(el.dataset.month, 10) - 1;
@@ -93,29 +85,9 @@
     });
   }
 
-  function updateHtmlTranslations(lang) {
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
-      const key = el.dataset.i18nHtml;
-      const keys = key.split('.');
-      let value = translations[lang];
-      for (const k of keys) {
-        if (value) value = value[k];
-      }
-      if (value) el.innerHTML = value;
-    });
-  }
-
-  function setLang(lang) {
-    html.setAttribute('lang', lang);
-    localStorage.setItem(LANG_KEY, lang);
-
-    // Update active button
-    document.querySelectorAll('.lang-switcher button').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
-
-    // Update text content (only if translations are loaded)
-    if (translations[lang].nav) {
+  function applyTranslations(lang) {
+    // Update text content
+    if (translations[lang]?.nav) {
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         const keys = key.split('.');
@@ -128,7 +100,15 @@
     }
 
     // Update HTML content (for elements with rich text like bold)
-    updateHtmlTranslations(lang);
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml;
+      const keys = key.split('.');
+      let value = translations[lang];
+      for (const k of keys) {
+        if (value) value = value[k];
+      }
+      if (value) el.innerHTML = value;
+    });
 
     // Update placeholder attributes
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
@@ -141,14 +121,12 @@
       if (value) el.placeholder = value;
     });
 
-    // Update contact email link href (decode HTML entities first, then create mailto)
+    // Update contact email link href
     const emailLink = document.getElementById('contact-email-link');
-    if (emailLink && translations[lang].contact && translations[lang].contact.emailAddress) {
-      // Decode HTML entities to get actual email
+    if (emailLink && translations[lang]?.contact?.emailAddress) {
       const temp = document.createElement('div');
       temp.innerHTML = translations[lang].contact.emailAddress;
       const decodedEmail = temp.textContent;
-      // Encode mailto link
       const encodedMailto = 'mailto:' + decodedEmail.split('').map(c => '&#' + c.charCodeAt(0) + ';').join('');
       emailLink.href = encodedMailto;
     }
@@ -156,12 +134,6 @@
     // Update film dates format
     formatFilmDates(lang);
   }
-
-  setLang(getInitialLang());
-
-  document.querySelectorAll('.lang-switcher button').forEach(btn => {
-    btn.addEventListener('click', () => setLang(btn.dataset.lang));
-  });
 
   // Social hover label
   const socialLinks = document.querySelectorAll('.socials a');
@@ -179,25 +151,4 @@
       });
     });
   }
-
-  // Disabled nav tooltip on click/tap
-  const navTooltip = document.querySelector('.nav-tooltip');
-  let tooltipTimeout;
-
-  document.querySelectorAll('.nav-disabled').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (!navTooltip) return;
-      
-      // Show tooltip
-      navTooltip.classList.add('show');
-      
-      // Hide after 1 second
-      clearTimeout(tooltipTimeout);
-      tooltipTimeout = setTimeout(() => {
-        navTooltip.classList.remove('show');
-      }, 1000);
-    });
-  });
 })();
-
