@@ -5,6 +5,11 @@
       "films": "Films",
       "about": "About",
       "contact": "Contact"
+    },
+    "error": {
+      "notFound": "Page not found",
+      "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
+      "backHome": "← Back to Home"
     }
   },
   "es": {
@@ -13,6 +18,11 @@
       "films": "Films",
       "about": "Sobre mí",
       "contact": "Contacto"
+    },
+    "error": {
+      "notFound": "Página no encontrada",
+      "notFoundDesc": "La página que buscas no existe o ha sido movida.",
+      "backHome": "← Volver al inicio"
     }
   },
   "ca": {
@@ -21,6 +31,11 @@
       "films": "Films",
       "about": "Sobre mi",
       "contact": "Contacte"
+    },
+    "error": {
+      "notFound": "Pàgina no trobada",
+      "notFoundDesc": "La pàgina que cerques no existeix o s'ha mogut.",
+      "backHome": "← Tornar a l'inici"
     }
   }
 }

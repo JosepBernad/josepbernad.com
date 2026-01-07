@@ -15,6 +15,12 @@ sectionName: Contact
     <input type="email" id="email" name="reply_to" data-i18n-placeholder="contact.emailPlaceholder" required>
     <input type="text" id="subject" name="subject" data-i18n-placeholder="contact.subjectPlaceholder" required>
     <textarea id="message" name="message" rows="6" data-i18n-placeholder="contact.messagePlaceholder" required></textarea>
+    <!-- reCAPTCHA v2 Invisible -->
+    <div class="g-recaptcha" 
+         data-sitekey="6Lf3L0MsAAAAAHONJ9WOTAieL_vuKcUWqv9yf7rV"
+         data-callback="onRecaptchaSuccess"
+         data-size="invisible">
+    </div>
     <button type="submit" class="form-submit" data-i18n="contact.sendButton"></button>
   </form>
   
@@ -24,7 +30,16 @@ sectionName: Contact
     <span data-i18n-html="contact.orEmail"></span>
     <a id="contact-email-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;" data-i18n-html="contact.emailAddress"></a>
   </p>
+  
+  <p class="recaptcha-branding">
+    This site is protected by reCAPTCHA and the Google
+    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
+    <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
+  </p>
 </div>
+
+<!-- reCAPTCHA v2 Invisible -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <!-- EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -43,46 +58,82 @@ sectionName: Contact
   
   // Status messages per language
   const STATUS_MESSAGES = {
-    en: { success: '✓ Message sent successfully!', error: '✗ Failed to send. Please try again.' },
-    es: { success: '✓ Mensaje enviado correctamente.', error: '✗ Error al enviar. Inténtalo de nuevo.' },
-    ca: { success: '✓ Missatge enviat correctament.', error: '✗ Error en enviar. Torna-ho a provar.' }
+    en: { 
+      success: '✓ Message sent successfully!', 
+      error: '✗ Failed to send. Please try again.',
+      captchaError: '✗ Security verification failed. Please refresh and try again.'
+    },
+    es: { 
+      success: '✓ Mensaje enviado correctamente.', 
+      error: '✗ Error al enviar. Inténtalo de nuevo.',
+      captchaError: '✗ Verificación de seguridad fallida. Actualiza la página e inténtalo de nuevo.'
+    },
+    ca: { 
+      success: '✓ Missatge enviat correctament.', 
+      error: '✗ Error en enviar. Torna-ho a provar.',
+      captchaError: '✗ Verificació de seguretat fallida. Actualitza la pàgina i torna-ho a provar.'
+    }
   };
   
   emailjs.init(EMAILJS_PUBLIC_KEY);
   
   const form = document.getElementById('contact-form');
   const status = document.getElementById('contact-status');
+  let formBtn, originalBtnText;
+  
+  // Called when reCAPTCHA is successfully completed
+  window.onRecaptchaSuccess = function(token) {
+    const lang = document.documentElement.getAttribute('lang') || 'en';
+    const templateId = TEMPLATES[lang] || TEMPLATES.en;
+    const messages = STATUS_MESSAGES[lang] || STATUS_MESSAGES.en;
+    
+    // Send email via EmailJS
+    emailjs.sendForm(EMAILJS_SERVICE_ID, templateId, form)
+      .then(function() {
+        status.textContent = messages.success;
+        status.className = 'contact-status success';
+        form.reset();
+        grecaptcha.reset();
+      })
+      .catch(function(error) {
+        status.textContent = messages.error;
+        status.className = 'contact-status error';
+        grecaptcha.reset();
+        console.error('EmailJS error:', error);
+      })
+      .finally(function() {
+        formBtn.disabled = false;
+        formBtn.textContent = originalBtnText;
+      });
+  };
   
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Get current language
       const lang = document.documentElement.getAttribute('lang') || 'en';
-      const templateId = TEMPLATES[lang] || TEMPLATES.en;
       const messages = STATUS_MESSAGES[lang] || STATUS_MESSAGES.en;
       
-      // Disable button while sending
-      const btn = form.querySelector('.form-submit');
-      const originalText = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = '...';
+      // Store button reference for later
+      formBtn = form.querySelector('.form-submit');
+      originalBtnText = formBtn.textContent;
+      formBtn.disabled = true;
+      formBtn.textContent = '...';
       
-      // Send email via EmailJS with language-specific template
-      emailjs.sendForm(EMAILJS_SERVICE_ID, templateId, form)
-        .then(function() {
-          status.textContent = messages.success;
-          status.className = 'contact-status success';
-          form.reset();
-          btn.disabled = false;
-          btn.textContent = originalText;
-        }, function(error) {
-          status.textContent = messages.error;
-          status.className = 'contact-status error';
-          btn.disabled = false;
-          btn.textContent = originalText;
-          console.error('EmailJS error:', error);
-        });
+      // Clear previous status
+      status.textContent = '';
+      status.className = 'contact-status';
+      
+      // Execute invisible reCAPTCHA
+      try {
+        grecaptcha.execute();
+      } catch (error) {
+        status.textContent = messages.captchaError;
+        status.className = 'contact-status error';
+        formBtn.disabled = false;
+        formBtn.textContent = originalBtnText;
+        console.error('reCAPTCHA error:', error);
+      }
     });
   }
 })();
