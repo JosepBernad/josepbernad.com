@@ -151,4 +151,16 @@
       });
     });
   }
+
+  // Film thumbnail skeleton loading
+  document.querySelectorAll('.film-thumbnail img').forEach(img => {
+    // Check if already loaded (cached images)
+    if (img.complete && img.naturalHeight !== 0) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+      });
+    }
+  });
 })();
