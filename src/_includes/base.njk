@@ -55,9 +55,16 @@
   <!-- Favicon -->
   <link rel="icon" id="favicon" href="/favicon-light.svg" type="image/svg+xml">
   
+  <!-- Preload background images based on color scheme preference -->
+  <link rel="preload" as="image" href="/images/bg-light-mobile.webp" media="(max-width: 767px) and (prefers-color-scheme: light)">
+  <link rel="preload" as="image" href="/images/bg-light-desktop.webp" media="(min-width: 768px) and (prefers-color-scheme: light)">
+  <link rel="preload" as="image" href="/images/bg-dark-mobile.webp" media="(max-width: 767px) and (prefers-color-scheme: dark)">
+  <link rel="preload" as="image" href="/images/bg-dark-desktop.webp" media="(min-width: 768px) and (prefers-color-scheme: dark)">
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
   
   <!-- Styles -->
@@ -147,5 +154,8 @@
   {% include "footer.njk" %}
 
   <script src="/js/main.js"></script>
+
+  <!-- Analytics (GoatCounter - privacy-friendly, no cookies) -->
+  <script data-goatcounter="https://josepbernad.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

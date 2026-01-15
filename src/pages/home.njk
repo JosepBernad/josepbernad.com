@@ -50,3 +50,18 @@ eleventyComputed:
   </div>
   <span class="social-label" id="social-label"></span>
 </div>
+
+<!-- Newsletter Banner -->
+<div class="newsletter-banner" id="newsletter-banner">
+  <button class="newsletter-close" id="newsletter-close" aria-label="Close newsletter banner">×</button>
+  <p class="newsletter-text" data-i18n="newsletter.cta">Stay updated with new releases</p>
+  <form class="newsletter-form" id="newsletter-form">
+    <input type="email" name="EMAIL" placeholder="email@example.com" data-i18n-placeholder="newsletter.placeholder" required>
+    <!-- Honeypot field for bot protection -->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_ec19e426d1a78e9baa513bfaf_7a99017863" tabindex="-1" value="">
+    </div>
+    <button type="submit" data-i18n="newsletter.subscribe">Subscribe</button>
+  </form>
+  <p class="newsletter-status" id="newsletter-status"></p>
+</div>
