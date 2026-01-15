@@ -22,6 +22,7 @@
       translations[lang].subtitle = homeData[lang].subtitle;
       translations[lang].nav = homeData[lang].nav;
       translations[lang].error = homeData[lang].error;
+      translations[lang].newsletter = homeData[lang].newsletter;
       translations[lang].months = filmsData.months[lang];
       translations[lang].about = aboutData[lang];
       if (contactData[lang]) {
@@ -163,4 +164,103 @@
       });
     }
   });
+
+  // Newsletter banner functionality
+  const newsletterBanner = document.getElementById('newsletter-banner');
+  const newsletterClose = document.getElementById('newsletter-close');
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterStatus = document.getElementById('newsletter-status');
+  const NEWSLETTER_DISMISSED_KEY = 'newsletter-dismissed';
+
+  // Mailchimp config
+  const MAILCHIMP_URL = 'https://gmail.us2.list-manage.com/subscribe/post-json?u=ec19e426d1a78e9baa513bfaf&id=7a99017863&f_id=00f8eae3f0';
+
+  if (newsletterBanner) {
+    // Check if user already subscribed
+    const subscribed = localStorage.getItem(NEWSLETTER_DISMISSED_KEY);
+    if (subscribed) {
+      newsletterBanner.classList.add('hidden');
+    }
+
+    // Close button handler (just hides for this session, doesn't persist)
+    if (newsletterClose) {
+      newsletterClose.addEventListener('click', () => {
+        newsletterBanner.classList.add('hidden');
+      });
+    }
+
+    // Form submission
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const lang = getCurrentLang();
+        const messages = translations[lang]?.newsletter || translations.en.newsletter;
+        const emailInput = newsletterForm.querySelector('input[type="email"]');
+        const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+        const email = emailInput.value;
+
+        if (!email) return;
+
+        // Hide banner immediately (optimistic)
+        newsletterBanner.classList.add('hidden');
+
+        // Build URL with email parameter
+        const url = `${MAILCHIMP_URL}&EMAIL=${encodeURIComponent(email)}&c=callback`;
+
+        const showThankYou = (message) => {
+          localStorage.setItem(NEWSLETTER_DISMISSED_KEY, 'true');
+          
+          // Create thank you message
+          const thankYou = document.createElement('div');
+          thankYou.className = 'newsletter-thank-you';
+          thankYou.textContent = message;
+          document.body.appendChild(thankYou);
+          
+          // Trigger animation
+          requestAnimationFrame(() => {
+            thankYou.classList.add('visible');
+          });
+          
+          // Remove after delay
+          setTimeout(() => {
+            thankYou.classList.remove('visible');
+            setTimeout(() => thankYou.remove(), 400);
+          }, 2500);
+        };
+
+        const showError = () => {
+          // Show banner again with error
+          newsletterBanner.classList.remove('hidden');
+          newsletterStatus.textContent = messages.error;
+          newsletterStatus.className = 'newsletter-status error';
+        };
+
+        // Create JSONP callback
+        const callbackName = 'mailchimpCallback' + Date.now();
+        window[callbackName] = (response) => {
+          // Cleanup
+          delete window[callbackName];
+          document.body.removeChild(script);
+
+          if (response.result === 'success') {
+            showThankYou(messages.success);
+          } else if (response.msg && response.msg.includes('already subscribed')) {
+            showThankYou(messages.alreadySubscribed);
+          } else {
+            showError();
+          }
+        };
+
+        // Create script tag for JSONP
+        const script = document.createElement('script');
+        script.src = url.replace('&c=callback', `&c=${callbackName}`);
+        script.onerror = () => {
+          delete window[callbackName];
+          showError();
+        };
+        document.body.appendChild(script);
+      });
+    }
+  }
 })();

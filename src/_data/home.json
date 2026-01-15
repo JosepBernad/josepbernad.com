@@ -10,6 +10,14 @@
       "notFound": "Page not found",
       "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
       "backHome": "← Back to Home"
+    },
+    "newsletter": {
+      "cta": "Stay updated with new releases",
+      "placeholder": "your@email.com",
+      "subscribe": "Subscribe",
+      "success": "Thanks for subscribing!",
+      "error": "Something went wrong. Please try again.",
+      "alreadySubscribed": "You're already subscribed!"
     }
   },
   "es": {
@@ -23,6 +31,14 @@
       "notFound": "Página no encontrada",
       "notFoundDesc": "La página que buscas no existe o ha sido movida.",
       "backHome": "← Volver al inicio"
+    },
+    "newsletter": {
+      "cta": "Mantente al día con nuevos lanzamientos",
+      "placeholder": "tu@email.com",
+      "subscribe": "Suscribirse",
+      "success": "¡Gracias por suscribirte!",
+      "error": "Algo salió mal. Inténtalo de nuevo.",
+      "alreadySubscribed": "¡Ya estás suscrito!"
     }
   },
   "ca": {
@@ -36,6 +52,14 @@
       "notFound": "Pàgina no trobada",
       "notFoundDesc": "La pàgina que cerques no existeix o s'ha mogut.",
       "backHome": "← Tornar a l'inici"
+    },
+    "newsletter": {
+      "cta": "Mantén-te al dia amb nous llançaments",
+      "placeholder": "el-teu@email.com",
+      "subscribe": "Subscriure's",
+      "success": "Gràcies per subscriure't!",
+      "error": "Alguna cosa ha anat malament. Torna-ho a provar.",
+      "alreadySubscribed": "Ja estàs subscrit!"
     }
   }
 }

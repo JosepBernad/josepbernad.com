@@ -1370,3 +1370,229 @@ nav {
   background-color: #f5f5f5;
   color: #1a1a1a;
 }
+
+/* ============================================================================
+ * NEWSLETTER BANNER
+ * ============================================================================ */
+
+.newsletter-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 20px;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.newsletter-banner.hidden {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+.newsletter-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.newsletter-close:hover {
+  opacity: 1;
+}
+
+.newsletter-text {
+  font-size: 0.95rem;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  position: relative;
+}
+
+.newsletter-form input[type="email"] {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 1px solid;
+  font-size: 0.9rem;
+  min-width: 220px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.newsletter-form input[type="email"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-form button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.newsletter-form button:hover {
+  transform: var(--hover-scale-sm);
+}
+
+.newsletter-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.newsletter-status {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.newsletter-status:empty {
+  display: none;
+}
+
+.newsletter-status.error {
+  color: #ef4444;
+}
+
+/* Thank you message */
+.newsletter-thank-you {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #22c55e;
+}
+
+.newsletter-thank-you.visible {
+  transform: translateY(0);
+}
+
+/* Light theme */
+[data-theme="light"] .newsletter-banner {
+  background: rgba(245, 245, 245, 0.85);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .newsletter-close {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .newsletter-text {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .newsletter-form input[type="email"] {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .newsletter-form input[type="email"]::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .newsletter-form input[type="email"]:focus {
+  border-color: #1a1a1a;
+}
+
+[data-theme="light"] .newsletter-form button {
+  background: #1a1a1a;
+  color: #f5f5f5;
+}
+
+/* Dark theme */
+[data-theme="dark"] .newsletter-banner {
+  background: rgba(26, 26, 26, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .newsletter-close {
+  color: #f5f5f5;
+}
+
+[data-theme="dark"] .newsletter-text {
+  color: #f5f5f5;
+}
+
+[data-theme="dark"] .newsletter-form input[type="email"] {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #f5f5f5;
+}
+
+[data-theme="dark"] .newsletter-form input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .newsletter-form input[type="email"]:focus {
+  border-color: #f5f5f5;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .newsletter-form button {
+  background: #f5f5f5;
+  color: #1a1a1a;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .newsletter-banner {
+    padding: 14px 16px 18px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .newsletter-close {
+    top: 4px;
+    right: 8px;
+  }
+  
+  .newsletter-text {
+    font-size: 0.9rem;
+    text-align: center;
+    padding-right: 20px;
+  }
+  
+  .newsletter-form {
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .newsletter-form input[type="email"] {
+    min-width: unset;
+    width: 100%;
+  }
+  
+  .newsletter-form button {
+    width: 100%;
+  }
+}
