@@ -79,6 +79,7 @@ eleventyComputed:
   let player = null;
   let firstPlay = true;
   let splashShownAt = 0;
+  const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   function setTitle(el, text) {
     const parts = text.split('|');
@@ -165,13 +166,23 @@ eleventyComputed:
       };
       player.addEventListener('title-change', onTitleChange);
 
-      const onCanPlay = () => {
-        player.play();
-        player.removeEventListener('can-play', onCanPlay);
-      };
+      if (!isMobile) {
+        // Desktop: autoplay when ready
+        const onCanPlay = () => {
+          player.play();
+          player.removeEventListener('can-play', onCanPlay);
+        };
+        player.addEventListener('can-play', onCanPlay);
+      }
 
-      player.addEventListener('can-play', onCanPlay);
       player.src = `youtube/${videoId}`;
+
+      if (isMobile) {
+        // Mobile: skip autoplay, fade out splash immediately after min time
+        const elapsed = Date.now() - splashShownAt;
+        const remaining = Math.max(0, 2000 - elapsed);
+        setTimeout(() => splash.classList.add('fade-out'), remaining);
+      }
     }
   }
 
