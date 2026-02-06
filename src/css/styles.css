@@ -722,6 +722,7 @@ nav {
   position: relative;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+  cursor: pointer;
 }
 
 @media (min-width: 640px) {
@@ -1594,5 +1595,357 @@ nav {
   
   .newsletter-form button {
     width: 100%;
+  }
+}
+
+/* ============================================================================
+ * VIDEO MODAL & VIDSTACK PLAYER
+ * ============================================================================ */
+
+/* Fullscreen overlay */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  display: flex;
+  pointer-events: none;
+  opacity: 0;
+  transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active state — dark backdrop, interactable */
+.video-modal.active {
+  background: rgba(0, 0, 0, 0.95);
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Player wrapper — scales in on open */
+.video-modal .video-modal-wrapper {
+  transform: scale(0.95);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+.video-modal.active .video-modal-wrapper {
+  transform: scale(1);
+}
+
+.video-modal-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* The container that holds the player */
+.video-modal-content {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Glow shadow on the player while splash is visible */
+.video-modal-content:has(.video-splash:not(.fade-out)) {
+  animation: player-glow 3s ease-in-out infinite;
+}
+
+@keyframes player-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(209, 210, 211, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(209, 210, 211, 0.3);
+  }
+}
+
+/* --- Player Customisation --- */
+
+.video-modal-content media-player {
+  width: 100%;
+  height: 100%;
+  --media-brand: #cadee1;
+  --media-focus-ring-color: #cadee1;
+  --media-slider-track-fill-bg: #cadee1;
+  --media-slider-track-progress-bg: rgba(255, 255, 255, 0.3);
+  --media-controls-color: white;
+}
+
+.video-modal-content media-player[data-view-type="video"] {
+  aspect-ratio: 16/9;
+}
+
+/* Ensure controls render correctly */
+.video-modal-content media-video-layout {
+  display: contents;
+}
+
+.video-modal-content [data-media-controls] {
+  z-index: 10;
+}
+
+/* Hide video title from controls */
+.video-modal-content .vds-chapter-title,
+.video-modal-content [data-part="title"],
+.video-modal-content .vds-title {
+  display: none !important;
+}
+
+/* Hide settings/gear icon */
+.video-modal-content .vds-settings-button,
+.video-modal-content [data-part="settings"],
+.video-modal-content .vds-menu-button {
+  display: none !important;
+}
+
+/* Add spacing between volume slider and time display */
+.video-modal-content .vds-time {
+  margin-left: 1rem !important;
+}
+
+/* Push fullscreen button to the far right */
+.video-modal-content .vds-fullscreen-button {
+  margin-left: auto !important;
+}
+
+/* --- Video info (title + tags) below the player --- */
+
+.video-modal-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0 0;
+  gap: 0.75rem;
+}
+
+.video-modal-info-left {
+  min-width: 0;
+}
+
+.video-modal-info-right {
+  text-align: left;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+@media (min-width: 768px) {
+  .video-modal-info {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .video-modal-info-left {
+    flex: 1;
+  }
+
+  .video-modal-info-right {
+    text-align: right;
+    flex-shrink: 0;
+    display: block;
+  }
+}
+
+.video-modal-title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.video-modal-title-main {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.video-modal-title-sub {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.video-modal-location {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.video-modal-date {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 768px) {
+  .video-modal-date {
+    margin-top: 0.25rem;
+  }
+}
+
+/* --- Tags below the video --- */
+
+.video-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 0 0;
+}
+
+.video-modal-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.video-modal-tag:first-child {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* --- Splash screen --- */
+
+.video-splash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0909;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.video-splash.fade-out {
+  opacity: 0;
+}
+
+/* Hide Vidstack loading spinner while splash is visible */
+.video-modal-content:has(.video-splash:not(.fade-out)) .vds-buffering-indicator {
+  display: none !important;
+}
+
+.video-splash-logo {
+  width: 100px;
+  height: auto;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 20px rgba(209, 210, 211, 0.3));
+  animation: logo-glow 3s ease-in-out infinite;
+}
+
+@keyframes logo-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(209, 210, 211, 0.2));
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(209, 210, 211, 0.5));
+    transform: translateY(-4px) scale(1.05);
+  }
+}
+
+/* --- Close Button --- */
+
+.video-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 0;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 25;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show close button when player controls are visible */
+.video-modal-wrapper:has(media-player[data-controls]) > .video-modal-close {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* On small screens, move close button above the video, always visible */
+@media (max-width: 750px) {
+  .video-modal-close {
+    top: -44px;
+    right: 0;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.video-modal-close:hover {
+  transform: scale(1.15);
+}
+
+/* --- YouTube-style Play/Pause Feedback --- */
+
+.play-pause-feedback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 64px;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0;
+}
+
+.play-pause-feedback svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+}
+
+.play-pause-feedback.animate {
+  animation: play-pause-pop 0.5s ease-out forwards;
+}
+
+@keyframes play-pause-pop {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
   }
 }
