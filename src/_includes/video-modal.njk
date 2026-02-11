@@ -15,6 +15,10 @@
       </div>
       <!-- Mobile: plain YouTube iframe (hidden on desktop) -->
       <iframe class="video-mobile-iframe" id="videoMobileIframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen frameborder="0"></iframe>
+      <!-- TV-style watermark logo (visible when controls are hidden) -->
+      <div class="video-watermark">
+        <img src="/images/JosepBernad-Logo.svg" alt="">
+      </div>
       <!-- YouTube-style play/pause visual feedback overlay -->
       <div class="play-pause-feedback" id="playPauseFeedback">
         <svg class="feedback-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -51,6 +55,7 @@
   let player = null;
   let firstPlay = true;
   let splashShownAt = 0;
+  let currentVideoId = null;
   const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   function setTitle(el, text) {
@@ -74,6 +79,13 @@
       const elapsed = Date.now() - splashShownAt;
       const remaining = Math.max(0, 2000 - elapsed);
       setTimeout(() => splash.classList.add('fade-out'), remaining);
+    });
+
+    // Save progress to sessionStorage every 2 seconds
+    player.addEventListener('time-update', () => {
+      if (currentVideoId && player.currentTime > 0) {
+        sessionStorage.setItem(`video-progress-${currentVideoId}`, Math.floor(player.currentTime));
+      }
     });
 
     player.addEventListener('play', () => {
@@ -130,9 +142,13 @@
       card.classList.toggle('active', card.dataset.videoId === videoId);
     });
 
+    currentVideoId = videoId;
+    const savedTime = sessionStorage.getItem(`video-progress-${videoId}`);
+
     if (isMobile) {
       const iframe = document.getElementById('videoMobileIframe');
-      iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&playsinline=1&modestbranding=1`;
+      const startParam = savedTime ? `&start=${savedTime}` : '';
+      iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&playsinline=1&modestbranding=1${startParam}`;
     } else if (player) {
       firstPlay = true;
       const onTitleChange = () => {
@@ -140,7 +156,12 @@
         player.removeEventListener('title-change', onTitleChange);
       };
       player.addEventListener('title-change', onTitleChange);
+
       const onCanPlay = () => {
+        // Restore saved progress
+        if (savedTime && Number(savedTime) > 0) {
+          player.currentTime = Number(savedTime);
+        }
         player.play();
         player.removeEventListener('can-play', onCanPlay);
       };
