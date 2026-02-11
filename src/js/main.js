@@ -189,11 +189,20 @@
       });
     }
 
-    // Form submission
+    // Form submission with timing honeypot (bots submit too fast)
+    const formLoadedAt = Date.now();
+
     if (newsletterForm) {
       newsletterForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
+        // Reject if submitted in under 3 seconds (bot behaviour)
+        if (Date.now() - formLoadedAt < 3000) return;
+
+        // Reject if hidden honeypot field is filled (existing Mailchimp honeypot)
+        const honeypot = newsletterForm.querySelector('input[tabindex="-1"]');
+        if (honeypot && honeypot.value) return;
+
         const lang = getCurrentLang();
         const messages = translations[lang]?.newsletter || translations.en.newsletter;
         const emailInput = newsletterForm.querySelector('input[type="email"]');

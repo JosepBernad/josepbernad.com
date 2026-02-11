@@ -13,20 +13,21 @@ eleventyComputed:
   langPrefix: "{{ lang.prefix }}"
 ---
 
-<h1 class="title">Josep Bernad</h1>
-<p class="subtitle" data-i18n="subtitle">Live & DJ Set</p>
+<div class="home-hero">
+  <h1 class="title">Josep Bernad</h1>
+  <p class="subtitle" data-i18n="subtitle">Live & DJ Set</p>
 
-<nav>
-  <a href="{{ currentPrefix }}/films/" class="films-button" data-i18n="nav.films">Films</a>
-  
-  <ul class="nav-sections">
-    <li><a href="{{ currentPrefix }}/about/" data-i18n="nav.about">About</a></li>
-    <li><a href="{{ currentPrefix }}/contact/" data-i18n="nav.contact">Contact</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a href="{{ currentPrefix }}/films/" class="films-button" data-i18n="nav.films">Films</a>
+    
+    <ul class="nav-sections">
+      <li><a href="{{ currentPrefix }}/about/" data-i18n="nav.about">About</a></li>
+      <li><a href="{{ currentPrefix }}/contact/" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<div class="socials-wrapper" data-nosnippet>
-  <div class="socials">
+  <div class="socials-wrapper" data-nosnippet>
+    <div class="socials">
     <a href="https://www.instagram.com/djosepbernad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor">
         <path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"/>
@@ -48,20 +49,50 @@ eleventyComputed:
       </svg>
     </a>
   </div>
-  <span class="social-label" id="social-label"></span>
+    <span class="social-label" id="social-label"></span>
+  </div>
 </div>
 
-<!-- Newsletter Banner -->
-<div class="newsletter-banner" id="newsletter-banner">
-  <button class="newsletter-close" id="newsletter-close" aria-label="Close newsletter banner">×</button>
-  <p class="newsletter-text" data-i18n="newsletter.cta">Stay updated with new releases</p>
-  <form class="newsletter-form" id="newsletter-form">
-    <input type="email" name="EMAIL" placeholder="email@example.com" data-i18n-placeholder="newsletter.placeholder" required>
-    <!-- Honeypot field for bot protection -->
-    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-      <input type="text" name="b_ec19e426d1a78e9baa513bfaf_7a99017863" tabindex="-1" value="">
-    </div>
-    <button type="submit" data-i18n="newsletter.subscribe">Subscribe</button>
-  </form>
-  <p class="newsletter-status" id="newsletter-status"></p>
-</div>
+<!-- Latest Films -->
+<section class="home-films">
+  <div class="home-films-grid">
+    {% for film in films.items %}
+    {% if loop.index0 == 0 or loop.index0 == 1 or loop.index0 == 4 %}
+    <article class="home-film-card{% if film.tags[0] == 'Live Set' %} film-card--live{% endif %}" data-video-id="{{ film.videoId }}" data-title="{{ film.title }}" data-tags='{{ film.tags | dump | safe }}' data-location="{{ film.location }}" data-date="{{ film.date }}">
+      <div class="film-thumbnail">
+        <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }}" loading="lazy" width="480" height="360">
+        <div class="film-play">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="film-info">
+        <h2 class="film-title">{{ film.title }}</h2>
+        <div class="film-tags">
+          <span class="film-tag">{% if loop.index0 == 0 %}DJ Set{% elif loop.index0 == 1 %}Live Set{% elif loop.index0 == 4 %}Party Set{% endif %}</span>
+        </div>
+      </div>
+    </article>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <a href="{{ currentPrefix }}/films/" class="home-films-link" data-i18n="nav.films">Films →</a>
+</section>
+
+<section class="home-panoramic">
+  <img src="/images/JosepBernad-Panoramic.webp" alt="Josep Bernad" loading="lazy">
+  <div class="home-panoramic-overlay" id="newsletter-banner">
+    <p class="newsletter-text" data-i18n="newsletter.cta">Stay Updated</p>
+    <form class="newsletter-form" id="newsletter-form">
+      <input type="email" name="EMAIL" placeholder="email@example.com" data-i18n-placeholder="newsletter.placeholder" required>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_ec19e426d1a78e9baa513bfaf_7a99017863" tabindex="-1" value="">
+      </div>
+      <button type="submit" data-i18n="newsletter.subscribe">Subscribe</button>
+    </form>
+    <p class="newsletter-status" id="newsletter-status"></p>
+  </div>
+</section>
+
+{% include "video-modal.njk" %}

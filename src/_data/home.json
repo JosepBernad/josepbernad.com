@@ -12,7 +12,7 @@
       "backHome": "← Back to Home"
     },
     "newsletter": {
-      "cta": "Stay updated with new releases",
+      "cta": "Stay Updated",
       "placeholder": "your@email.com",
       "subscribe": "Subscribe",
       "success": "Thanks for subscribing!",
@@ -33,7 +33,7 @@
       "backHome": "← Volver al inicio"
     },
     "newsletter": {
-      "cta": "Mantente al día con nuevos lanzamientos",
+      "cta": "Mantente al día",
       "placeholder": "tu@email.com",
       "subscribe": "Suscribirse",
       "success": "¡Gracias por suscribirte!",
@@ -54,7 +54,7 @@
       "backHome": "← Tornar a l'inici"
     },
     "newsletter": {
-      "cta": "Mantén-te al dia amb nous llançaments",
+      "cta": "Mantén-te al dia",
       "placeholder": "el-teu@email.com",
       "subscribe": "Subscriure's",
       "success": "Gràcies per subscriure't!",
