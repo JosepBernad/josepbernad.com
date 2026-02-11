@@ -1704,6 +1704,36 @@ nav {
   display: none !important;
 }
 
+/* Mobile YouTube iframe — hidden on desktop */
+.video-mobile-iframe {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 5;
+}
+
+/* On mobile: show iframe, hide Vidstack */
+@media (max-width: 750px) {
+  .video-mobile-iframe {
+    display: block;
+  }
+
+  .video-modal-content media-player {
+    display: none !important;
+  }
+
+  .video-splash {
+    display: none !important;
+  }
+
+  .play-pause-feedback {
+    display: none !important;
+  }
+}
+
 /* Add spacing between volume slider and time display */
 .video-modal-content .vds-time {
   margin-left: 1rem !important;
