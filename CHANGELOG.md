@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-04-15
+
+### Security
+- Pinned Vidstack CDN from floating `@next` tag to explicit version `1.12.13`
+- Added SRI `integrity` + `crossorigin` attributes to all 4 Vidstack CDN resources
+
+### Added
+- Vitest unit test suite — 12 tests covering `resolveKey` (i18n key resolution) and `formatFilmDate`
+- Playwright e2e test suite — 32 tests across desktop and mobile covering video modal, theme toggle, and i18n language routing
+- Extracted pure utility functions (`resolveKey`, `formatFilmDate`) to `src/js/utils.js`
+- Converted `main.js` from IIFE to ES module
+
 ## [1.3.0] - 2024-12-04
 
 ### Added

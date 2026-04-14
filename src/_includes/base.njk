@@ -71,12 +71,12 @@
   <link rel="stylesheet" href="/css/styles.css">
 
   {% if pageId == 'films' or pageId == 'home' %}
-  <!-- Vidstack Player CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@next/player/styles/base.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@next/player/styles/default/theme.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@next/player/styles/default/layouts/video.min.css">
+  <!-- Vidstack Player CSS (pinned to 1.12.13) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/base.min.css" integrity="sha384-OAC4m7kIvS04UyIdA88nuY6QVJnoEpooM/Vly/5rqo7Np6xQxklM1K6YpGF+EGCM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/default/theme.min.css" integrity="sha384-hlBtZ1GKj8b4wHGQ6G0nwJ2wDzNrXPs99ZQ64R6VHDpCCP/5omDvXCr3/Ie3A4uO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/default/layouts/video.min.css" integrity="sha384-7Z2jJdKMdsyBZCtw1CGvwBTnY10hGLUz550j/peT047zoW60/jvXMxDIDZN5ZFBc" crossorigin="anonymous">
   <!-- Vidstack Player JS (Web Components with layouts) -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/vidstack@next/cdn/with-layouts/vidstack.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/vidstack@1.12.13/cdn/with-layouts/vidstack.js" integrity="sha384-/htu1EzuPnth3HU2tWl2CLo3u/3aBKpcw4jM1n7p1Vkk4pgt6r5JQMcA3U7gEcH1" crossorigin="anonymous"></script>
   {% endif %}
   
   <!-- Structured Data (JSON-LD) -->
@@ -162,7 +162,7 @@
 
   {% include "footer.njk" %}
 
-  <script src="/js/main.js"></script>
+  <script type="module" src="/js/main.js"></script>
 
   <!-- Analytics (GoatCounter - privacy-friendly, no cookies) -->
   <script data-goatcounter="https://josepbernad.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
