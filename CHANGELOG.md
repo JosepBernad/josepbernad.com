@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.2] - 2026-04-15
+
+### Fixed
+- Add `"11ty.js"` to Eleventy `templateFormats` so `version.11ty.js` is processed and `/version.json` is generated at build time
+
 ## [1.4.1] - 2026-04-15
 
 ### Added
