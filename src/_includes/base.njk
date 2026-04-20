@@ -52,6 +52,19 @@
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="Josep Bernad, DJ, musician, house music, Barcelona, Mallorca, live set, electronic music">
   
+  <!-- Theme bootstrap: set data-theme before paint to avoid FOUC on the theme toggle. -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme-preference');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (_) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" id="favicon" href="/favicon-light.svg" type="image/svg+xml">
   

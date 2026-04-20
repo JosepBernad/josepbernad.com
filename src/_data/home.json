@@ -4,7 +4,11 @@
     "nav": {
       "films": "Films",
       "about": "About",
-      "contact": "Contact"
+      "contact": "Contact",
+      "presskit": "Press Kit"
+    },
+    "nextShow": {
+      "label": "Next show"
     },
     "error": {
       "notFound": "Page not found",
@@ -25,7 +29,11 @@
     "nav": {
       "films": "Films",
       "about": "Sobre mí",
-      "contact": "Contacto"
+      "contact": "Contacto",
+      "presskit": "Press Kit"
+    },
+    "nextShow": {
+      "label": "Próximo show"
     },
     "error": {
       "notFound": "Página no encontrada",
@@ -46,7 +54,11 @@
     "nav": {
       "films": "Films",
       "about": "Sobre mi",
-      "contact": "Contacte"
+      "contact": "Contacte",
+      "presskit": "Press Kit"
+    },
+    "nextShow": {
+      "label": "Proper show"
     },
     "error": {
       "notFound": "Pàgina no trobada",

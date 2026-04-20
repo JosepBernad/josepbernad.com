@@ -1,0 +1,245 @@
+---
+pagination:
+  data: languages.list
+  size: 1
+  alias: lang
+permalink: "{{ lang.prefix }}/press-kit/"
+layout: base.njk
+pageId: presskit
+showClaim: false
+showName: true
+sectionName: Press Kit
+eleventyComputed:
+  currentLang: "{{ lang.code }}"
+  currentPrefix: "{{ lang.prefix }}"
+  langPrefix: "{{ lang.prefix }}"
+---
+
+{% set s = presskit.strings[currentLang] %}
+{% set bioShort = presskit.bio.short[currentLang] %}
+{% set bioLong = presskit.bio.long[currentLang] %}
+{% set formats = presskit.formats[currentLang] %}
+{% set rider = presskit.rider[currentLang] %}
+{% set services = presskit.services[currentLang] %}
+
+<div class="section-container presskit-container">
+  <header class="presskit-hero">
+    <h1 class="presskit-heading">{{ s.heading }}</h1>
+    <p class="presskit-sub">{{ s.sub }}</p>
+  </header>
+
+  <!-- 01 Bio -->
+  <section class="pk-section">
+    <div class="pk-section-head">
+      <span class="pk-section-num">01</span>
+      <h2 class="pk-section-title">{{ s.bioTitle }}</h2>
+    </div>
+    <div class="pk-bio-grid">
+      <div class="pk-bio-sticker">
+        <span class="pk-bio-label">{{ s.bioLength }}</span>
+        <div class="pk-bio-length-toggle" id="bio-toggle" role="tablist">
+          <button type="button" class="active" data-len="short" role="tab" aria-selected="true">{{ s.bioShort }}</button>
+          <button type="button" data-len="long" role="tab" aria-selected="false">{{ s.bioLong }}</button>
+        </div>
+      </div>
+      <div>
+        <div class="pk-bio-copy" id="bio-copy-short" data-len="short">{{ bioShort | safe }}</div>
+        <div class="pk-bio-copy" id="bio-copy-long" data-len="long" hidden>{{ bioLong | safe }}</div>
+        <button type="button" class="pk-copy-btn" id="bio-copy-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="bio-copy-label" aria-live="polite">{{ s.bioCopy }}</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Set formats -->
+  <section class="pk-section">
+    <div class="pk-section-head">
+      <span class="pk-section-num">02</span>
+      <h2 class="pk-section-title">{{ s.formatsTitle }}</h2>
+    </div>
+    <div class="pk-formats">
+      {% for f in formats %}
+      <div class="pk-format">
+        <p class="pk-format-kind">{{ f.kind }}</p>
+        <h3 class="pk-format-name">{{ f.name }}</h3>
+        <p class="pk-format-desc">{{ f.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- 03 Logo files -->
+  <section class="pk-section">
+    <div class="pk-section-head">
+      <span class="pk-section-num">03</span>
+      <h2 class="pk-section-title">{{ s.logosTitle }}</h2>
+    </div>
+    <div class="pk-logo-grid">
+      <a class="pk-logo" href="/press-kit/logo-light.svg" download>
+        <div class="pk-logo-frame light-bg"><img src="/images/JosepBernad-Logo.svg" alt="Logo on light background"></div>
+        <div class="pk-logo-meta"><span>{{ s.logosLight }}</span><span class="pk-logo-ext">SVG</span></div>
+      </a>
+      <a class="pk-logo" href="/press-kit/logo-dark.svg" download>
+        <div class="pk-logo-frame dark-bg"><img src="/images/JosepBernad-Logo.svg" alt="Logo on dark background" style="filter:invert(1)"></div>
+        <div class="pk-logo-meta"><span>{{ s.logosDark }}</span><span class="pk-logo-ext">SVG</span></div>
+      </a>
+      <a class="pk-logo" href="/press-kit/logo-light.png" download>
+        <div class="pk-logo-frame light-bg"><img src="/images/JosepBernad-Logo.svg" alt="Logo on light background"></div>
+        <div class="pk-logo-meta"><span>{{ s.logosLight }}</span><span class="pk-logo-ext">PNG</span></div>
+      </a>
+      <a class="pk-logo" href="/press-kit/logo-dark.png" download>
+        <div class="pk-logo-frame dark-bg"><img src="/images/JosepBernad-Logo.svg" alt="Logo on dark background" style="filter:invert(1)"></div>
+        <div class="pk-logo-meta"><span>{{ s.logosDark }}</span><span class="pk-logo-ext">PNG</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 04 Technical rider -->
+  <section class="pk-section">
+    <div class="pk-section-head">
+      <span class="pk-section-num">04</span>
+      <h2 class="pk-section-title">{{ s.riderTitle }}</h2>
+    </div>
+    <div class="pk-rider-wrap">
+      <div class="pk-rider-block">
+        <div class="pk-rider-head">
+          <h3 class="pk-rider-name">{{ rider.djName }}</h3>
+          <span class="pk-rider-badge">{{ rider.djBadge }}</span>
+        </div>
+        <ul class="pk-rider-list">
+          {% for item in rider.djList %}
+          <li>
+            <span class="pk-rider-qty">{{ item.qty }}</span>
+            <span class="pk-rider-item">
+              <span class="pk-rider-item-name">{{ item.name }}</span>
+              <span class="pk-rider-item-meta">{{ item.meta }}</span>
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="pk-rider-block">
+        <div class="pk-rider-head">
+          <h3 class="pk-rider-name">{{ rider.liveName }}</h3>
+          <span class="pk-rider-badge">{{ rider.liveBadge }}</span>
+        </div>
+        <ul class="pk-rider-list">
+          {% for item in rider.liveList %}
+          <li>
+            <span class="pk-rider-qty">{{ item.qty }}</span>
+            <span class="pk-rider-item">
+              <span class="pk-rider-item-name">{{ item.name }}</span>
+              <span class="pk-rider-item-meta">{{ item.meta }}</span>
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="pk-rider-foot">
+          <p class="pk-rider-note">{{ rider.note }}</p>
+          <a class="pk-rider-download" href="/press-kit/josep-bernad-rider.pdf" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            {{ rider.download }}
+          </a>
+        </div>
+      </div>
+      <div class="pk-rider-global">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <span>{{ rider.globalNote }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Weddings & corporate events -->
+  <section class="pk-section">
+    <div class="pk-section-head">
+      <span class="pk-section-num">05</span>
+      <h2 class="pk-section-title">{{ s.weddingsTitle }}</h2>
+    </div>
+    <p class="pk-weddings-intro">{{ s.weddingsIntro }}</p>
+    <div class="pk-weddings-grid">
+      <div class="pk-wedding"><img src="/images/wedding1.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="pk-wedding"><img src="/images/wedding2.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="pk-wedding"><img src="/images/wedding3.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
+    </div>
+    <a class="pk-weddings-credit" href="https://www.instagram.com/roberto.tapia.filmmaker/" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor"><path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"/></svg>
+      <span>{{ s.weddingsCredit }}</span>
+    </a>
+    <div class="pk-services">
+      {% for svc in services %}
+      <div class="pk-service">
+        <p class="pk-service-label">{{ svc.label }}</p>
+        <h4 class="pk-service-name">{{ svc.name }}</h4>
+        <p class="pk-service-desc">{{ svc.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- 06 Booking & contact -->
+  <section class="pk-section">
+    <div class="pk-section-head">
+      <span class="pk-section-num">06</span>
+      <h2 class="pk-section-title">{{ s.contactTitle }}</h2>
+    </div>
+    <div class="pk-contact">
+      <div class="pk-contact-row">
+        <p class="pk-contact-label">{{ s.contactEmailLabel }}</p>
+        <p class="pk-contact-value"><a href="mailto:{{ s.contactEmailAddr }}">{{ s.contactEmailAddr }}</a></p>
+      </div>
+      <div class="pk-contact-row">
+        <p class="pk-contact-label">{{ s.contactBasedLabel }}</p>
+        <p class="pk-contact-value">{{ s.contactBasedValue }}</p>
+      </div>
+      <div class="pk-contact-row">
+        <p class="pk-contact-label">{{ s.contactInstagramLabel }}</p>
+        <p class="pk-contact-value"><a href="https://www.instagram.com/djosepbernad/" target="_blank" rel="noopener">@djosepbernad</a></p>
+      </div>
+      <div class="pk-contact-row">
+        <p class="pk-contact-label">{{ s.contactFormLabel }}</p>
+        <p class="pk-contact-value"><a href="{{ currentPrefix }}/contact/">{{ s.contactFormValue }}</a></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function() {
+  const toggle = document.getElementById('bio-toggle');
+  const shortEl = document.getElementById('bio-copy-short');
+  const longEl = document.getElementById('bio-copy-long');
+  const copyBtn = document.getElementById('bio-copy-btn');
+  const copyLabel = document.getElementById('bio-copy-label');
+  if (!toggle || !shortEl || !longEl || !copyBtn) return;
+
+  const COPY = {{ s.bioCopy | dump | safe }};
+  const COPIED = {{ s.bioCopied | dump | safe }};
+  let currentLen = 'short';
+
+  toggle.addEventListener('click', function(e) {
+    const btn = e.target.closest('button[data-len]');
+    if (!btn) return;
+    currentLen = btn.dataset.len;
+    toggle.querySelectorAll('button').forEach(function(b) {
+      const active = b.dataset.len === currentLen;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    shortEl.hidden = currentLen !== 'short';
+    longEl.hidden = currentLen !== 'long';
+  });
+
+  copyBtn.addEventListener('click', function() {
+    const el = currentLen === 'short' ? shortEl : longEl;
+    const text = el.innerText || el.textContent || '';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        copyLabel.textContent = COPIED;
+        setTimeout(function() { copyLabel.textContent = COPY; }, 1500);
+      });
+    }
+  });
+})();
+</script>

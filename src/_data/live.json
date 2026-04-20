@@ -1,0 +1,67 @@
+{
+  "upcoming": [
+    {
+      "date": "2026-05-08",
+      "event": "Cool Days Festival",
+      "venue": "Licors Moyà · Vinoteca, Artà",
+      "time": "19h",
+      "map": "https://maps.app.goo.gl/MYD1CPgP2MgNMuk78",
+      "description": {
+        "en": "Intimate afternoon set at Licors Moyà as part of Cool Days Festival — opening the summer season in the heart of Artà.",
+        "es": "Sesión íntima de tarde en Licors Moyà dentro del Cool Days Festival — abriendo la temporada de verano en el corazón de Artà.",
+        "ca": "Sessió íntima de tarda a Licors Moyà dins del Cool Days Festival — obrint la temporada d'estiu al cor d'Artà."
+      }
+    },
+    {
+      "date": "2026-07-04",
+      "event": "Kaafu Beach Club",
+      "venue": "Kaafu Beach Club",
+      "time": "20h",
+      "map": "https://maps.google.com/?q=Kaafu+Beach+Club",
+      "description": {
+        "en": "Sunset-into-night DJ set by the shore — deep house and afro house flowing into the last hour of daylight.",
+        "es": "DJ set del atardecer a la noche junto al mar — deep house y afro house fluyendo hasta la última hora de luz.",
+        "ca": "DJ set del capvespre a la nit vora el mar — deep house i afro house fluint fins a l'última hora de llum."
+      }
+    },
+    {
+      "date": "2026-07-26",
+      "event": "Kaafu Beach Club",
+      "venue": "Kaafu Beach Club",
+      "time": "19h",
+      "map": "https://maps.google.com/?q=Kaafu+Beach+Club",
+      "description": {
+        "en": "Return to Kaafu for a golden-hour set — curated house with a focus on warmth and melody.",
+        "es": "Vuelta a Kaafu para una sesión en la hora dorada — house curado con foco en calidez y melodía.",
+        "ca": "Tornada a Kaafu per a una sessió a l'hora daurada — house curat amb focus en calidesa i melodia."
+      }
+    }
+  ],
+  "past": [],
+  "strings": {
+    "en": {
+      "intro": "Where Josep is playing next. For booking enquiries, see the <a href=\"/contact/\">contact page</a>.",
+      "upcoming": "Upcoming",
+      "past": "Past dates",
+      "map": "Map",
+      "emptyTitle": "No dates announced yet.",
+      "emptyBody": "Follow for updates — new shows are posted here first."
+    },
+    "es": {
+      "intro": "Dónde toca Josep próximamente. Para bookings, visita la <a href=\"/es/contact/\">página de contacto</a>.",
+      "upcoming": "Próximos",
+      "past": "Fechas anteriores",
+      "map": "Mapa",
+      "emptyTitle": "Aún no hay fechas anunciadas.",
+      "emptyBody": "Síguelo para novedades — las nuevas fechas se publican aquí primero."
+    },
+    "ca": {
+      "intro": "On toca Josep pròximament. Per a bookings, visita la <a href=\"/ca/contact/\">pàgina de contacte</a>.",
+      "upcoming": "Propers",
+      "past": "Dates anteriors",
+      "map": "Mapa",
+      "emptyTitle": "Encara no hi ha dates anunciades.",
+      "emptyBody": "Segueix-lo per a novetats — les noves dates es publiquen aquí primer."
+    }
+  }
+}

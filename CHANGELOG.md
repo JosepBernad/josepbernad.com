@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2026-04-21
+
+### Added
+- **Live page** (`/live/`, `/es/live/`, `/ca/live/`) — upcoming and past shows with i18n strings, date filters (`liveDay`, `liveMonth`, `liveYear`, `liveDateShort`), and `upcomingOnly` / `pastDesc` helpers
+- **Press Kit page** (`/press-kit/`, `/es/press-kit/`, `/ca/press-kit/`) — multilingual bio (short/long), set formats, logos (light/dark BG), technical rider, weddings section, and booking contact; logo assets copied from `src/press-kit/`
+- **Next-show pill** on the home hero — surfaces the next upcoming live date with a direct link to `/live/`
+- "Press Kit" entry in the home navigation (EN/ES/CA)
+- SEO metadata and sitemap entries for Live and Press Kit across all three languages
+
+### Changed
+- Unified `.top-header` layout across home and interior pages — location now always sits at the bottom
+- `.header-name` now shares typography with `.header-claim` (font-size, letter-spacing, margin) and keeps Sedan + `-webkit-text-stroke: 1px` as its only distinguishing styles; letter-spacing tightened to `0.08em`
+- `.header-name` "Josep Bernad" is now a locale-aware link back to the home
+- Theme bootstrap script moved into `<head>` to prevent FOUC on the theme toggle
+- 404 page now detects language prefix client-side (Vercel serves `/404.html` on miss) and rewrites language-switcher links, back link, and the header name link accordingly
+
 ## [1.4.2] - 2026-04-15
 
 ### Fixed

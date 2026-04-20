@@ -54,6 +54,40 @@
       "title": "Contacte | Josep Bernad",
       "description": "Posa't en contacte amb Josep Bernad per a reserves, col·laboracions o consultes. Sets de DJ, actuacions en directe i producció musical."
     }
+  },
+  "live": {
+    "en": {
+      "title": "Live — Josep Bernad | Upcoming DJ & Live Dates",
+      "description": "Upcoming live performances and DJ dates from Josep Bernad in Mallorca, Barcelona and beyond.",
+      "url": "https://josepbernad.com/live/"
+    },
+    "es": {
+      "title": "Directo — Josep Bernad | Próximas fechas",
+      "description": "Próximos directos y DJ sets de Josep Bernad en Mallorca, Barcelona y más allá.",
+      "url": "https://josepbernad.com/es/live/"
+    },
+    "ca": {
+      "title": "Directe — Josep Bernad | Propers directes",
+      "description": "Propers directes i DJ sets de Josep Bernad a Mallorca, Barcelona i més enllà.",
+      "url": "https://josepbernad.com/ca/live/"
+    }
+  },
+  "presskit": {
+    "en": {
+      "title": "Press Kit — Josep Bernad",
+      "description": "Bio, logos, technical rider, and booking contact for Josep Bernad.",
+      "url": "https://josepbernad.com/press-kit/"
+    },
+    "es": {
+      "title": "Press Kit — Josep Bernad",
+      "description": "Bio, logos, rider técnico y contacto para booking de Josep Bernad.",
+      "url": "https://josepbernad.com/es/press-kit/"
+    },
+    "ca": {
+      "title": "Press Kit — Josep Bernad",
+      "description": "Bio, logos, rider tècnic i contacte per a booking de Josep Bernad.",
+      "url": "https://josepbernad.com/ca/press-kit/"
+    }
   }
 }
 

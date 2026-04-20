@@ -7,6 +7,53 @@ showName: true
 eleventyExcludeFromCollections: true
 ---
 
+<script>
+  // Vercel serves /404.html for any not-found path, so detect the URL prefix
+  // and set html[lang] before main.js applies translations and before the
+  // language switcher links are rewritten below.
+  (function () {
+    var path = location.pathname;
+    var lang = 'en';
+    var prefix = '';
+    if (path.indexOf('/es/') === 0 || path === '/es') { lang = 'es'; prefix = '/es'; }
+    else if (path.indexOf('/ca/') === 0 || path === '/ca') { lang = 'ca'; prefix = '/ca'; }
+    document.documentElement.lang = lang;
+    // Strip the language prefix so we can re-prefix per switcher link.
+    // This keeps the user on the same (non-existent) path and re-renders
+    // the 404 in the chosen language.
+    var basePath = prefix ? path.slice(prefix.length) : path;
+    if (!basePath || basePath.charAt(0) !== '/') basePath = '/' + basePath;
+    var search = location.search || '';
+    var hash = location.hash || '';
+    document.addEventListener('DOMContentLoaded', function () {
+      var links = document.querySelectorAll('.lang-switcher .lang-link');
+      links.forEach(function (a) {
+        var label = (a.getAttribute('aria-label') || '').toLowerCase();
+        var target = '';
+        var thisLang = '';
+        if (label.indexOf('english') === 0) { target = basePath; thisLang = 'en'; }
+        else if (label.indexOf('català') === 0) { target = '/ca' + basePath; thisLang = 'ca'; }
+        else if (label.indexOf('español') === 0) { target = '/es' + basePath; thisLang = 'es'; }
+        else return;
+        a.href = target + search + hash;
+        a.classList.toggle('active', lang === thisLang);
+      });
+      var back = document.querySelector('.error-link');
+      if (back) back.href = (prefix || '') + '/';
+      // Make the "Josep Bernad" header link to the language-appropriate home.
+      var name = document.querySelector('.header-name');
+      if (name) {
+        var a = document.createElement('a');
+        a.href = (prefix || '') + '/';
+        a.className = 'header-name-link';
+        a.setAttribute('aria-label', 'Home');
+        while (name.firstChild) a.appendChild(name.firstChild);
+        name.appendChild(a);
+      }
+    });
+  })();
+</script>
+
 <div class="error-page">
   <h1 class="error-code">404</h1>
   <p class="error-message" data-i18n="error.notFound">Page not found</p>
