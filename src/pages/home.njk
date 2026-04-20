@@ -21,8 +21,8 @@ eleventyComputed:
   {% if nextShow %}
   <a class="live-pill" href="{{ currentPrefix }}/live/">
     <span class="dot"></span>
-    <span data-i18n="nextShow.label">{{ home[lang.code].nextShow.label }}</span>
-    <span class="next">· {{ nextShow.date | liveDateShort(lang.code) }} · {{ nextShow.event }}</span>
+    <span data-i18n="nextShow.label">{{ home[currentLang].nextShow.label }}</span>
+    <span class="next">· <span data-i18n="nextShow.next">{{ home[currentLang].nextShow.next }}</span> {{ nextShow.date | liveDateShort(currentLang) }}</span>
   </a>
   {% endif %}
 

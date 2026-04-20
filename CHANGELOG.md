@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2026-04-21
+
+### Changed
+- Home hero pill now reads "Upcoming shows · Next <date>" — dropped the event name and introduced a `nextShow.next` i18n string (EN/ES/CA). Fixed the empty server-rendered label caused by `eleventyComputed` overriding `lang` — template now uses `currentLang` consistently, and `main.js` wires `nextShow` into client-side translations so language switches stay in sync.
+- `live.json`: removed the unconfirmed **Tremolartà** (2026-07-24) entry and cleared all past shows.
+
 ## [1.5.0] - 2026-04-21
 
 ### Added

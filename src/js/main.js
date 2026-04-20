@@ -22,6 +22,7 @@ Promise.all([
   ['en', 'es', 'ca'].forEach(lang => {
     translations[lang].subtitle = homeData[lang].subtitle;
     translations[lang].nav = homeData[lang].nav;
+    translations[lang].nextShow = homeData[lang].nextShow;
     translations[lang].error = homeData[lang].error;
     translations[lang].newsletter = homeData[lang].newsletter;
     translations[lang].months = filmsData.months[lang];

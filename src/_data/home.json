@@ -8,7 +8,8 @@
       "presskit": "Press Kit"
     },
     "nextShow": {
-      "label": "Next show"
+      "label": "Upcoming shows",
+      "next": "Next"
     },
     "error": {
       "notFound": "Page not found",
@@ -33,7 +34,8 @@
       "presskit": "Press Kit"
     },
     "nextShow": {
-      "label": "Próximo show"
+      "label": "Próximos shows",
+      "next": "Próximo"
     },
     "error": {
       "notFound": "Página no encontrada",
@@ -58,7 +60,8 @@
       "presskit": "Press Kit"
     },
     "nextShow": {
-      "label": "Proper show"
+      "label": "Propers shows",
+      "next": "Proper"
     },
     "error": {
       "notFound": "Pàgina no trobada",
