@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ urlLang | default('en') }}" {% if sectionName %}data-section{% endif %}>
+<html lang="{{ urlLang | default('en') }}" {% if pageId and pageId != 'home' %}data-section{% endif %}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  {# Determine page path without language prefix for hreflang #}
+  {# Language-prefix-stripped path, used by hreflang links below and by the language switcher in the header. #}
   {% set pagePath = page.url | replace('/es/', '/') | replace('/ca/', '/') %}
   {% if pagePath == '/es' or pagePath == '/ca' %}{% set pagePath = '/' %}{% endif %}
-  
+
   {# Get SEO data for current page and language #}
   {% set currentLang = urlLang | default('en') %}
   {% set pageKey = pageId | default('home') %}

@@ -3,7 +3,7 @@ import { resolveKey, formatFilmDate } from '/js/utils.js';
 // Translations (loaded from external JSON files)
 const translations = { en: {}, es: {}, ca: {} };
 const html = document.documentElement;
-const toggle = document.querySelector('.theme-toggle');
+const toggles = document.querySelectorAll('.theme-toggle');
 const THEME_KEY = 'theme-preference';
 
 // Get current language from HTML lang attribute (set by server based on URL)
@@ -55,22 +55,56 @@ function setTheme(theme) {
       ? '/favicon-dark.svg'
       : '/favicon-light.svg';
   }
+  const isDark = theme === 'dark';
+  toggles.forEach((t) => {
+    t.setAttribute('aria-pressed', String(isDark));
+    t.setAttribute(
+      'aria-label',
+      isDark ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+  });
 }
 
 setTheme(getInitialTheme());
 
-if (toggle) {
-  toggle.addEventListener('click', () => {
+toggles.forEach((t) => {
+  t.addEventListener('click', () => {
     const current = html.getAttribute('data-theme');
     setTheme(current === 'dark' ? 'light' : 'dark');
   });
-}
+});
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
   if (!localStorage.getItem(THEME_KEY)) {
     setTheme(e.matches ? 'dark' : 'light');
   }
 });
+
+// Mobile nav toggle (hamburger)
+const navToggle = document.querySelector('.nav-toggle');
+const siteHeader = document.querySelector('.site-header');
+if (navToggle && siteHeader) {
+  const setOpen = (open) => {
+    if (open) {
+      siteHeader.setAttribute('data-menu-open', '');
+    } else {
+      siteHeader.removeAttribute('data-menu-open');
+    }
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  navToggle.addEventListener('click', () => {
+    setOpen(!siteHeader.hasAttribute('data-menu-open'));
+  });
+  // Close on nav link click
+  siteHeader.querySelectorAll('.site-nav__link').forEach(link => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+  // Close if viewport grows past mobile breakpoint
+  window.matchMedia('(min-width: 701px)').addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
+}
 
 // Translation functions
 function formatFilmDates(lang) {

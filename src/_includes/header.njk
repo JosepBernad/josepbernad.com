@@ -1,47 +1,65 @@
-{# Determine page path without language prefix for language switcher #}
-{% set pagePath = page.url | replace('/es/', '/') | replace('/ca/', '/') %}
-{% if pagePath == '/es' or pagePath == '/ca' %}{% set pagePath = '/' %}{% endif %}
+{# `pagePath` (language-prefix-stripped) is computed in base.njk and reused here for the switcher. #}
 
-<div class="lang-switcher" data-nosnippet>
-  <a href="{{ pagePath }}" class="lang-link{% if urlLang == 'en' %} active{% endif %}" aria-label="English">EN</a>
-  <a href="/ca{{ pagePath }}" class="lang-link{% if urlLang == 'ca' %} active{% endif %}" aria-label="Català">CA</a>
-  <a href="/es{{ pagePath }}" class="lang-link{% if urlLang == 'es' %} active{% endif %}" aria-label="Español">ES</a>
-</div>
+{% set navItems = [
+  { id: 'films', path: '/films/', label: 'Films', i18n: 'nav.films' },
+  { id: 'live', path: '/live/', label: 'Live', i18n: 'nav.live' },
+  { id: 'about', path: '/about/', label: 'About', i18n: 'nav.about' },
+  { id: 'contact', path: '/contact/', label: 'Contact', i18n: 'nav.contact' },
+  { id: 'presskit', path: '/press-kit/', label: 'Press Kit', i18n: 'nav.presskit' }
+] %}
 
-<button class="theme-toggle" aria-label="Toggle dark mode">
-  <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="5"></circle>
-    <line x1="12" y1="1" x2="12" y2="3"></line>
-    <line x1="12" y1="21" x2="12" y2="23"></line>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-    <line x1="1" y1="12" x2="3" y2="12"></line>
-    <line x1="21" y1="12" x2="23" y2="12"></line>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-  </svg>
-  <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-  </svg>
-</button>
+<header class="site-header">
+  <div class="site-header__bar">
+    <div class="site-header__left">
+      <div class="site-header__identity">
+        <p class="header-line header-name"><a href="{{ urlLangPrefix }}/" class="header-name-link">Josep Bernad</a></p>
+      </div>
 
-<div class="top-header" data-nosnippet>
-  {% if showClaim !== false %}
-  <p class="header-claim">Mainly House Music</p>
-  {% endif %}
-  {% if showName %}
-  <p class="header-name"><a href="{{ urlLangPrefix }}/" class="header-name-link">Josep Bernad</a></p>
-  {% endif %}
-  <p class="header-location">Barcelona // Mallorca</p>
-</div>
+      <nav id="primary-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          {% for item in navItems %}
+          <li>
+            <a href="{{ urlLangPrefix }}{{ item.path }}"
+               class="site-nav__link{% if pageId == item.id %} active{% endif %}"
+               {% if pageId == item.id %}aria-current="page"{% endif %}
+               data-i18n="{{ item.i18n }}">{{ item.label }}</a>
+          </li>
+          {% endfor %}
+        </ul>
 
-{% if sectionName %}
-<nav class="section-nav" data-nosnippet>
-  <a href="{{ urlLangPrefix }}/" class="back-link" aria-label="Back">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"></polyline>
-    </svg>
-  </a>
-  <span class="section-name">{{ sectionName }}</span>
-</nav>
-{% endif %}
+        <div class="site-nav__controls" data-nosnippet>
+          <div class="lang-switcher">
+            <a href="{{ pagePath }}" class="lang-link{% if urlLang == 'en' %} active{% endif %}" hreflang="en" lang="en">EN</a>
+            <a href="/ca{{ pagePath }}" class="lang-link{% if urlLang == 'ca' %} active{% endif %}" hreflang="ca" lang="ca">CA</a>
+            <a href="/es{{ pagePath }}" class="lang-link{% if urlLang == 'es' %} active{% endif %}" hreflang="es" lang="es">ES</a>
+          </div>
+          <span class="header-divider" aria-hidden="true"></span>
+          <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+            {% include "icons/sun.njk" %}
+            {% include "icons/moon.njk" %}
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <div class="site-header__controls">
+      <div class="lang-switcher" data-nosnippet>
+        <a href="{{ pagePath }}" class="lang-link{% if urlLang == 'en' %} active{% endif %}" hreflang="en" lang="en">EN</a>
+        <a href="/ca{{ pagePath }}" class="lang-link{% if urlLang == 'ca' %} active{% endif %}" hreflang="ca" lang="ca">CA</a>
+        <a href="/es{{ pagePath }}" class="lang-link{% if urlLang == 'es' %} active{% endif %}" hreflang="es" lang="es">ES</a>
+      </div>
+
+      <span class="header-divider" aria-hidden="true" data-nosnippet></span>
+
+      <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" data-nosnippet>
+        {% include "icons/sun.njk" %}
+        {% include "icons/moon.njk" %}
+      </button>
+
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav" data-nosnippet>
+        {% include "icons/menu.njk" %}
+        {% include "icons/close.njk" %}
+      </button>
+    </div>
+  </div>
+</header>

@@ -56,6 +56,7 @@
   let firstPlay = true;
   let splashShownAt = 0;
   let currentVideoId = null;
+  let clearSrcTimeout = null;
   const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   function setTitle(el, text) {
@@ -109,6 +110,12 @@
   });
 
   window.openVideo = function(videoId, title, tags, location, date) {
+    // Cancel any pending src-reset from a recent close so it doesn't blank the new video
+    if (clearSrcTimeout) {
+      clearTimeout(clearSrcTimeout);
+      clearSrcTimeout = null;
+    }
+
     const modal = document.getElementById('videoModal');
     modal.classList.add('active');
     document.documentElement.style.overflow = 'hidden';
@@ -178,10 +185,16 @@
     document.body.style.overflow = '';
     if (isMobile) {
       const iframe = document.getElementById('videoMobileIframe');
-      setTimeout(() => { iframe.src = ''; }, 500);
+      clearSrcTimeout = setTimeout(() => {
+        iframe.src = '';
+        clearSrcTimeout = null;
+      }, 500);
     } else if (player) {
       player.pause();
-      setTimeout(() => { player.src = ''; }, 500);
+      clearSrcTimeout = setTimeout(() => {
+        player.src = '';
+        clearSrcTimeout = null;
+      }, 500);
     }
   }
 

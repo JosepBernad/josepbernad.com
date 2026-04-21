@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0] - 2026-04-21
+
+### Added
+- **Unified `site-header`** with primary navigation (Films / Live / About / Contact / Press Kit) replacing the old section-nav / back-link pattern. Desktop shows inline links + lang switcher + theme toggle; mobile uses a hamburger (`.nav-toggle`) that expands into an overlay menu, closing on link click or on resize past the breakpoint.
+- **Page hero component** reused across About, Contact, Films, Live, and Press Kit — each ships an `eyebrow / title (with `<em>` accent) / sub` block via its data file (`hero.{en,es,ca}`).
+- **Contact page redesign** — split card with a left-hand details aside (email, Instagram, social links) and a right-hand labelled form; added `formNote` ("typically replies within 2–3 days") and refreshed success/error copy across EN/ES/CA.
+- **Live page newsletter CTA** — panoramic banner with Mailchimp newsletter form appended below the upcoming/past dates.
+- **Press Kit contact CTA** — new "Check availability" card with direct-line display and copy-to-clipboard control; added `contactDirectLabel`, `contactCopyLabel`, `contactCopiedLabel`, `contactCtaTitle`, `contactCtaSub` strings.
+- **Wedding gallery images** (`wedding1.webp`, `wedding2.webp`, `wedding3.webp`) wired into the Press Kit weddings section.
+- **SVG icon partials** — `src/_includes/icons/{sun,moon,menu,close}.njk` included by the header for theme toggle and mobile menu states.
+- Home hero now surfaces "Mainly House Music" and "Barcelona // Mallorca" directly in the hero (previously only in the floating top-header).
+
+### Changed
+- `base.njk` drives `data-section` from `pageId` instead of `sectionName`; `pagePath` (language-prefix-stripped) is computed once in `base.njk` and reused by the header's language switcher.
+- Rider spec: mixer fallback updated from `DJM-900 NXS2` → `DJM-A9` across EN/ES/CA.
+- Theme toggle now supports multiple instances on the page — `main.js` binds every `.theme-toggle` and keeps `aria-pressed` / `aria-label` in sync with the current theme.
+- 404 page: language rewriting now reads `hreflang` attributes instead of parsing `aria-label`, and also rewrites the primary-nav links so a language switch from a missing path lands on the right locale.
+
+### Fixed
+- **Video modal race** — opening a second video within 500ms of closing the previous one no longer blanks out the new player. The pending `src=''` reset is now cancelled when `openVideo` is called again.
+- `contact.json` cleanup: dropped deprecated `intro`, `orEmail`, and placeholder-only keys; replaced with label/eyebrow/hero fields used by the new form layout.
+
 ## [1.5.1] - 2026-04-21
 
 ### Changed

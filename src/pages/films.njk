@@ -6,15 +6,21 @@ pagination:
 permalink: "{{ lang.prefix }}/films/"
 layout: base.njk
 pageId: films
-showClaim: false
-showName: true
-sectionName: Films
 eleventyComputed:
   currentLang: "{{ lang.code }}"
   currentPrefix: "{{ lang.prefix }}"
   lang: "{{ lang.code }}"
   langPrefix: "{{ lang.prefix }}"
 ---
+
+{% set filmsHero = films.hero[currentLang] %}
+<div class="section-container page-hero-wrap">
+  <div class="contact-hero">
+    <p class="contact-eyebrow">{{ filmsHero.eyebrow }}</p>
+    <h1 class="contact-hero-title">{{ filmsHero.title | safe }}</h1>
+    <p class="contact-hero-sub">{{ filmsHero.sub | safe }}</p>
+  </div>
+</div>
 
 <div class="section-container films-container">
   {% for film in films.items %}

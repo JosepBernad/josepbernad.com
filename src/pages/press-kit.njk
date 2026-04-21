@@ -6,9 +6,6 @@ pagination:
 permalink: "{{ lang.prefix }}/press-kit/"
 layout: base.njk
 pageId: presskit
-showClaim: false
-showName: true
-sectionName: Press Kit
 eleventyComputed:
   currentLang: "{{ lang.code }}"
   currentPrefix: "{{ lang.prefix }}"
@@ -22,12 +19,15 @@ eleventyComputed:
 {% set rider = presskit.rider[currentLang] %}
 {% set services = presskit.services[currentLang] %}
 
-<div class="section-container presskit-container">
-  <header class="presskit-hero">
-    <h1 class="presskit-heading">{{ s.heading }}</h1>
-    <p class="presskit-sub">{{ s.sub }}</p>
-  </header>
+<div class="section-container page-hero-wrap">
+  <div class="contact-hero">
+    <p class="contact-eyebrow">{{ s.hero.eyebrow }}</p>
+    <h1 class="contact-hero-title">{{ s.hero.title | safe }}</h1>
+    <p class="contact-hero-sub">{{ s.hero.sub | safe }}</p>
+  </div>
+</div>
 
+<div class="section-container presskit-container">
   <!-- 01 Bio -->
   <section class="pk-section">
     <div class="pk-section-head">
@@ -158,15 +158,28 @@ eleventyComputed:
       <h2 class="pk-section-title">{{ s.weddingsTitle }}</h2>
     </div>
     <p class="pk-weddings-intro">{{ s.weddingsIntro }}</p>
-    <div class="pk-weddings-grid">
-      <div class="pk-wedding"><img src="/images/wedding1.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
-      <div class="pk-wedding"><img src="/images/wedding2.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
-      <div class="pk-wedding"><img src="/images/wedding3.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
+    <div class="pk-weddings-carousel" id="pk-weddings-carousel" aria-roledescription="carousel" aria-label="Wedding performance photos">
+      <div class="pk-carousel-track" id="pk-carousel-track">
+        <div class="pk-carousel-slide" aria-roledescription="slide" aria-label="1 of 3"><img src="/images/wedding1.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="pk-carousel-slide" aria-roledescription="slide" aria-label="2 of 3"><img src="/images/wedding2.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="pk-carousel-slide" aria-roledescription="slide" aria-label="3 of 3"><img src="/images/wedding3.webp" alt="Wedding performance" loading="lazy" onerror="this.style.display='none'"></div>
+      </div>
+      <button type="button" class="pk-carousel-btn pk-carousel-prev" id="pk-carousel-prev" aria-label="Previous slide">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button type="button" class="pk-carousel-btn pk-carousel-next" id="pk-carousel-next" aria-label="Next slide">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="pk-carousel-dots" id="pk-carousel-dots" role="tablist">
+        <button type="button" class="pk-carousel-dot active" data-idx="0" role="tab" aria-label="Go to slide 1" aria-selected="true"></button>
+        <button type="button" class="pk-carousel-dot" data-idx="1" role="tab" aria-label="Go to slide 2" aria-selected="false"></button>
+        <button type="button" class="pk-carousel-dot" data-idx="2" role="tab" aria-label="Go to slide 3" aria-selected="false"></button>
+      </div>
+      <a class="pk-weddings-credit" href="https://www.instagram.com/roberto.tapia.filmmaker/" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor"><path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"/></svg>
+        <span>{{ s.weddingsCredit }}</span>
+      </a>
     </div>
-    <a class="pk-weddings-credit" href="https://www.instagram.com/roberto.tapia.filmmaker/" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor"><path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"/></svg>
-      <span>{{ s.weddingsCredit }}</span>
-    </a>
     <div class="pk-services">
       {% for svc in services %}
       <div class="pk-service">
@@ -184,23 +197,38 @@ eleventyComputed:
       <span class="pk-section-num">06</span>
       <h2 class="pk-section-title">{{ s.contactTitle }}</h2>
     </div>
-    <div class="pk-contact">
-      <div class="pk-contact-row">
-        <p class="pk-contact-label">{{ s.contactEmailLabel }}</p>
-        <p class="pk-contact-value"><a href="mailto:{{ s.contactEmailAddr }}">{{ s.contactEmailAddr }}</a></p>
+    <div class="pk-contact-card">
+      <div class="pk-contact-main">
+        <span class="pk-contact-eyebrow">{{ s.contactDirectLabel }}</span>
+        <div class="pk-contact-email-wrap">
+          <a class="pk-contact-email" href="mailto:{{ s.contactEmailAddr }}" id="pk-contact-email" aria-label="{{ s.contactEmailLabel }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span class="pk-contact-email-text">{{ s.contactEmailAddr }}</span>
+          </a>
+          <button type="button" class="pk-contact-copy" id="pk-contact-copy" aria-label="{{ s.contactCopyLabel }}" data-copy="{{ s.contactEmailAddr }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="pk-contact-copy-label" id="pk-contact-copy-label">{{ s.contactCopyLabel }}</span>
+          </button>
+        </div>
+        <div class="pk-contact-chips">
+          <span class="pk-contact-chip pk-contact-chip-static">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>{{ s.contactBasedValue }}</span>
+          </span>
+          <a class="pk-contact-chip" href="https://www.instagram.com/djosepbernad/" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span>@djosepbernad</span>
+          </a>
+        </div>
       </div>
-      <div class="pk-contact-row">
-        <p class="pk-contact-label">{{ s.contactBasedLabel }}</p>
-        <p class="pk-contact-value">{{ s.contactBasedValue }}</p>
-      </div>
-      <div class="pk-contact-row">
-        <p class="pk-contact-label">{{ s.contactInstagramLabel }}</p>
-        <p class="pk-contact-value"><a href="https://www.instagram.com/djosepbernad/" target="_blank" rel="noopener">@djosepbernad</a></p>
-      </div>
-      <div class="pk-contact-row">
-        <p class="pk-contact-label">{{ s.contactFormLabel }}</p>
-        <p class="pk-contact-value"><a href="{{ currentPrefix }}/contact/">{{ s.contactFormValue }}</a></p>
-      </div>
+      <a class="pk-contact-cta" href="{{ currentPrefix }}/contact/">
+        <span class="pk-contact-cta-head">
+          <span class="pk-contact-cta-eyebrow">{{ s.contactFormLabel }}</span>
+          <svg class="pk-contact-cta-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
+        </span>
+        <span class="pk-contact-cta-title">{{ s.contactCtaTitle }}</span>
+        <span class="pk-contact-cta-sub">{{ s.contactCtaSub }}</span>
+      </a>
     </div>
   </section>
 </div>
@@ -239,6 +267,117 @@ eleventyComputed:
         copyLabel.textContent = COPIED;
         setTimeout(function() { copyLabel.textContent = COPY; }, 1500);
       });
+    }
+  });
+})();
+
+(function() {
+  const emailLink = document.getElementById('pk-contact-email');
+  const copyBtn = document.getElementById('pk-contact-copy');
+  const copyLabel = document.getElementById('pk-contact-copy-label');
+  if (!emailLink || !copyBtn || !copyLabel) return;
+
+  const COPY = {{ s.contactCopyLabel | dump | safe }};
+  const COPIED = {{ s.contactCopiedLabel | dump | safe }};
+
+  copyBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const text = copyBtn.dataset.copy || '';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        copyBtn.classList.add('is-copied');
+        copyLabel.textContent = COPIED;
+        setTimeout(function() {
+          copyBtn.classList.remove('is-copied');
+          copyLabel.textContent = COPY;
+        }, 1500);
+      });
+    }
+  });
+})();
+
+(function() {
+  const carousel = document.getElementById('pk-weddings-carousel');
+  if (!carousel) return;
+  const track = document.getElementById('pk-carousel-track');
+  const slides = track.querySelectorAll('.pk-carousel-slide');
+  const prev = document.getElementById('pk-carousel-prev');
+  const next = document.getElementById('pk-carousel-next');
+  const dots = document.querySelectorAll('#pk-carousel-dots .pk-carousel-dot');
+  const total = slides.length;
+  let idx = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchDeltaX = 0;
+  let dragging = false;
+  let axisLocked = false;
+  let horizontalDrag = false;
+
+  function setTransform(px) {
+    const base = -idx * carousel.clientWidth;
+    track.style.transform = 'translateX(' + (base + px) + 'px)';
+  }
+
+  function go(n) {
+    idx = (n + total) % total;
+    track.style.transition = '';
+    track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+    dots.forEach(function(d, i) {
+      const active = i === idx;
+      d.classList.toggle('active', active);
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  prev.addEventListener('click', function() { go(idx - 1); });
+  next.addEventListener('click', function() { go(idx + 1); });
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() { go(parseInt(d.dataset.idx, 10)); });
+  });
+
+  carousel.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+  });
+  carousel.setAttribute('tabindex', '0');
+
+  track.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchDeltaX = 0;
+    dragging = true;
+    axisLocked = false;
+    horizontalDrag = false;
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  track.addEventListener('touchmove', function(e) {
+    if (!dragging) return;
+    const dx = e.touches[0].clientX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (!axisLocked) {
+      if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+        axisLocked = true;
+        horizontalDrag = Math.abs(dx) > Math.abs(dy);
+      }
+    }
+    if (horizontalDrag) {
+      touchDeltaX = dx;
+      setTransform(dx);
+    }
+  }, { passive: true });
+
+  track.addEventListener('touchend', function() {
+    if (!dragging) return;
+    dragging = false;
+    track.style.transition = '';
+    if (!horizontalDrag) return;
+    const threshold = carousel.clientWidth * 0.18;
+    if (Math.abs(touchDeltaX) > threshold) {
+      go(idx + (touchDeltaX < 0 ? 1 : -1));
+    } else {
+      track.style.transform = 'translateX(' + (-idx * 100) + '%)';
     }
   });
 })();

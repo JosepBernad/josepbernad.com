@@ -3,6 +3,7 @@
     "subtitle": "Live & DJ Set",
     "nav": {
       "films": "Films",
+      "live": "Live",
       "about": "About",
       "contact": "Contact",
       "presskit": "Press Kit"
@@ -29,6 +30,7 @@
     "subtitle": "Live & DJ Set",
     "nav": {
       "films": "Films",
+      "live": "Live",
       "about": "Sobre mí",
       "contact": "Contacto",
       "presskit": "Press Kit"
@@ -55,6 +57,7 @@
     "subtitle": "Live & DJ Set",
     "nav": {
       "films": "Films",
+      "live": "Live",
       "about": "Sobre mi",
       "contact": "Contacte",
       "presskit": "Press Kit"

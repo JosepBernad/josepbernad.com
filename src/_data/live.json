@@ -40,6 +40,11 @@
   "past": [],
   "strings": {
     "en": {
+      "hero": {
+        "eyebrow": "Live",
+        "title": "On the <em>road</em>.",
+        "sub": "Upcoming shows and recent appearances — catch the next set in Barcelona, Mallorca, or further afield."
+      },
       "intro": "Where Josep is playing next. For booking enquiries, see the <a href=\"/contact/\">contact page</a>.",
       "upcoming": "Upcoming",
       "past": "Past dates",
@@ -48,6 +53,11 @@
       "emptyBody": "Follow for updates — new shows are posted here first."
     },
     "es": {
+      "hero": {
+        "eyebrow": "En vivo",
+        "title": "En la <em>carretera</em>.",
+        "sub": "Próximas fechas y apariciones recientes — no te pierdas el próximo set en Barcelona, Mallorca o más allá."
+      },
       "intro": "Dónde toca Josep próximamente. Para bookings, visita la <a href=\"/es/contact/\">página de contacto</a>.",
       "upcoming": "Próximos",
       "past": "Fechas anteriores",
@@ -56,6 +66,11 @@
       "emptyBody": "Síguelo para novedades — las nuevas fechas se publican aquí primero."
     },
     "ca": {
+      "hero": {
+        "eyebrow": "En directe",
+        "title": "A la <em>carretera</em>.",
+        "sub": "Pròximes dates i aparicions recents — no et perdis el proper set a Barcelona, Mallorca o més enllà."
+      },
       "intro": "On toca Josep pròximament. Per a bookings, visita la <a href=\"/ca/contact/\">pàgina de contacte</a>.",
       "upcoming": "Propers",
       "past": "Dates anteriors",

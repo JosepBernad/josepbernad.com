@@ -6,15 +6,21 @@ pagination:
 permalink: "{{ lang.prefix }}/about/"
 layout: base.njk
 pageId: about
-showClaim: false
-showName: true
-sectionName: About
 eleventyComputed:
   currentLang: "{{ lang.code }}"
   currentPrefix: "{{ lang.prefix }}"
   lang: "{{ lang.code }}"
   langPrefix: "{{ lang.prefix }}"
 ---
+
+{% set aboutHero = about[currentLang].hero %}
+<div class="section-container page-hero-wrap">
+  <div class="contact-hero">
+    <p class="contact-eyebrow">{{ aboutHero.eyebrow }}</p>
+    <h1 class="contact-hero-title">{{ aboutHero.title | safe }}</h1>
+    <p class="contact-hero-sub">{{ aboutHero.sub | safe }}</p>
+  </div>
+</div>
 
 <div class="section-container about-container">
   <div class="about-image">

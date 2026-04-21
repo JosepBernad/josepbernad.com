@@ -6,9 +6,6 @@ pagination:
 permalink: "{{ lang.prefix }}/live/"
 layout: base.njk
 pageId: live
-showClaim: false
-showName: true
-sectionName: Live
 eleventyComputed:
   currentLang: "{{ lang.code }}"
   currentPrefix: "{{ lang.prefix }}"
@@ -19,9 +16,15 @@ eleventyComputed:
 {% set upcoming = live.upcoming | upcomingOnly %}
 {% set past = live.past | pastDesc %}
 
-<div class="section-container live-container">
-  <p class="live-intro">{{ s.intro | safe }}</p>
+<div class="section-container page-hero-wrap">
+  <div class="contact-hero">
+    <p class="contact-eyebrow">{{ s.hero.eyebrow }}</p>
+    <h1 class="contact-hero-title">{{ s.hero.title | safe }}</h1>
+    <p class="contact-hero-sub">{{ s.hero.sub | safe }}</p>
+  </div>
+</div>
 
+<div class="section-container live-container">
   <p class="live-section-label">{{ s.upcoming }}</p>
 
   {% if upcoming.length %}
@@ -81,3 +84,18 @@ eleventyComputed:
   </div>
   {% endif %}
 </div>
+
+<section class="home-panoramic">
+  <img src="/images/JosepBernad-Panoramic.webp" alt="Josep Bernad" loading="lazy">
+  <div class="home-panoramic-overlay" id="newsletter-banner">
+    <p class="newsletter-text" data-i18n="newsletter.cta">Stay Updated</p>
+    <form class="newsletter-form" id="newsletter-form">
+      <input type="email" name="EMAIL" placeholder="email@example.com" data-i18n-placeholder="newsletter.placeholder" required>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_ec19e426d1a78e9baa513bfaf_7a99017863" tabindex="-1" value="">
+      </div>
+      <button type="submit" data-i18n="newsletter.subscribe">Subscribe</button>
+    </form>
+    <p class="newsletter-status" id="newsletter-status"></p>
+  </div>
+</section>

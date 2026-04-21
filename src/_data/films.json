@@ -61,5 +61,22 @@
     "en": ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
     "es": ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"],
     "ca": ["GEN", "FEB", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OCT", "NOV", "DES"]
+  },
+  "hero": {
+    "en": {
+      "eyebrow": "Films",
+      "title": "Selected <em>work</em>.",
+      "sub": "Live sets, DJ sets, and sessions captured on camera — from intimate rooms to open-air nights."
+    },
+    "es": {
+      "eyebrow": "Filmaciones",
+      "title": "Trabajo <em>seleccionado</em>.",
+      "sub": "Live sets, DJ sets y sesiones grabadas — desde salas íntimas hasta noches al aire libre."
+    },
+    "ca": {
+      "eyebrow": "Films",
+      "title": "Treball <em>seleccionat</em>.",
+      "sub": "Live sets, DJ sets i sessions gravades — des de sales íntimes fins a nits a l'aire lliure."
+    }
   }
 }

@@ -1,8 +1,11 @@
 {
   "strings": {
     "en": {
-      "heading": "Press Kit",
-      "sub": "Everything journalists, bookers, and venues need in one place — bios, logos, technical rider, and contact.",
+      "hero": {
+        "eyebrow": "Press Kit",
+        "title": "Everything you <em>need</em>.",
+        "sub": "Biography, set formats, logos, and technical rider — ready to download, copy, and share."
+      },
       "bioTitle": "Biography",
       "bioLength": "Length",
       "bioShort": "Short",
@@ -25,11 +28,19 @@
       "contactBasedValue": "Barcelona · Mallorca",
       "contactInstagramLabel": "Instagram",
       "contactFormLabel": "Booking form",
-      "contactFormValue": "josepbernad.com/contact"
+      "contactFormValue": "josepbernad.com/contact",
+      "contactDirectLabel": "Direct line",
+      "contactCopyLabel": "Copy",
+      "contactCopiedLabel": "Copied",
+      "contactCtaTitle": "Check availability",
+      "contactCtaSub": "Share your date, venue, and format — I'll get back within 48h."
     },
     "es": {
-      "heading": "Press Kit",
-      "sub": "Todo lo que periodistas, bookers y salas necesitan en un solo lugar — bios, logos, rider técnico y contacto.",
+      "hero": {
+        "eyebrow": "Press Kit",
+        "title": "Todo lo que <em>necesitas</em>.",
+        "sub": "Biografía, formatos, logos y rider técnico — listos para descargar, copiar y compartir."
+      },
       "bioTitle": "Biografía",
       "bioLength": "Extensión",
       "bioShort": "Corta",
@@ -52,11 +63,19 @@
       "contactBasedValue": "Barcelona · Mallorca",
       "contactInstagramLabel": "Instagram",
       "contactFormLabel": "Formulario de booking",
-      "contactFormValue": "josepbernad.com/contact"
+      "contactFormValue": "josepbernad.com/contact",
+      "contactDirectLabel": "Línea directa",
+      "contactCopyLabel": "Copiar",
+      "contactCopiedLabel": "Copiado",
+      "contactCtaTitle": "Consultar disponibilidad",
+      "contactCtaSub": "Cuéntame fecha, lugar y formato — te contesto en 48h."
     },
     "ca": {
-      "heading": "Press Kit",
-      "sub": "Tot el que periodistes, bookers i sales necessiten en un sol lloc — bios, logos, rider tècnic i contacte.",
+      "hero": {
+        "eyebrow": "Press Kit",
+        "title": "Tot el que <em>necessites</em>.",
+        "sub": "Biografia, formats, logos i rider tècnic — llestos per descarregar, copiar i compartir."
+      },
       "bioTitle": "Biografia",
       "bioLength": "Extensió",
       "bioShort": "Curta",
@@ -79,7 +98,12 @@
       "contactBasedValue": "Barcelona · Mallorca",
       "contactInstagramLabel": "Instagram",
       "contactFormLabel": "Formulari de booking",
-      "contactFormValue": "josepbernad.com/contact"
+      "contactFormValue": "josepbernad.com/contact",
+      "contactDirectLabel": "Línia directa",
+      "contactCopyLabel": "Copiar",
+      "contactCopiedLabel": "Copiat",
+      "contactCtaTitle": "Consultar disponibilitat",
+      "contactCtaSub": "Digue'm data, lloc i format — et contesto en 48h."
     }
   },
   "bio": {
@@ -116,7 +140,7 @@
       "djBadge": "Required", "djName": "DJ Set",
       "djList": [
         { "qty": "2×",    "name": "CDJ-3000",        "meta": "or CDJ-2000 NXS2" },
-        { "qty": "1×",    "name": "DJM-V10",         "meta": "or DJM-900 NXS2 mixer" },
+        { "qty": "1×",    "name": "DJM-V10",         "meta": "or DJM-A9 mixer" },
         { "qty": "5×",    "name": "Schuko outlets",  "meta": "for CDJs, mixer, laptop & accessories" },
         { "qty": "",      "name": "Booth monitor",   "meta": "independent level control" },
         { "qty": "",      "name": "Main PA",         "meta": "clean stereo, sized to room" }
@@ -137,7 +161,7 @@
       "djBadge": "Imprescindible", "djName": "DJ Set",
       "djList": [
         { "qty": "2×",    "name": "CDJ-3000",         "meta": "o CDJ-2000 NXS2" },
-        { "qty": "1×",    "name": "DJM-V10",          "meta": "o mixer DJM-900 NXS2" },
+        { "qty": "1×",    "name": "DJM-V10",          "meta": "o mixer DJM-A9" },
         { "qty": "5×",    "name": "Tomas Schuko",     "meta": "para CDJs, mixer, portátil y accesorios" },
         { "qty": "",      "name": "Monitor de cabina","meta": "con nivel independiente" },
         { "qty": "",      "name": "PA principal",     "meta": "estéreo limpio, según sala" }
@@ -158,7 +182,7 @@
       "djBadge": "Imprescindible", "djName": "DJ Set",
       "djList": [
         { "qty": "2×",    "name": "CDJ-3000",         "meta": "o CDJ-2000 NXS2" },
-        { "qty": "1×",    "name": "DJM-V10",          "meta": "o mixer DJM-900 NXS2" },
+        { "qty": "1×",    "name": "DJM-V10",          "meta": "o mixer DJM-A9" },
         { "qty": "5×",    "name": "Preses Schuko",    "meta": "per a CDJs, mixer, portàtil i accessoris" },
         { "qty": "",      "name": "Monitor de cabina","meta": "amb nivell independent" },
         { "qty": "",      "name": "PA principal",     "meta": "estèreo net, segons sala" }
