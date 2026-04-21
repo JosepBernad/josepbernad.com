@@ -115,7 +115,7 @@
 
 **Analytics:** GoatCounter (`gc.zgo.at/count.js`) — privacy-friendly, cookie-free, async script injected in `base.njk`
 
-**Deployment:** GitHub Actions workflow (`.github/workflows/deploy.yml`) — on push to `main`, installs Node 20, runs `npm run build`, uploads `_site/` artifact, deploys to GitHub Pages; custom domain set via `CNAME` file
+**Deployment:** Vercel Git Integration — on push to `main`, Vercel builds with the Eleventy preset (Node 24.x) and deploys `_site/` to the production alias. Custom domain `josepbernad.com` (+ `www`) is attached via `vercel domains add`; DNS at cdmon points apex to `76.76.21.21` and `www` CNAME to `cname.vercel-dns.com`.
 
 ---
 

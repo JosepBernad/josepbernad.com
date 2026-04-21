@@ -15,7 +15,7 @@
 ## Runtime
 
 **Environment:**
-- Node.js 20 (specified in GitHub Actions workflow `.github/workflows/deploy.yml`)
+- Node.js 24.x (configured in `.vercel/project.json`; used by Vercel builds)
 
 **Package Manager:**
 - npm
@@ -82,7 +82,7 @@
 **Production:**
 - Static files only — no server runtime required
 - Output directory: `_site/`
-- Deployed to GitHub Pages via GitHub Actions
+- Deployed to Vercel via Git Integration (Eleventy preset, Node 24.x; auto-deploys on push to `main`)
 
 ---
 

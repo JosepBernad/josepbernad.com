@@ -7,11 +7,7 @@
 ```
 josepbernad.com/
 ├── .eleventy.js          # Eleventy build configuration (passthrough copies, computed data, I/O dirs)
-├── .github/
-│   └── workflows/
-│       └── deploy.yml    # GitHub Actions: build + deploy to GitHub Pages on push to main
-├── .nojekyll             # Prevents GitHub Pages from running Jekyll on the output
-├── CNAME                 # Custom domain: josepbernad.com
+├── .vercel/              # Vercel project link (projectId, orgId, local build output) — gitignored
 ├── CHANGELOG.md          # Project changelog
 ├── package.json          # npm manifest (version, scripts, devDependencies)
 ├── favicon-dark.svg      # Root-level favicon (also copied from src/)
@@ -149,15 +145,16 @@ Pages use `layout: base.njk` in frontmatter. There is only one layout level — 
 **`_site/` (build output):**
 - Generated: Yes
 - Committed: No (in `.gitignore`)
-- Contents: Flat static HTML, copied CSS/JS/images, public JSON data files, `CNAME`, `.nojekyll`, `sitemap.xml`, `robots.txt`, `version.json`
+- Contents: Flat static HTML, copied CSS/JS/images, public JSON data files, `sitemap.xml`, `robots.txt`, `version.json`
 
 **`.planning/`:**
 - Generated: No (human/agent planning artifacts)
 - Committed: Yes
 - Contents: Codebase maps, implementation plans
 
-**`.github/workflows/`:**
-- Contains: `deploy.yml` — the sole CI/CD pipeline; triggers on push to `main`; Node 20; outputs to GitHub Pages via `actions/deploy-pages`
+**`.vercel/`:**
+- Contains: `project.json` (project/org IDs linking this repo to the Vercel project), `.env.preview.local`, and `output/` (local Vercel build artifacts). Gitignored; created/managed by the Vercel CLI.
+- CI/CD: handled by Vercel's Git Integration — push to `main` triggers a Production deploy with the Eleventy preset on Node 24.x. No in-repo workflow file.
 
 ---
 

@@ -77,13 +77,13 @@
 ## CI/CD & Deployment
 
 **Hosting:**
-- GitHub Pages — static site, custom domain `josepbernad.com` (configured via `CNAME` file)
+- Vercel — static site, custom domains `josepbernad.com` and `www.josepbernad.com` (attached to Vercel project `josepbernad.com` in team `josep-bernads-projects`). DNS at cdmon: apex A → `76.76.21.21`, `www` CNAME → `cname.vercel-dns.com`.
 
 **CI Pipeline:**
-- GitHub Actions — workflow at `.github/workflows/deploy.yml`
-  - Trigger: push to `main` branch, or manual dispatch
-  - Steps: checkout → Node 20 setup → `npm ci` → `npm run build` → upload `_site/` artifact → deploy to GitHub Pages
-  - No secrets or environment variables required in CI
+- Vercel Git Integration — auto-deploys on push to any branch
+  - Trigger: push to `main` → Production deploy; push to other branches → Preview deploy
+  - Framework preset: Eleventy; Node 24.x; build command `npm run build`; output `_site/`
+  - No secrets or environment variables required
 
 ## Environment Configuration
 

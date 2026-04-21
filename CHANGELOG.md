@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.0] - 2026-04-21
+
+### Changed
+- **Hosting migrated from GitHub Pages to Vercel.** `josepbernad.com` + `www` now served by Vercel (team `josep-bernads-projects`, project `josepbernad.com`, Eleventy preset, Node 24.x). DNS at cdmon: apex A → `76.76.21.21`, `www` CNAME → `cname.vercel-dns.com`. Deploys auto-trigger on push to `main` via Vercel Git Integration — no in-repo CI workflow needed.
+- Unified browser-tab titles across all pages and languages: consistent `topic | Josep Bernad` format, keyword-led inner pages (`Bookings & Contact`, `Live Sets & Films`, `Upcoming Shows & DJ Dates`), and translated Films/Press Kit metadata in ES/CA for better long-tail SEO and CTR.
+
+### Removed
+- `.github/workflows/deploy.yml` — obsolete GitHub Actions deploy pipeline.
+- `CNAME` — GitHub Pages custom-domain marker (domain now managed by Vercel).
+- `.nojekyll` — GitHub Pages Jekyll-bypass marker.
+
 ## [1.6.0] - 2026-04-21
 
 ### Added

@@ -264,8 +264,12 @@ eleventyComputed:
     const text = el.innerText || el.textContent || '';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function() {
+        copyBtn.classList.add('is-copied');
         copyLabel.textContent = COPIED;
-        setTimeout(function() { copyLabel.textContent = COPY; }, 1500);
+        setTimeout(function() {
+          copyBtn.classList.remove('is-copied');
+          copyLabel.textContent = COPY;
+        }, 1500);
       });
     }
   });
