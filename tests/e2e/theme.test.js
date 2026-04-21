@@ -1,5 +1,20 @@
 import { test, expect } from '@playwright/test';
 
+// Two `.theme-toggle` buttons exist in the header (desktop nav + mobile overlay).
+// On ≤500px viewports the desktop one is `display: none` and the overlay one
+// lives inside a clip-path-hidden menu — so the menu must be opened first.
+async function clickThemeToggle(page) {
+  const navToggle = page.locator('.nav-toggle');
+  if (await navToggle.isVisible()) {
+    const header = page.locator('.site-header');
+    if ((await header.getAttribute('data-menu-open')) === null) {
+      await navToggle.click();
+      await expect(header).toHaveAttribute('data-menu-open', '');
+    }
+  }
+  await page.locator('.theme-toggle:visible').first().click();
+}
+
 test.describe('Theme toggle', () => {
   test.beforeEach(async ({ page }) => {
     // Clear localStorage so theme starts from system preference
@@ -17,7 +32,7 @@ test.describe('Theme toggle', () => {
     const html = page.locator('html');
     const before = await html.getAttribute('data-theme');
 
-    await page.locator('.theme-toggle').click();
+    await clickThemeToggle(page);
 
     const after = await html.getAttribute('data-theme');
     expect(after).not.toBe(before);
@@ -25,7 +40,7 @@ test.describe('Theme toggle', () => {
   });
 
   test('theme persists after page reload', async ({ page }) => {
-    await page.locator('.theme-toggle').click();
+    await clickThemeToggle(page);
     const theme = await page.locator('html').getAttribute('data-theme');
 
     await page.reload();
@@ -36,8 +51,8 @@ test.describe('Theme toggle', () => {
 
   test('toggling twice returns to original theme', async ({ page }) => {
     const original = await page.locator('html').getAttribute('data-theme');
-    await page.locator('.theme-toggle').click();
-    await page.locator('.theme-toggle').click();
+    await clickThemeToggle(page);
+    await clickThemeToggle(page);
     const current = await page.locator('html').getAttribute('data-theme');
     expect(current).toBe(original);
   });
