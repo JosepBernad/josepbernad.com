@@ -22,15 +22,22 @@ eleventyComputed:
   </div>
 </div>
 
+{% if about[currentLang].glance %}
+<aside class="section-container about-glance" aria-label="{{ about[currentLang].glanceLabel }}">
+  <span class="about-glance-label">{{ about[currentLang].glanceLabel }}</span>
+  <p class="about-glance-text">{{ about[currentLang].glance }}</p>
+</aside>
+{% endif %}
+
 <div class="section-container about-container">
   <div class="about-image">
     <img src="/images/about.webp" alt="Young Josep playing a drum" />
   </div>
-  
+
   <div class="about-content">
-    <p data-i18n-html="about.bio1"></p>
-    <p data-i18n-html="about.bio2"></p>
-    <p data-i18n-html="about.bio3"></p>
+    <p data-i18n-html="about.bio1">{{ about[currentLang].bio1 | safe }}</p>
+    <p data-i18n-html="about.bio2">{{ about[currentLang].bio2 | safe }}</p>
+    <p data-i18n-html="about.bio3">{{ about[currentLang].bio3 | safe }}</p>
   </div>
   
   <div class="about-socials socials-wrapper">
@@ -49,3 +56,25 @@ eleventyComputed:
     <span class="social-label" id="social-label"></span>
   </div>
 </div>
+
+{% if about[currentLang].faq %}
+<section class="section-container page-faq" aria-labelledby="about-faq-title">
+  <h2 id="about-faq-title" class="page-faq-title">{{ about[currentLang].faqTitle }}</h2>
+  <div class="page-faq-list">
+    {% for item in about[currentLang].faq %}
+    <details class="page-faq-item">
+      <summary class="page-faq-q">
+        <span class="page-faq-q-text">{{ item.q }}</span>
+        <span class="page-faq-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="page-faq-a">
+        <p>{{ item.a }}</p>
+        {% if item.cta %}
+        <a class="page-faq-cta" href="{{ item.cta.href }}">{{ item.cta.label }} <span aria-hidden="true">→</span></a>
+        {% endif %}
+      </div>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

@@ -106,7 +106,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="/css/styles.css">
 
-  {# Vidstack is loaded lazily on the first film-card click — see video-modal.njk. #}
+  {# Vidstack is loaded lazily on the first film-card click; see video-modal.njk. #}
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -224,7 +224,7 @@
       {
         "@type": "VideoObject",
         "name": {{ film.title | dump | safe }},
-        "description": {{ ((film.tags | join(", ")) + " — recorded in " + film.location) | dump | safe }},
+        "description": {{ ((film.tags | join(", ")) + ", recorded in " + film.location) | dump | safe }},
         "thumbnailUrl": "https://img.youtube.com/vi/{{ film.videoId }}/maxresdefault.jpg",
         "uploadDate": "{{ film.date }}-01",
         "contentUrl": {{ film.url | dump | safe }},
@@ -284,6 +284,29 @@
   {% endif %}
   {% endif %}
 
+  {% set pageFaq = about[currentLang].faq if pageKey == 'about' and about[currentLang].faq else (contact[currentLang].faq if pageKey == 'contact' and contact[currentLang].faq else null) %}
+  {% if pageFaq %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {% for item in pageFaq %}
+      {% set answerText = item.a + (" See: https://josepbernad.com" + item.cta.href) if item.cta else item.a %}
+      {
+        "@type": "Question",
+        "name": {{ item.q | dump | safe }},
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ answerText | dump | safe }}
+        }
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+
   {% if pageKey == 'about' %}
   <script type="application/ld+json">
   {
@@ -295,7 +318,8 @@
       "url": "https://josepbernad.com{{ page.url }}",
       "image": "https://josepbernad.com/images/about.webp",
       "jobTitle": "Musician, DJ, Software Engineer",
-      "description": {{ about[currentLang].hero.sub | striptags | dump | safe }},
+      "description": {{ (about[currentLang].glance if about[currentLang].glance else about[currentLang].hero.sub) | striptags | dump | safe }},
+      "knowsLanguage": ["ca", "es", "en"],
       "homeLocation": { "@type": "Place", "name": "Barcelona, Spain" },
       "birthPlace": { "@type": "Place", "name": "Mallorca, Spain" },
       "performerIn": { "@id": "https://josepbernad.com/#musician" },

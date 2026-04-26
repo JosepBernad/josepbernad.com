@@ -20,9 +20,9 @@ eleventyComputed:
 
   {# Editorial header #}
   <div class="contact-hero">
-    <p class="contact-eyebrow" data-i18n="contact.eyebrow"></p>
-    <h1 class="contact-hero-title" data-i18n-html="contact.heroTitle"></h1>
-    <p class="contact-hero-sub" data-i18n-html="contact.heroSub"></p>
+    <p class="contact-eyebrow" data-i18n="contact.eyebrow">{{ contact[currentLang].eyebrow }}</p>
+    <h1 class="contact-hero-title" data-i18n-html="contact.heroTitle">{{ contact[currentLang].heroTitle | safe }}</h1>
+    <p class="contact-hero-sub" data-i18n-html="contact.heroSub">{{ contact[currentLang].heroSub | safe }}</p>
   </div>
 
   {# Split card: details (left) + form (right) #}
@@ -30,23 +30,23 @@ eleventyComputed:
 
     <aside class="contact-details">
       <div class="contact-detail-row">
-        <p class="contact-row-label" data-i18n="contact.labelEmail"></p>
+        <p class="contact-row-label" data-i18n="contact.labelEmail">{{ contact[currentLang].labelEmail }}</p>
         <p class="contact-row-value">
           <a id="contact-email-link"
              href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;"
-             data-i18n-html="contact.emailAddress">&#104;&#105;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;</a>
+             data-i18n-html="contact.emailAddress">{{ contact[currentLang].emailAddress | safe }}</a>
         </p>
       </div>
 
       <div class="contact-detail-row">
-        <p class="contact-row-label" data-i18n="contact.labelInstagram"></p>
+        <p class="contact-row-label" data-i18n="contact.labelInstagram">{{ contact[currentLang].labelInstagram }}</p>
         <p class="contact-row-value">
           <a href="https://www.instagram.com/djosepbernad/" target="_blank" rel="noopener">@djosepbernad</a>
         </p>
       </div>
 
       <div class="contact-detail-row">
-        <p class="contact-row-label" data-i18n="contact.labelElsewhere"></p>
+        <p class="contact-row-label" data-i18n="contact.labelElsewhere">{{ contact[currentLang].labelElsewhere }}</p>
         <div class="contact-socials">
           <a href="https://www.instagram.com/djosepbernad/" target="_blank" rel="noopener" aria-label="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor"><path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"/></svg>
@@ -73,22 +73,22 @@ eleventyComputed:
     <form class="contact-form" id="contact-form" novalidate>
       <div class="field-row">
         <div class="field">
-          <label for="name" data-i18n="contact.labelName"></label>
+          <label for="name" data-i18n="contact.labelName">{{ contact[currentLang].labelName }}</label>
           <input type="text" id="name" name="from_name" required>
         </div>
         <div class="field">
-          <label for="email" data-i18n="contact.labelEmail"></label>
+          <label for="email" data-i18n="contact.labelEmail">{{ contact[currentLang].labelEmail }}</label>
           <input type="email" id="email" name="reply_to" required>
         </div>
       </div>
 
       <div class="field">
-        <label for="subject" data-i18n="contact.labelSubject"></label>
+        <label for="subject" data-i18n="contact.labelSubject">{{ contact[currentLang].labelSubject }}</label>
         <input type="text" id="subject" name="subject" required>
       </div>
 
       <div class="field">
-        <label for="message" data-i18n="contact.labelMessage"></label>
+        <label for="message" data-i18n="contact.labelMessage">{{ contact[currentLang].labelMessage }}</label>
         <textarea id="message" name="message" rows="5" required></textarea>
       </div>
 
@@ -100,8 +100,8 @@ eleventyComputed:
       </div>
 
       <div class="form-footer">
-        <button type="submit" class="form-submit" data-i18n="contact.sendButton"></button>
-        <span class="form-note" data-i18n="contact.formNote"></span>
+        <button type="submit" class="form-submit" data-i18n="contact.sendButton">{{ contact[currentLang].sendButton }}</button>
+        <span class="form-note" data-i18n="contact.formNote">{{ contact[currentLang].formNote }}</span>
       </div>
 
       <p class="contact-status" id="contact-status"></p>
@@ -110,11 +110,29 @@ eleventyComputed:
   </div>{# /.contact-card #}
 </div>
 
-<p class="recaptcha-branding" data-i18n-html="contact.recaptcha">
-  This site is protected by reCAPTCHA and the Google
-  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
-  <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
-</p>
+<p class="recaptcha-branding" data-i18n-html="contact.recaptcha">{{ contact[currentLang].recaptcha | safe }}</p>
+
+{% if contact[currentLang].faq %}
+<section class="section-container page-faq" aria-labelledby="contact-faq-title">
+  <h2 id="contact-faq-title" class="page-faq-title">{{ contact[currentLang].faqTitle }}</h2>
+  <div class="page-faq-list">
+    {% for item in contact[currentLang].faq %}
+    <details class="page-faq-item">
+      <summary class="page-faq-q">
+        <span class="page-faq-q-text">{{ item.q }}</span>
+        <span class="page-faq-marker" aria-hidden="true"></span>
+      </summary>
+      <div class="page-faq-a">
+        <p>{{ item.a }}</p>
+        {% if item.cta %}
+        <a class="page-faq-cta" href="{{ item.cta.href }}">{{ item.cta.label }} <span aria-hidden="true">→</span></a>
+        {% endif %}
+      </div>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
 
 <!-- reCAPTCHA v2 Invisible -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>

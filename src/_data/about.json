@@ -5,9 +5,42 @@
       "title": "Hi, I'm <em>Josep</em>.",
       "sub": "Musician, DJ, and software engineer, writing House music between Barcelona and Mallorca."
     },
-    "bio1": "I'm <strong>Josep Bernad</strong>, a <strong>musician and DJ</strong> from <strong>Mallorca</strong> based in <strong>Barcelona</strong>, and also a <strong>software engineer</strong> — a combination that lets me merge advanced technology with creativity in everything I produce. I trained from a young age as a <strong>drummer</strong> and later as a <strong>multi-instrumentalist</strong>, and my personal project dives into <strong>electronic music</strong>, mainly <strong>House</strong>, blending contemporary digital textures with deep influences and an elegant sonic aesthetic. Working between Barcelona and Mallorca, I keep expanding my catalogue of original productions, always aiming to deliver a distinctive and solid musical experience.",
+    "glanceLabel": "TL;DR",
+    "glance": "Josep Bernad is a house music DJ and multi-instrumentalist from Mallorca, based in Barcelona. He performs three formats: a Live Set with live instruments, a House DJ Set, and a Party Set (Open Format). He plays at clubs, festivals, beach clubs, weddings, and corporate events. He is also a software engineer and speaks Catalan, Spanish, and English.",
+    "bio1": "I'm <strong>Josep Bernad</strong>, a <strong>musician and DJ</strong> from <strong>Mallorca</strong> based in <strong>Barcelona</strong>, and also a <strong>software engineer</strong>, a combination that lets me merge advanced technology with creativity in everything I produce. I trained from a young age as a <strong>drummer</strong> and later as a <strong>multi-instrumentalist</strong>, and my personal project dives into <strong>electronic music</strong>, mainly <strong>House</strong>, blending contemporary digital textures with deep influences and an elegant sonic aesthetic. Working between Barcelona and Mallorca, I keep expanding my catalogue of original productions, always aiming to deliver a distinctive and solid musical experience.",
     "bio2": "I present three live formats: a <strong>Live Set</strong> featuring my own music performed with live instruments; a <strong>House DJ Set</strong> built around an extensive and carefully curated music library; and a <strong>Party Set (Open Format)</strong> designed for parties and festivals, where I mix multiple genres while keeping a coherent narrative and flawless transitions.",
-    "bio3": "On stage, I look for <strong>emotional connection</strong> with the audience, real-time crowd reading, and precise technical execution. My influences include artists such as <strong>Fred Again..</strong>, <strong>Hernán Cattaneo</strong>, <strong>Safri Duo</strong>, <strong>Bellaire</strong>, <strong>Eric Prydz</strong>, and <strong>Parcels</strong>, among many others."
+    "bio3": "On stage, I look for <strong>emotional connection</strong> with the audience, real-time crowd reading, and precise technical execution. My influences include artists such as <strong>Fred Again..</strong>, <strong>Hernán Cattaneo</strong>, <strong>Safri Duo</strong>, <strong>Bellaire</strong>, <strong>Eric Prydz</strong>, and <strong>Parcels</strong>, among many others.",
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "Who is Josep Bernad?",
+        "a": "Josep Bernad is a house music DJ, multi-instrumentalist, and software engineer from Mallorca, Spain. He is based in Barcelona and produces original house music while performing live and DJ sets across Spain."
+      },
+      {
+        "q": "Where is Josep Bernad based?",
+        "a": "He is from Mallorca and based in Barcelona, working between both cities and traveling for live and DJ engagements."
+      },
+      {
+        "q": "What music genres does Josep Bernad play?",
+        "a": "Primarily house music, including deep house and afro house, with electronic productions that blend digital textures and live instrumentation. For open-format events he covers multiple genres."
+      },
+      {
+        "q": "What live formats does he offer?",
+        "a": "Three: a Live Set with original music performed on live instruments; a House DJ Set built around a curated music library; and a Party Set (Open Format) designed for parties, weddings, festivals, and corporate events."
+      },
+      {
+        "q": "What instruments does Josep Bernad play?",
+        "a": "He trained from a young age as a drummer and later as a multi-instrumentalist, combining live instruments with electronic production in his Live Set."
+      },
+      {
+        "q": "What languages does Josep Bernad speak?",
+        "a": "Catalan, Spanish, and English."
+      },
+      {
+        "q": "How can I book Josep Bernad for an event?",
+        "a": "Use the form on the Contact page or email hi@josepbernad.com. He performs at clubs, festivals, weddings, and corporate events in Barcelona, Mallorca, and beyond."
+      }
+    ]
   },
   "es": {
     "hero": {
@@ -15,9 +48,42 @@
       "title": "Hola, soy <em>Josep</em>.",
       "sub": "Músico, DJ e ingeniero de software, escribiendo House entre Barcelona y Mallorca."
     },
+    "glanceLabel": "TL;DR",
+    "glance": "Josep Bernad es DJ de house y multi-instrumentista mallorquín, afincado en Barcelona. Presenta tres formatos: Live Set con instrumentos en vivo, House DJ Set y Party Set (Open Format). Actúa en clubs, festivales, beach clubs, bodas y eventos corporativos. Es también ingeniero de software y habla catalán, castellano e inglés.",
     "bio1": "Soy <strong>Josep Bernad</strong>, <strong>músico y DJ</strong> de <strong>Mallorca</strong> afincado en <strong>Barcelona</strong>, y también <strong>ingeniero de software</strong>: una combinación que me permite fusionar tecnología avanzada con creatividad en todas mis producciones. Me formé desde pequeño como <strong>baterista</strong> y posteriormente como <strong>multi-instrumentista</strong>, y mi proyecto personal se sumerge en la <strong>música electrónica</strong>, principalmente <strong>House</strong>, mezclando texturas digitales contemporáneas con influencias profundas y una estética sonora elegante. Trabajando entre Barcelona y Mallorca, continúo expandiendo mi catálogo de producciones originales, siempre buscando ofrecer una experiencia musical distintiva y sólida.",
     "bio2": "Presento tres formatos en directo: un <strong>Live Set</strong> con mi propia música interpretada con instrumentos en vivo; un <strong>House DJ Set</strong> construido alrededor de una extensa y cuidadosamente curada biblioteca musical; y un <strong>Party Set (Open Format)</strong> diseñado para fiestas y festivales, donde mezclo múltiples géneros manteniendo una narrativa coherente y transiciones impecables.",
-    "bio3": "En el escenario, busco la <strong>conexión emocional</strong> con el público, lectura del público en tiempo real y ejecución técnica precisa. Mis influencias incluyen artistas como <strong>Fred Again..</strong>, <strong>Hernán Cattaneo</strong>, <strong>Safri Duo</strong>, <strong>Bellaire</strong>, <strong>Eric Prydz</strong> y <strong>Parcels</strong>, entre muchos otros."
+    "bio3": "En el escenario, busco la <strong>conexión emocional</strong> con el público, lectura del público en tiempo real y ejecución técnica precisa. Mis influencias incluyen artistas como <strong>Fred Again..</strong>, <strong>Hernán Cattaneo</strong>, <strong>Safri Duo</strong>, <strong>Bellaire</strong>, <strong>Eric Prydz</strong> y <strong>Parcels</strong>, entre muchos otros.",
+    "faqTitle": "Preguntas frecuentes",
+    "faq": [
+      {
+        "q": "¿Quién es Josep Bernad?",
+        "a": "Josep Bernad es DJ de house, multi-instrumentista e ingeniero de software, mallorquín y afincado en Barcelona. Produce house original y actúa en directo y como DJ por toda España."
+      },
+      {
+        "q": "¿Dónde reside Josep Bernad?",
+        "a": "Es de Mallorca y vive en Barcelona, trabajando entre ambas ciudades y viajando para sus actuaciones en directo y DJ sets."
+      },
+      {
+        "q": "¿Qué géneros toca?",
+        "a": "Principalmente house, incluyendo deep house y afro house, con producciones electrónicas que combinan texturas digitales e instrumentación en vivo. En eventos open format mezcla varios géneros."
+      },
+      {
+        "q": "¿Qué formatos en directo ofrece?",
+        "a": "Tres: un Live Set con música original interpretada con instrumentos en vivo; un House DJ Set basado en una biblioteca musical cuidadosamente seleccionada; y un Party Set (Open Format) para fiestas, bodas, festivales y eventos corporativos."
+      },
+      {
+        "q": "¿Qué instrumentos toca?",
+        "a": "Se formó desde pequeño como baterista y posteriormente como multi-instrumentista, combinando instrumentos en vivo con producción electrónica en su Live Set."
+      },
+      {
+        "q": "¿Qué idiomas habla?",
+        "a": "Catalán, castellano e inglés."
+      },
+      {
+        "q": "¿Cómo se le puede contratar?",
+        "a": "A través del formulario de la página de Contacto o por email a hi@josepbernad.com. Actúa en clubs, festivales, bodas y eventos corporativos en Barcelona, Mallorca y más allá."
+      }
+    ]
   },
   "ca": {
     "hero": {
@@ -25,8 +91,41 @@
       "title": "Hola, sóc en <em>Josep</em>.",
       "sub": "Músic, DJ i enginyer de software, escrivint House entre Barcelona i Mallorca."
     },
+    "glanceLabel": "TL;DR",
+    "glance": "Josep Bernad és DJ de house i multi-instrumentista mallorquí, establert a Barcelona. Presenta tres formats: Live Set amb instruments en viu, House DJ Set i Party Set (Open Format). Actua en clubs, festivals, beach clubs, casaments i esdeveniments corporatius. És també enginyer de software i parla català, castellà i anglès.",
     "bio1": "Sóc en <strong>Josep Bernad</strong>, <strong>músic i DJ</strong> de <strong>Mallorca</strong> establert a <strong>Barcelona</strong>, i també <strong>enginyer de software</strong>: una combinació que em permet fusionar tecnologia avançada amb creativitat en totes les meves produccions. Em vaig formar des de petit com a <strong>bateria</strong> i posteriorment com a <strong>multi-instrumentista</strong>, i el meu projecte personal s'endinsa en la <strong>música electrònica</strong>, principalment <strong>House</strong>, barrejant textures digitals contemporànies amb influències profundes i una estètica sonora elegant. Treballant entre Barcelona i Mallorca, continuo expandint el meu catàleg de produccions originals, sempre buscant oferir una experiència musical distintiva i sòlida.",
     "bio2": "Presento tres formats en directe: un <strong>Live Set</strong> amb la meva pròpia música interpretada amb instruments en viu; un <strong>House DJ Set</strong> construït al voltant d'una extensa i acuradament curada biblioteca musical; i un <strong>Party Set (Open Format)</strong> dissenyat per a festes i festivals, on barrejo múltiples gèneres mantenint una narrativa coherent i transicions impecables.",
-    "bio3": "A l'escenari, cerco la <strong>connexió emocional</strong> amb el públic, lectura del públic en temps real i execució tècnica precisa. Les meves influències inclouen artistes com <strong>Fred Again..</strong>, <strong>Hernán Cattaneo</strong>, <strong>Safri Duo</strong>, <strong>Bellaire</strong>, <strong>Eric Prydz</strong> i <strong>Parcels</strong>, entre molts altres."
+    "bio3": "A l'escenari, cerco la <strong>connexió emocional</strong> amb el públic, lectura del públic en temps real i execució tècnica precisa. Les meves influències inclouen artistes com <strong>Fred Again..</strong>, <strong>Hernán Cattaneo</strong>, <strong>Safri Duo</strong>, <strong>Bellaire</strong>, <strong>Eric Prydz</strong> i <strong>Parcels</strong>, entre molts altres.",
+    "faqTitle": "Preguntes freqüents",
+    "faq": [
+      {
+        "q": "Qui és en Josep Bernad?",
+        "a": "En Josep Bernad és DJ de house, multi-instrumentista i enginyer de software, mallorquí i establert a Barcelona. Produeix house original i actua en directe i com a DJ arreu d'Espanya."
+      },
+      {
+        "q": "On viu en Josep Bernad?",
+        "a": "És de Mallorca i viu a Barcelona, treballant entre les dues ciutats i viatjant per a les seves actuacions en directe i DJ sets."
+      },
+      {
+        "q": "Quins gèneres toca?",
+        "a": "Principalment house, incloent-hi deep house i afro house, amb produccions electròniques que combinen textures digitals i instrumentació en viu. En esdeveniments open format barreja diversos gèneres."
+      },
+      {
+        "q": "Quins formats en directe ofereix?",
+        "a": "Tres: un Live Set amb música original interpretada amb instruments en viu; un House DJ Set basat en una biblioteca musical acuradament curada; i un Party Set (Open Format) per a festes, casaments, festivals i esdeveniments corporatius."
+      },
+      {
+        "q": "Quins instruments toca?",
+        "a": "Es va formar des de petit com a bateria i posteriorment com a multi-instrumentista, combinant instruments en viu amb producció electrònica al seu Live Set."
+      },
+      {
+        "q": "Quins idiomes parla?",
+        "a": "Català, castellà i anglès."
+      },
+      {
+        "q": "Com es pot contractar?",
+        "a": "Mitjançant el formulari de la pàgina de Contacte o per correu a hi@josepbernad.com. Actua en clubs, festivals, casaments i esdeveniments corporatius a Barcelona, Mallorca i més enllà."
+      }
+    ]
   }
 }

@@ -55,7 +55,7 @@ test.describe('Video modal', () => {
 
     const titleEl = page.locator('#videoTitleOverlay');
     await expect(titleEl).not.toBeEmpty();
-    // Title may be split into main/sub spans — check the container text
+    // Title may be split into main/sub spans, check the container text
     const titleText = await titleEl.textContent();
     expect(titleText?.trim().length).toBeGreaterThan(0);
   });
@@ -76,7 +76,7 @@ test.describe('Video modal', () => {
 });
 
 // Mobile-specific: uses iframe instead of Vidstack player
-test.describe('Video modal — mobile', () => {
+test.describe('Video modal, mobile', () => {
   test.use({ viewport: { width: 375, height: 812 }, hasTouch: true });
 
   test('modal opens on mobile and shows iframe', async ({ page }) => {

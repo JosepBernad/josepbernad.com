@@ -1,11 +1,12 @@
 {# `pagePath` (language-prefix-stripped) is computed in base.njk and reused here for the switcher. #}
 
+{% set navStrings = home[currentLang].nav %}
 {% set navItems = [
-  { id: 'films', path: '/films/', label: 'Films', i18n: 'nav.films' },
-  { id: 'live', path: '/live/', label: 'Live', i18n: 'nav.live' },
-  { id: 'about', path: '/about/', label: 'About', i18n: 'nav.about' },
-  { id: 'contact', path: '/contact/', label: 'Contact', i18n: 'nav.contact' },
-  { id: 'presskit', path: '/press-kit/', label: 'Press Kit', i18n: 'nav.presskit' }
+  { id: 'films', path: '/films/', label: navStrings.films, i18n: 'nav.films' },
+  { id: 'live', path: '/live/', label: navStrings.live, i18n: 'nav.live' },
+  { id: 'about', path: '/about/', label: navStrings.about, i18n: 'nav.about' },
+  { id: 'contact', path: '/contact/', label: navStrings.contact, i18n: 'nav.contact' },
+  { id: 'presskit', path: '/press-kit/', label: navStrings.presskit, i18n: 'nav.presskit' }
 ] %}
 
 <header class="site-header">

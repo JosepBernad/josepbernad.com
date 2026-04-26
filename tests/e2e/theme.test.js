@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 // Two `.theme-toggle` buttons exist in the header (desktop nav + mobile overlay).
 // On ≤500px viewports the desktop one is `display: none` and the overlay one
-// lives inside a clip-path-hidden menu — so the menu must be opened first.
+// lives inside a clip-path-hidden menu, so the menu must be opened first.
 async function clickThemeToggle(page) {
   const navToggle = page.locator('.nav-toggle');
   if (await navToggle.isVisible()) {

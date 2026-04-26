@@ -18,7 +18,7 @@ eleventyComputed:
     <span class="home-location">Mainly House Music</span>
     <span class="home-claim">Barcelona // Mallorca</span>
     <span class="title">Josep Bernad</span>
-    <span class="subtitle" data-i18n="subtitle">Live & DJ Set</span>
+    <span class="subtitle" data-i18n="subtitle">{{ home[currentLang].subtitle }}</span>
   </h1>
 
   {% set nextShow = live.upcoming | upcomingOnly | first %}
@@ -31,12 +31,12 @@ eleventyComputed:
   {% endif %}
 
   <nav>
-    <a href="{{ currentPrefix }}/films/" class="films-button" data-i18n="nav.films">Films</a>
+    <a href="{{ currentPrefix }}/films/" class="films-button" data-i18n="nav.films">{{ home[currentLang].nav.films }}</a>
 
     <ul class="nav-sections">
-      <li><a href="{{ currentPrefix }}/about/" data-i18n="nav.about">About</a></li>
-      <li><a href="{{ currentPrefix }}/contact/" data-i18n="nav.contact">Contact</a></li>
-      <li><a href="{{ currentPrefix }}/press-kit/" data-i18n="nav.presskit">Press Kit</a></li>
+      <li><a href="{{ currentPrefix }}/about/" data-i18n="nav.about">{{ home[currentLang].nav.about }}</a></li>
+      <li><a href="{{ currentPrefix }}/contact/" data-i18n="nav.contact">{{ home[currentLang].nav.contact }}</a></li>
+      <li><a href="{{ currentPrefix }}/press-kit/" data-i18n="nav.presskit">{{ home[currentLang].nav.presskit }}</a></li>
     </ul>
   </nav>
 
@@ -75,7 +75,7 @@ eleventyComputed:
     {% if loop.index0 == 0 or loop.index0 == 1 or loop.index0 == 4 %}
     <article class="home-film-card{% if film.tags[0] == 'Live Set' %} film-card--live{% endif %}" data-video-id="{{ film.videoId }}" data-title="{{ film.title }}" data-tags='{{ film.tags | dump | safe }}' data-location="{{ film.location }}" data-date="{{ film.date }}">
       <div class="film-thumbnail">
-        <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }} — Josep Bernad {{ film.tags[0] }} in {{ film.location }}" loading="lazy" width="480" height="360">
+        <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }}, Josep Bernad {{ film.tags[0] }} in {{ film.location }}" loading="lazy" width="480" height="360">
         <div class="film-play">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5v14l11-7z"/>
@@ -92,19 +92,19 @@ eleventyComputed:
     {% endif %}
     {% endfor %}
   </div>
-  <a href="{{ currentPrefix }}/films/" class="home-films-link" data-i18n="nav.films">Films →</a>
+  <a href="{{ currentPrefix }}/films/" class="home-films-link" data-i18n="nav.films">{{ home[currentLang].nav.films }} →</a>
 </section>
 
 <section class="home-panoramic">
   <img src="/images/JosepBernad-Panoramic.webp" alt="Josep playing at night in Artà" loading="lazy">
   <div class="home-panoramic-overlay" id="newsletter-banner">
-    <p class="newsletter-text" data-i18n="newsletter.cta">Stay Updated</p>
+    <p class="newsletter-text" data-i18n="newsletter.cta">{{ home[currentLang].newsletter.cta }}</p>
     <form class="newsletter-form" id="newsletter-form">
-      <input type="email" name="EMAIL" placeholder="email@example.com" data-i18n-placeholder="newsletter.placeholder" required>
+      <input type="email" name="EMAIL" placeholder="{{ home[currentLang].newsletter.placeholder }}" data-i18n-placeholder="newsletter.placeholder" required>
       <div style="position: absolute; left: -5000px;" aria-hidden="true">
         <input type="text" name="b_ec19e426d1a78e9baa513bfaf_7a99017863" tabindex="-1" value="">
       </div>
-      <button type="submit" data-i18n="newsletter.subscribe">Subscribe</button>
+      <button type="submit" data-i18n="newsletter.subscribe">{{ home[currentLang].newsletter.subscribe }}</button>
     </form>
     <p class="newsletter-status" id="newsletter-status"></p>
   </div>

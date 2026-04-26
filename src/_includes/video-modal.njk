@@ -39,7 +39,7 @@
       {% for film in films.items %}
       <article class="video-rec-card" data-video-id="{{ film.videoId }}" data-title="{{ film.title }}" data-tags='{{ film.tags | dump | safe }}' data-location="{{ film.location }}" data-date="{{ film.date }}">
         <div class="video-rec-thumb">
-          <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }} — Josep Bernad {{ film.tags[0] }} in {{ film.location }}" loading="lazy">
+          <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }}, Josep Bernad {{ film.tags[0] }} in {{ film.location }}" loading="lazy">
         </div>
         <div class="video-rec-info">
           <span class="video-rec-title">{{ film.title }}</span>

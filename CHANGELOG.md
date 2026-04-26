@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.10.0] - 2026-04-27
+
+### Added
+- Answer-engine optimization for AI assistants: new `/llms.txt` and `/llms-full.txt` (per the llmstxt.org convention) with key facts, live formats, page index, influences, and a long-form trilingual companion file.
+- `robots.txt` now explicitly allows the major AI crawlers (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-Web, Claude-SearchBot, PerplexityBot, Google-Extended, Applebot-Extended, CCBot, Bytespider, Meta-ExternalAgent, Amazonbot, cohere-ai, DuckAssistBot, MistralAI-User).
+- About page: trilingual `TL;DR` glance section and a 7-question FAQ covering identity, location, genres, formats, instruments, languages, and booking.
+- Contact page: trilingual 6-question booking FAQ with a press-kit CTA.
+- `FAQPage` JSON-LD on `/about/` and `/contact/` (one entry per question, including press-kit deep-link in the answer).
+- `Person.knowsLanguage` (`ca`, `es`, `en`) added to the about-page JSON-LD; `Person.description` now sources from the new glance copy.
+- Project typography rule (`CLAUDE.md`): no em-dash or en-dash anywhere in `src/`. Enforced by new unit test `tests/unit/no-em-dash.test.js`, which scans every `.njk`, `.json`, `.css`, `.js`, `.html`, and `.md` file.
+
+### Changed
+- Server-render localized text via Eleventy on every page so crawlers (Bing, social, AI bots that don't run JS) see actual content. About bios, contact form labels, hero copy, nav links, newsletter CTAs, and the recaptcha disclaimer were previously empty `data-i18n` placeholders filled only by client-side JS. Templates now emit the localized strings inline from the existing per-language data files; `data-i18n` attributes remain so client-side language switching keeps working.
+- SEO title separators across all languages and pages: em-dash (`Page — Site`) replaced with pipe (`Page | Site`).
+- Image alt text on home, films, video-modal recommendations, and `VideoObject` JSON-LD descriptions: em-dash separators replaced with commas.
+- Contact form notes: `2–3 days` rephrased as `2 to 3 days` / `2 a 3 días` / `2 a 3 dies`.
+- Live event description (Licors Moyà): paragraph break inserted before the Sonia Santandreu credit so the artist mention sits on its own line.
+
 ## [1.9.0] - 2026-04-26
 
 ### Added

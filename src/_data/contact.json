@@ -13,10 +13,38 @@
     "labelMessage": "Your message",
 
     "sendButton": "Send",
-    "formNote": "Typically replies within 2–3 days",
+    "formNote": "Typically replies within 2 to 3 days",
 
     "emailAddress": "&#104;&#105;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;",
-    "recaptcha": "This site is protected by reCAPTCHA and the Google <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a> and <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Terms of Service</a> apply."
+    "recaptcha": "This site is protected by reCAPTCHA and the Google <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a> and <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Terms of Service</a> apply.",
+    "faqTitle": "Booking FAQ",
+    "faq": [
+      {
+        "q": "How do I book Josep Bernad?",
+        "a": "Send a message through the form on this page or email hi@josepbernad.com with the date, location, type of event, and expected duration. I respond in hours."
+      },
+      {
+        "q": "Where does Josep Bernad perform?",
+        "a": "Primarily in Mallorca and Barcelona, with travel for select dates across Spain and beyond."
+      },
+      {
+        "q": "What kinds of events does he play?",
+        "a": "Clubs, festivals, beach clubs, weddings, private parties, and corporate events. Format options include a Live Set, a House DJ Set, and an Open Format Party Set."
+      },
+      {
+        "q": "Does he handle weddings and private events?",
+        "a": "Yes. The Party Set (Open Format) is designed specifically for weddings and private events, mixing multiple genres while keeping a coherent narrative."
+      },
+      {
+        "q": "Is there a press kit?",
+        "a": "Yes: bio, logos, technical rider, and booking contact, all in one place.",
+        "cta": { "label": "Open press kit", "href": "/press-kit/" }
+      },
+      {
+        "q": "What languages can I write in?",
+        "a": "English, Catalan, or Spanish."
+      }
+    ]
   },
   "es": {
     "eyebrow": "Ponte en contacto",
@@ -32,10 +60,38 @@
     "labelMessage": "Tu mensaje",
 
     "sendButton": "Enviar",
-    "formNote": "Normalmente respondo en 2–3 días",
+    "formNote": "Normalmente respondo en 2 a 3 días",
 
     "emailAddress": "&#104;&#111;&#108;&#97;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;",
-    "recaptcha": "Este sitio está protegido por reCAPTCHA y se aplican la <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Política de Privacidad</a> y los <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Términos de Servicio</a> de Google."
+    "recaptcha": "Este sitio está protegido por reCAPTCHA y se aplican la <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Política de Privacidad</a> y los <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Términos de Servicio</a> de Google.",
+    "faqTitle": "FAQ de reservas",
+    "faq": [
+      {
+        "q": "¿Cómo se contrata a Josep Bernad?",
+        "a": "Envía un mensaje a través del formulario o un email a hi@josepbernad.com indicando fecha, lugar, tipo de evento y duración prevista. Respondo en horas."
+      },
+      {
+        "q": "¿Dónde actúa?",
+        "a": "Principalmente en Mallorca y Barcelona, con viajes para fechas concretas por toda España y más allá."
+      },
+      {
+        "q": "¿En qué tipo de eventos toca?",
+        "a": "Clubs, festivales, beach clubs, bodas, fiestas privadas y eventos corporativos. Los formatos disponibles son Live Set, House DJ Set y Party Set (Open Format)."
+      },
+      {
+        "q": "¿Hace bodas y eventos privados?",
+        "a": "Sí. El Party Set (Open Format) está diseñado específicamente para bodas y eventos privados, mezclando varios géneros con una narrativa coherente."
+      },
+      {
+        "q": "¿Hay press kit?",
+        "a": "Sí: bio, logos, rider técnico y contacto de reservas, todo en un mismo lugar.",
+        "cta": { "label": "Abrir press kit", "href": "/es/press-kit/" }
+      },
+      {
+        "q": "¿En qué idiomas puedo escribir?",
+        "a": "Castellano, catalán o inglés."
+      }
+    ]
   },
   "ca": {
     "eyebrow": "Posa't en contacte",
@@ -51,9 +107,37 @@
     "labelMessage": "El teu missatge",
 
     "sendButton": "Enviar",
-    "formNote": "Normalment responc en 2–3 dies",
+    "formNote": "Normalment responc en 2 a 3 dies",
 
     "emailAddress": "&#104;&#111;&#108;&#97;&#64;&#106;&#111;&#115;&#101;&#112;&#98;&#101;&#114;&#110;&#97;&#100;&#46;&#99;&#111;&#109;",
-    "recaptcha": "Aquest lloc està protegit per reCAPTCHA i s'apliquen la <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Política de Privacitat</a> i els <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Termes de Servei</a> de Google."
+    "recaptcha": "Aquest lloc està protegit per reCAPTCHA i s'apliquen la <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Política de Privacitat</a> i els <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Termes de Servei</a> de Google.",
+    "faqTitle": "FAQ de reserves",
+    "faq": [
+      {
+        "q": "Com es contracta en Josep Bernad?",
+        "a": "Envia un missatge mitjançant el formulari o un correu a hi@josepbernad.com indicant data, lloc, tipus d'esdeveniment i durada prevista. Responc en hores."
+      },
+      {
+        "q": "On actua?",
+        "a": "Principalment a Mallorca i Barcelona, amb viatges per a dates concretes arreu d'Espanya i més enllà."
+      },
+      {
+        "q": "En quins esdeveniments toca?",
+        "a": "Clubs, festivals, beach clubs, casaments, festes privades i esdeveniments corporatius. Els formats disponibles són Live Set, House DJ Set i Party Set (Open Format)."
+      },
+      {
+        "q": "Fa casaments i esdeveniments privats?",
+        "a": "Sí. El Party Set (Open Format) està dissenyat específicament per a casaments i esdeveniments privats, barrejant diversos gèneres amb una narrativa coherent."
+      },
+      {
+        "q": "Hi ha press kit?",
+        "a": "Sí: bio, logos, rider tècnic i contacte de reserves, tot en un mateix lloc.",
+        "cta": { "label": "Obrir press kit", "href": "/ca/press-kit/" }
+      },
+      {
+        "q": "En quins idiomes puc escriure?",
+        "a": "Català, anglès o castellà."
+      }
+    ]
   }
 }

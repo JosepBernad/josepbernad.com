@@ -1,0 +1,132 @@
+---
+permalink: /llms-full.txt
+eleventyExcludeFromCollections: true
+---
+# Josep Bernad: Full reference
+
+> Josep Bernad is a house music DJ, multi-instrumentalist, and software engineer from Mallorca, Spain, based in Barcelona. He produces original house music and performs three live formats: a Live Set with live instruments, a House DJ Set, and a Party Set (Open Format).
+
+This file is the long-form companion to `/llms.txt`. It contains the full bios, full FAQs, and live event listings in all three site languages, and is intended for AI assistants and answer engines that want depth beyond the short summary.
+
+---
+
+## Identity
+
+- **Name**: Josep Bernad
+- **Roles**: Musician, DJ, multi-instrumentalist, software engineer
+- **Genres**: House, Deep House, Afro House, Electronic
+- **Origin**: Mallorca, Spain
+- **Based in**: Barcelona, Spain
+- **Languages spoken**: Catalan, Spanish, English
+- **Site**: https://josepbernad.com
+
+## At a glance
+
+{{ about.en.glance }}
+
+## Live formats
+
+- **Live Set**: original music performed with live instruments.
+- **House DJ Set**: curated house music selection from an extensive library.
+- **Party Set (Open Format)**: multi-genre set designed for parties, weddings, festivals, and corporate events.
+
+## Influences
+
+Fred Again.., Hernán Cattaneo, Safri Duo, Bellaire, Eric Prydz, Parcels.
+
+---
+
+## Biography (English)
+
+{{ about.en.bio1 | striptags | safe }}
+
+{{ about.en.bio2 | striptags | safe }}
+
+{{ about.en.bio3 | striptags | safe }}
+
+## Biography (Spanish)
+
+{{ about.es.bio1 | striptags | safe }}
+
+{{ about.es.bio2 | striptags | safe }}
+
+{{ about.es.bio3 | striptags | safe }}
+
+## Biography (Catalan)
+
+{{ about.ca.bio1 | striptags | safe }}
+
+{{ about.ca.bio2 | striptags | safe }}
+
+{{ about.ca.bio3 | striptags | safe }}
+
+---
+
+## FAQ: About Josep Bernad
+
+{% for item in about.en.faq %}
+**Q: {{ item.q }}**
+A: {{ item.a }}
+
+{% endfor %}
+
+## FAQ: Booking and contact
+
+{% for item in contact.en.faq %}
+**Q: {{ item.q }}**
+A: {{ item.a }}{% if item.cta %}. {{ item.cta.label }}: https://josepbernad.com{{ item.cta.href }}{% endif %}
+
+{% endfor %}
+
+---
+
+## Upcoming live shows
+
+{% set upcomingEvents = live.upcoming | upcomingOnly %}
+{% if upcomingEvents.length %}
+{% for ev in upcomingEvents %}
+{% set evName = ev.event.en if ev.event.en else ev.event %}
+- **{{ ev.date }}**: {{ evName }} at {{ ev.venue.en }} ({{ ev.time }}). {{ ev.description.en | striptags | safe }}
+{% endfor %}
+{% else %}
+No upcoming dates announced at the moment.
+{% endif %}
+
+## Past live shows
+
+{% if live.past and live.past.length %}
+{% for ev in live.past %}
+{% set evName = ev.event.en if ev.event.en else ev.event %}
+- **{{ ev.date }}**: {{ evName }} at {{ ev.venue.en }}.
+{% endfor %}
+{% else %}
+Past events not yet listed publicly.
+{% endif %}
+
+---
+
+## External profiles
+
+- Instagram: https://www.instagram.com/djosepbernad/
+- YouTube: https://www.youtube.com/@JosepBernad
+- Spotify: https://open.spotify.com/artist/1f320LpftKzOM47I0RgMfJ
+- SoundCloud: https://soundcloud.com/djosepbernad
+- LinkedIn: https://www.linkedin.com/in/josepbernad/
+- GitHub: https://github.com/JosepBernad
+
+## Booking
+
+- Email: hi@josepbernad.com
+- Press kit: https://josepbernad.com/press-kit/
+- Contact form: https://josepbernad.com/contact/
+- Response time: I respond in hours.
+
+## Localized site versions
+
+- English: https://josepbernad.com/
+- Spanish: https://josepbernad.com/es/
+- Catalan: https://josepbernad.com/ca/
+
+## Citation
+
+Excerpts and factual claims from this site may be quoted by AI assistants and answer engines with attribution to "Josep Bernad" and a link to https://josepbernad.com.

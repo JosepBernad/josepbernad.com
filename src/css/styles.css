@@ -1,4 +1,4 @@
-/* Self-hosted Sedan — was Google Fonts CDN. */
+/* Self-hosted Sedan, was Google Fonts CDN. */
 @font-face {
   font-family: 'Sedan';
   font-style: normal;
@@ -388,7 +388,7 @@ body::before {
   transform: scale(0.92);
 }
 
-/* Hamburger / nav toggle — visible only on small screens */
+/* Hamburger / nav toggle, visible only on small screens */
 .nav-toggle {
   display: none;
   width: 36px;
@@ -435,7 +435,7 @@ body::before {
 
   /* Nav slides out from behind the header using clip-path instead of
      z-index (the nav is a descendant of the bar, so z-index can't cover
-     it — clipping removes the glitch entirely). */
+     it, clipping removes the glitch entirely). */
   .site-header__left .site-nav {
     position: absolute;
     top: 100%;
@@ -525,7 +525,7 @@ html:not([data-section]) body::before {
   position: relative;
 }
 
-/* Home sections — stacked full-width */
+/* Home sections, stacked full-width */
 .home-hero,
 .home-films,
 .home-panoramic,
@@ -874,7 +874,7 @@ html:not([data-section]) body::before {
   color: #1a1a1a;
 }
 
-/* Home newsletter section — inline below films */
+/* Home newsletter section, inline below films */
 
 .home-newsletter {
   flex-wrap: wrap;
@@ -1693,6 +1693,47 @@ html:not([data-section]) body::before {
   flex: 1;
 }
 
+/* TL;DR, fact-dense entity summary above the editorial bio, also fed into Person JSON-LD for LLMs */
+.about-glance {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.about-glance-label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  opacity: 0.6;
+  margin-bottom: 0.7rem;
+}
+
+.about-glance-text {
+  font-family: 'Sedan', serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  margin: 0;
+  opacity: 0.92;
+}
+
+[data-theme="light"] .about-glance {
+  background: rgba(0, 0, 0, 0.035);
+}
+[data-theme="light"] .about-glance-label,
+[data-theme="light"] .about-glance-text { color: #1a1a1a; }
+
+[data-theme="dark"] .about-glance {
+  background: rgba(255, 255, 255, 0.04);
+}
+[data-theme="dark"] .about-glance-label,
+[data-theme="dark"] .about-glance-text { color: #f5f5f5; }
+
 .about-content p {
   font-size: 1rem;
   line-height: 1.8;
@@ -1734,11 +1775,165 @@ html:not([data-section]) body::before {
   }
 }
 
-/* Editorial hero — reused on each section page */
+/* Editorial hero, reused on each section page */
 .page-hero-wrap {
   max-width: 900px;
   margin: 0 auto 2.5rem;
 }
+
+/* FAQ, accordion; also surfaced as FAQPage JSON-LD for LLMs */
+.page-faq {
+  max-width: 720px;
+  margin: 4.5rem auto 0;
+  padding: 0 0.5rem;
+  text-align: left;
+}
+
+.page-faq-title {
+  font-family: 'Sedan', serif;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin: 0 0 1.25rem;
+  opacity: 0.85;
+  text-align: left;
+}
+
+.page-faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-faq-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.page-faq-item:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .page-faq-item,
+[data-theme="dark"] .page-faq-item:first-child {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.page-faq-q {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  list-style: none;
+  cursor: pointer;
+  padding: 1.1rem 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  text-align: left;
+  user-select: none;
+  transition: opacity 160ms ease;
+}
+
+.page-faq-q::-webkit-details-marker { display: none; }
+.page-faq-q::marker { content: ""; }
+
+.page-faq-q:hover { opacity: 0.7; }
+.page-faq-q:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.page-faq-q-text {
+  flex: 1;
+}
+
+.page-faq-marker {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  position: relative;
+  margin-top: 0.5rem;
+  opacity: 0.55;
+  transition: opacity 160ms ease, transform 220ms ease;
+}
+
+.page-faq-q:hover .page-faq-marker { opacity: 0.9; }
+
+.page-faq-marker::before,
+.page-faq-marker::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform 220ms ease;
+}
+
+.page-faq-marker::before { width: 10px; height: 1.25px; }
+.page-faq-marker::after  { width: 1.25px; height: 10px; }
+
+.page-faq-item[open] .page-faq-marker { opacity: 0.9; }
+.page-faq-item[open] .page-faq-marker::after {
+  transform: translate(-50%, -50%) scaleY(0);
+}
+
+.page-faq-a {
+  padding: 0 1.5rem 1.3rem 0;
+  text-align: left;
+}
+
+.page-faq-a p {
+  margin: 0 0 0.9rem;
+  font-family: 'Sedan', serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  opacity: 0.82;
+}
+
+.page-faq-a p:last-child { margin-bottom: 0; }
+
+.page-faq-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: opacity 160ms ease, transform 160ms ease, background-color 160ms ease;
+}
+
+.page-faq-cta:hover { transform: translateX(2px); }
+.page-faq-cta span { transition: transform 160ms ease; }
+.page-faq-cta:hover span { transform: translateX(2px); }
+
+[data-theme="light"] .page-faq-title,
+[data-theme="light"] .page-faq-q { color: #1a1a1a; }
+[data-theme="light"] .page-faq-a p { color: #1a1a1a; }
+[data-theme="light"] .page-faq-cta {
+  background: #1a1a1a;
+  color: #fff;
+}
+[data-theme="light"] .page-faq-cta:hover { background: #000; }
+
+[data-theme="dark"]  .page-faq-title,
+[data-theme="dark"]  .page-faq-q { color: #f5f5f5; }
+[data-theme="dark"]  .page-faq-a p { color: #f5f5f5; }
+[data-theme="dark"]  .page-faq-cta {
+  background: #f5f5f5;
+  color: #0a0a0a;
+}
+[data-theme="dark"]  .page-faq-cta:hover { background: #fff; }
 
 /* Contact Page */
 .contact-wrap {
@@ -1821,7 +2016,7 @@ html:not([data-section]) body::before {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Left column — contact details */
+/* Left column, contact details */
 .contact-details {
   display: flex;
   flex-direction: column;
@@ -1902,7 +2097,7 @@ html:not([data-section]) body::before {
   background-color: rgba(255, 255, 255, var(--hover-bg-dark-alpha));
 }
 
-/* Right column — form (BOXED inputs) */
+/* Right column, form (BOXED inputs) */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1983,7 +2178,7 @@ html:not([data-section]) body::before {
   .field-row { grid-template-columns: 1fr 1fr; }
 }
 
-/* Submit button — matches .home-about-link / .home-films-link exactly */
+/* Submit button, matches .home-about-link / .home-films-link exactly */
 .form-footer {
   display: flex;
   align-items: center;
@@ -2045,7 +2240,7 @@ html:not([data-section]) body::before {
 [data-theme="dark"] .contact-status.success { color: #5fd87f; }
 [data-theme="dark"] .contact-status.error   { color: #ff6b6b; }
 
-/* Mobile — stack the card, remove the divider */
+/* Mobile, stack the card, remove the divider */
 @media (max-width: 819px) {
   .contact-card { padding: 1.75rem; }
   .contact-details {
@@ -2321,7 +2516,7 @@ html:has(.error-page) body::after {
   transform: translateY(0);
 }
 
-/* Newsletter styles — always dark (sits on dark panoramic overlay) */
+/* Newsletter styles, always dark (sits on dark panoramic overlay) */
 .newsletter-text {
   color: #f5f5f5;
 }
@@ -2399,7 +2594,7 @@ html:has(.error-page) body::after {
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Backdrop as a pseudo-element — opacity-only transition survives rapid open/close */
+/* Backdrop as a pseudo-element, opacity-only transition survives rapid open/close */
 .video-modal::before {
   content: '';
   position: fixed;
@@ -2411,7 +2606,7 @@ html:has(.error-page) body::after {
   z-index: -1;
 }
 
-/* Active state — dark backdrop, interactable */
+/* Active state, dark backdrop, interactable */
 .video-modal.active {
   pointer-events: auto;
   opacity: 1;
@@ -2421,7 +2616,7 @@ html:has(.error-page) body::after {
   opacity: 1;
 }
 
-/* Player wrapper — scales in on open */
+/* Player wrapper, scales in on open */
 .video-modal .video-modal-wrapper {
   transform: scale(0.95);
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
@@ -2502,7 +2697,7 @@ html:has(.error-page) body::after {
   display: none !important;
 }
 
-/* Mobile YouTube iframe — hidden on desktop */
+/* Mobile YouTube iframe, hidden on desktop */
 .video-mobile-iframe {
   display: none;
   position: absolute;
@@ -2908,7 +3103,7 @@ html:has(.error-page) body::after {
 }
 
 /* ============================================================================
-   LIVE hero pill — home page, sits above Films button
+   LIVE hero pill, home page, sits above Films button
    ============================================================================ */
 .live-pill {
   display: inline-flex;
@@ -3219,7 +3414,7 @@ html:has(.error-page) body::after {
   color: #1a1a1a;
 }
 
-/* past list — slimmer */
+/* past list, slimmer */
 .live-card.is-past {
   grid-template-columns: 90px 1fr auto;
   padding: 1.25rem 1.75rem;
@@ -4153,7 +4348,7 @@ html:has(.error-page) body::after {
   opacity: 0.8;
 }
 
-/* contact card — split layout with primary email + booking CTA */
+/* contact card, split layout with primary email + booking CTA */
 .pk-contact-card {
   display: grid;
   grid-template-columns: 1fr;

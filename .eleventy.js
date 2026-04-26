@@ -46,7 +46,7 @@ module.exports = function(eleventyConfig) {
     const { year } = parseISODate(date);
     return isNaN(year) ? "" : String(year);
   });
-  // Short date for the home pill — "8 MAY"
+  // Short date for the home pill, "8 MAY"
   eleventyConfig.addFilter("liveDateShort", (date, lang) => {
     const { day, monthIdx } = parseISODate(date);
     const months = MONTHS_SHORT[lang] || MONTHS_SHORT.en;

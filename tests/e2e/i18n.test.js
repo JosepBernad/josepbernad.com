@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('i18n — language routing', () => {
+test.describe('i18n, language routing', () => {
   test('/ serves English (lang="en")', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
@@ -17,7 +17,7 @@ test.describe('i18n — language routing', () => {
   });
 });
 
-test.describe('i18n — translations applied', () => {
+test.describe('i18n, translations applied', () => {
   test('English nav link text renders after JS loads', async ({ page }) => {
     await page.goto('/');
     // Wait for translations fetch to complete and apply
