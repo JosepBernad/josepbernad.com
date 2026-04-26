@@ -37,9 +37,9 @@ eleventyComputed:
         <span class="year">{{ ev.date | liveYear }}</span>
       </div>
       <div class="live-info">
-        <h3 class="live-event">{{ ev.event }}</h3>
-        <p class="live-venue">{{ ev.venue }}</p>
-        <p class="live-desc">{{ ev.description[currentLang] }}</p>
+        <h3 class="live-event">{{ ev.event[currentLang] if ev.event[currentLang] else ev.event }}</h3>
+        <p class="live-venue">{{ ev.venue[currentLang] }}</p>
+        <p class="live-desc">{{ ev.description[currentLang] | safe }}</p>
       </div>
       <div class="live-meta">
         <span class="live-time">{{ ev.time }}</span>
@@ -75,8 +75,8 @@ eleventyComputed:
         <span class="year">{{ ev.date | liveYear }}</span>
       </div>
       <div class="live-info">
-        <h3 class="live-event">{{ ev.event }}</h3>
-        <p class="live-venue">{{ ev.venue }}</p>
+        <h3 class="live-event">{{ ev.event[currentLang] if ev.event[currentLang] else ev.event }}</h3>
+        <p class="live-venue">{{ ev.venue[currentLang] }}</p>
       </div>
       <div class="live-meta"><span class="live-time">{{ ev.time }}</span></div>
     </article>

@@ -21,6 +21,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/press-kit");
   eleventyConfig.addPassthroughCopy("src/favicon-light.svg");
   eleventyConfig.addPassthroughCopy("src/favicon-dark.svg");
+  eleventyConfig.addPassthroughCopy("src/favicon.ico");
+  eleventyConfig.addPassthroughCopy("src/apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
   eleventyConfig.addPassthroughCopy({ "src/_data/about.json": "data/about.json" });

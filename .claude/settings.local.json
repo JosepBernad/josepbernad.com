@@ -1,0 +1,22 @@
+{
+  "enabledPlugins": {
+    "vercel-plugin@vercel-vercel-plugin": false
+  },
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://registry.npmjs.org/vidstack/next\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('version',''\\)\\)\")",
+      "Bash(npm install *)",
+      "Bash(npx playwright *)",
+      "Bash(npm run *)",
+      "Bash(npm test *)",
+      "Bash(vercel build *)",
+      "Bash(git worktree *)",
+      "Bash(xargs git *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(npx vercel *)",
+      "Bash(git push *)"
+    ]
+  }
+}

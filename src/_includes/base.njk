@@ -34,7 +34,7 @@
   <meta property="og:title" content="{{ seoData.title }}">
   <meta property="og:description" content="{{ seoData.description }}">
   <meta property="og:image" content="https://josepbernad.com/images/og-image.jpg">
-  <meta property="og:image:alt" content="Josep Bernad — DJ and Musician from Barcelona and Mallorca">
+  <meta property="og:image:alt" content="Josep Bernad, DJ and Musician from Barcelona and Mallorca">
   <meta property="og:locale" content="{% if currentLang == 'es' %}es_ES{% elif currentLang == 'ca' %}ca_ES{% else %}en_US{% endif %}">
   {% if currentLang != 'en' %}<meta property="og:locale:alternate" content="en_US">{% endif %}
   {% if currentLang != 'es' %}<meta property="og:locale:alternate" content="es_ES">{% endif %}
@@ -66,7 +66,9 @@
   </script>
 
   <!-- Favicon -->
-  <link rel="icon" id="favicon" href="/favicon-light.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" id="favicon" href="/favicon-light.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
   <!-- Preload background images based on color scheme preference -->
   <link rel="preload" as="image" href="/images/bg-light-mobile.webp" media="(max-width: 767px) and (prefers-color-scheme: light)">
@@ -151,7 +153,7 @@
           {
             "@type": "WebPage",
             "name": "About",
-            "description": "Learn about Josep Bernad — musician, DJ, and multi-instrumentalist",
+            "description": "Learn about Josep Bernad, musician, DJ, and multi-instrumentalist",
             "url": "https://josepbernad.com/about/"
           },
           {

@@ -4,7 +4,7 @@
       "hero": {
         "eyebrow": "Press Kit",
         "title": "Everything you <em>need</em>.",
-        "sub": "Biography, set formats, logos, and technical rider — ready to download, copy, and share."
+        "sub": "Biography, set formats, logos, and technical rider, ready to download, copy, and share."
       },
       "bioTitle": "Biography",
       "bioLength": "Length",
@@ -18,7 +18,7 @@
       "logosDark": "Dark BG",
       "riderTitle": "Technical rider",
       "weddingsTitle": "Weddings & corporate events",
-      "weddingsIntro": "Curated musical experiences for weddings, brand activations, and private corporate events — from cocktail ambience to peak-time celebration.",
+      "weddingsIntro": "Curated musical experiences for weddings, brand activations, and private corporate events, from cocktail ambience to peak-time celebration.",
       "weddingsCredit": "By @roberto.tapia.filmmaker 🫶",
       "contactTitle": "Booking & contact",
       "contactEmailLabel": "Email",
@@ -29,13 +29,13 @@
       "contactCopyLabel": "Copy",
       "contactCopiedLabel": "Copied",
       "contactCtaTitle": "Check availability",
-      "contactCtaSub": "Share your date, venue, and format — I'll get back within 48h."
+      "contactCtaSub": "Share your date, venue, and format, I'll get back within 48h."
     },
     "es": {
       "hero": {
         "eyebrow": "Press Kit",
         "title": "Todo lo que <em>necesitas</em>.",
-        "sub": "Biografía, formatos, logos y rider técnico — listos para descargar, copiar y compartir."
+        "sub": "Biografía, formatos, logos y rider técnico, listos para descargar, copiar y compartir."
       },
       "bioTitle": "Biografía",
       "bioLength": "Extensión",
@@ -49,7 +49,7 @@
       "logosDark": "Fondo oscuro",
       "riderTitle": "Rider técnico",
       "weddingsTitle": "Bodas y eventos corporativos",
-      "weddingsIntro": "Experiencias musicales cuidadas para bodas, activaciones de marca y eventos corporativos privados — desde el ambiente de cóctel hasta la celebración en peak-time.",
+      "weddingsIntro": "Experiencias musicales cuidadas para bodas, activaciones de marca y eventos corporativos privados, desde el ambiente de cóctel hasta la celebración en peak-time.",
       "weddingsCredit": "Por @roberto.tapia.filmmaker 🫶",
       "contactTitle": "Booking y contacto",
       "contactEmailLabel": "Email",
@@ -60,13 +60,13 @@
       "contactCopyLabel": "Copiar",
       "contactCopiedLabel": "Copiado",
       "contactCtaTitle": "Consultar disponibilidad",
-      "contactCtaSub": "Cuéntame fecha, lugar y formato — te contesto en 48h."
+      "contactCtaSub": "Cuéntame fecha, lugar y formato, te contesto en 48h."
     },
     "ca": {
       "hero": {
         "eyebrow": "Press Kit",
         "title": "Tot el que <em>necessites</em>.",
-        "sub": "Biografia, formats, logos i rider tècnic — llestos per descarregar, copiar i compartir."
+        "sub": "Biografia, formats, logos i rider tècnic, llestos per descarregar, copiar i compartir."
       },
       "bioTitle": "Biografia",
       "bioLength": "Extensió",
@@ -80,7 +80,7 @@
       "logosDark": "Fons fosc",
       "riderTitle": "Rider tècnic",
       "weddingsTitle": "Bodes i esdeveniments corporatius",
-      "weddingsIntro": "Experiències musicals acurades per a bodes, activacions de marca i esdeveniments corporatius privats — des de l'ambient de còctel fins a la celebració en peak-time.",
+      "weddingsIntro": "Experiències musicals acurades per a bodes, activacions de marca i esdeveniments corporatius privats, des de l'ambient de còctel fins a la celebració en peak-time.",
       "weddingsCredit": "Per @roberto.tapia.filmmaker 🫶",
       "contactTitle": "Booking i contacte",
       "contactEmailLabel": "Email",
@@ -91,36 +91,36 @@
       "contactCopyLabel": "Copiar",
       "contactCopiedLabel": "Copiat",
       "contactCtaTitle": "Consultar disponibilitat",
-      "contactCtaSub": "Digue'm data, lloc i format — et contesto en 48h."
+      "contactCtaSub": "Digue'm data, lloc i format, et contesto en 48h."
     }
   },
   "bio": {
     "short": {
-      "en": "<p><strong>Josep Bernad</strong> is a musician, DJ, and software engineer from Mallorca, based in Barcelona. His project blends live instrumentation with electronic textures — mainly House — across three formats: a Live Set with his own compositions, a curated House DJ Set, and an open-format Party Set for festivals.</p>",
-      "es": "<p><strong>Josep Bernad</strong> es músico, DJ e ingeniero de software de Mallorca, afincado en Barcelona. Su proyecto combina instrumentación en directo con texturas electrónicas — principalmente House — en tres formatos: un Live Set con composiciones propias, un DJ Set de House curado y un Party Set open format para festivales.</p>",
-      "ca": "<p><strong>Josep Bernad</strong> és músic, DJ i enginyer de software de Mallorca, establert a Barcelona. El seu projecte combina instrumentació en directe amb textures electròniques — principalment House — en tres formats: un Live Set amb composicions pròpies, un DJ Set de House curat i un Party Set open format per a festivals.</p>"
+      "en": "<p><strong>Josep Bernad</strong> is a musician, DJ, and software engineer from Mallorca, based in Barcelona. His project blends live instrumentation with electronic textures, mainly House, across three formats: a Live Set with his own compositions, a curated House DJ Set, and an open-format Party Set for festivals.</p>",
+      "es": "<p><strong>Josep Bernad</strong> es músico, DJ e ingeniero de software de Mallorca, afincado en Barcelona. Su proyecto combina instrumentación en directo con texturas electrónicas, principalmente House, en tres formatos: un Live Set con composiciones propias, un DJ Set de House curado y un Party Set open format para festivales.</p>",
+      "ca": "<p><strong>Josep Bernad</strong> és músic, DJ i enginyer de software de Mallorca, establert a Barcelona. El seu projecte combina instrumentació en directe amb textures electròniques, principalment House, en tres formats: un Live Set amb composicions pròpies, un DJ Set de House curat i un Party Set open format per a festivals.</p>"
     },
     "long": {
-      "en": "<p><strong>Josep Bernad</strong> is a <strong>musician and DJ</strong> from <strong>Mallorca</strong> based in <strong>Barcelona</strong>, as well as a <strong>software engineer</strong> — a combination that allows him to merge advanced technology with creativity in all his productions. Trained from a young age as a drummer and later as a multi-instrumentalist, his personal project dives into electronic music — mainly House — blending contemporary digital textures with deep influences and an elegant sonic aesthetic.</p><p>He presents three live formats: a <strong>Live Set</strong> featuring his own music performed with live instruments; a <strong>House DJ Set</strong> built around an extensive and carefully curated music library; and a <strong>Party Set (Open Format)</strong> designed for parties and festivals, where he mixes multiple genres while maintaining a coherent narrative and flawless transitions.</p><p>On stage, he seeks emotional connection with the audience, real-time crowd reading, and precise technical execution. His influences include artists such as Fred Again.., Hernán Cattaneo, Safri Duo, Bellaire, Eric Prydz, and Parcels.</p>",
-      "es": "<p><strong>Josep Bernad</strong> es un <strong>músico y DJ</strong> de <strong>Mallorca</strong> afincado en <strong>Barcelona</strong>, además de <strong>ingeniero de software</strong> — una combinación que le permite fusionar tecnología avanzada con creatividad en todas sus producciones. Formado desde pequeño como baterista y posteriormente como multi-instrumentista, su proyecto personal se sumerge en la música electrónica — principalmente House — mezclando texturas digitales contemporáneas con influencias profundas y una estética sonora elegante.</p><p>Presenta tres formatos en directo: un <strong>Live Set</strong> con su propia música interpretada con instrumentos en vivo; un <strong>House DJ Set</strong> construido alrededor de una extensa biblioteca musical curada; y un <strong>Party Set (Open Format)</strong> diseñado para fiestas y festivales, donde mezcla múltiples géneros manteniendo una narrativa coherente y transiciones impecables.</p><p>En el escenario, busca la conexión emocional con el público, lectura del público en tiempo real y ejecución técnica precisa. Sus influencias incluyen a Fred Again.., Hernán Cattaneo, Safri Duo, Bellaire, Eric Prydz y Parcels.</p>",
-      "ca": "<p><strong>Josep Bernad</strong> és un <strong>músic i DJ</strong> de <strong>Mallorca</strong> establert a <strong>Barcelona</strong>, a més d'<strong>enginyer de software</strong> — una combinació que li permet fusionar tecnologia avançada amb creativitat en totes les seves produccions. Format des de petit com a bateria i posteriorment com a multi-instrumentista, el seu projecte personal s'endinsa en la música electrònica — principalment House — barrejant textures digitals contemporànies amb influències profundes i una estètica sonora elegant.</p><p>Presenta tres formats en directe: un <strong>Live Set</strong> amb la seva pròpia música interpretada amb instruments en viu; un <strong>House DJ Set</strong> construït al voltant d'una extensa biblioteca musical curada; i un <strong>Party Set (Open Format)</strong> dissenyat per a festes i festivals, on barreja múltiples gèneres mantenint una narrativa coherent i transicions impecables.</p><p>A l'escenari, cerca la connexió emocional amb el públic, lectura del públic en temps real i execució tècnica precisa. Les seves influències inclouen Fred Again.., Hernán Cattaneo, Safri Duo, Bellaire, Eric Prydz i Parcels.</p>"
+      "en": "<p><strong>Josep Bernad</strong> is a <strong>musician and DJ</strong> from <strong>Mallorca</strong> based in <strong>Barcelona</strong>, as well as a <strong>software engineer</strong>, a combination that allows him to merge advanced technology with creativity in all his productions. Trained from a young age as a drummer and later as a multi-instrumentalist, his personal project dives into electronic music, mainly House, blending contemporary digital textures with deep influences and an elegant sonic aesthetic.</p><p>He presents three live formats: a <strong>Live Set</strong> featuring his own music performed with live instruments; a <strong>House DJ Set</strong> built around an extensive and carefully curated music library; and a <strong>Party Set (Open Format)</strong> designed for parties and festivals, where he mixes multiple genres while maintaining a coherent narrative and flawless transitions.</p><p>On stage, he seeks emotional connection with the audience, real-time crowd reading, and precise technical execution. His influences include artists such as Fred Again.., Hernán Cattaneo, Safri Duo, Bellaire, Eric Prydz, and Parcels.</p>",
+      "es": "<p><strong>Josep Bernad</strong> es un <strong>músico y DJ</strong> de <strong>Mallorca</strong> afincado en <strong>Barcelona</strong>, además de <strong>ingeniero de software</strong>, una combinación que le permite fusionar tecnología avanzada con creatividad en todas sus producciones. Formado desde pequeño como baterista y posteriormente como multi-instrumentista, su proyecto personal se sumerge en la música electrónica, principalmente House, mezclando texturas digitales contemporáneas con influencias profundas y una estética sonora elegante.</p><p>Presenta tres formatos en directo: un <strong>Live Set</strong> con su propia música interpretada con instrumentos en vivo; un <strong>House DJ Set</strong> construido alrededor de una extensa biblioteca musical curada; y un <strong>Party Set (Open Format)</strong> diseñado para fiestas y festivales, donde mezcla múltiples géneros manteniendo una narrativa coherente y transiciones impecables.</p><p>En el escenario, busca la conexión emocional con el público, lectura del público en tiempo real y ejecución técnica precisa. Sus influencias incluyen a Fred Again.., Hernán Cattaneo, Safri Duo, Bellaire, Eric Prydz y Parcels.</p>",
+      "ca": "<p><strong>Josep Bernad</strong> és un <strong>músic i DJ</strong> de <strong>Mallorca</strong> establert a <strong>Barcelona</strong>, a més d'<strong>enginyer de software</strong>, una combinació que li permet fusionar tecnologia avançada amb creativitat en totes les seves produccions. Format des de petit com a bateria i posteriorment com a multi-instrumentista, el seu projecte personal s'endinsa en la música electrònica, principalment House, barrejant textures digitals contemporànies amb influències profundes i una estètica sonora elegant.</p><p>Presenta tres formats en directe: un <strong>Live Set</strong> amb la seva pròpia música interpretada amb instruments en viu; un <strong>House DJ Set</strong> construït al voltant d'una extensa biblioteca musical curada; i un <strong>Party Set (Open Format)</strong> dissenyat per a festes i festivals, on barreja múltiples gèneres mantenint una narrativa coherent i transicions impecables.</p><p>A l'escenari, cerca la connexió emocional amb el públic, lectura del públic en temps real i execució tècnica precisa. Les seves influències inclouen Fred Again.., Hernán Cattaneo, Safri Duo, Bellaire, Eric Prydz i Parcels.</p>"
     }
   },
   "formats": {
     "en": [
-      { "kind": "Format I",   "name": "Live Set",     "desc": "Original compositions performed with live instruments — drums, keys, and electronics woven into a continuous House-leaning journey." },
+      { "kind": "Format I",   "name": "Live Set",     "desc": "Original compositions performed with live instruments, drums, keys, and electronics woven into a continuous House-leaning journey." },
       { "kind": "Format II",  "name": "House DJ Set", "desc": "A curated selection from an extensive library. Deep, melodic, afro, and tech-leaning house with careful narrative and seamless transitions." },
-      { "kind": "Format III", "name": "Party Set",    "desc": "Open format for festivals and private events — multiple genres woven with a coherent story and peak-time energy." }
+      { "kind": "Format III", "name": "Party Set",    "desc": "Open format for festivals and private events, multiple genres woven with a coherent story and peak-time energy." }
     ],
     "es": [
-      { "kind": "Formato I",   "name": "Live Set",     "desc": "Composiciones originales interpretadas con instrumentos en vivo — batería, teclados y electrónica tejidas en un viaje continuo con esencia house." },
+      { "kind": "Formato I",   "name": "Live Set",     "desc": "Composiciones originales interpretadas con instrumentos en vivo, batería, teclados y electrónica tejidas en un viaje continuo con esencia house." },
       { "kind": "Formato II",  "name": "House DJ Set", "desc": "Selección curada de una amplia biblioteca. Deep, melodic, afro y tech house con narrativa cuidada y transiciones impecables." },
-      { "kind": "Formato III", "name": "Party Set",    "desc": "Open format para festivales y eventos privados — múltiples géneros con una historia coherente y energía de peak-time." }
+      { "kind": "Formato III", "name": "Party Set",    "desc": "Open format para festivales y eventos privados, múltiples géneros con una historia coherente y energía de peak-time." }
     ],
     "ca": [
-      { "kind": "Format I",   "name": "Live Set",     "desc": "Composicions originals interpretades amb instruments en viu — bateria, teclats i electrònica teixides en un viatge continu amb essència house." },
+      { "kind": "Format I",   "name": "Live Set",     "desc": "Composicions originals interpretades amb instruments en viu, bateria, teclats i electrònica teixides en un viatge continu amb essència house." },
       { "kind": "Format II",  "name": "House DJ Set", "desc": "Selecció curada d'una àmplia biblioteca. Deep, melodic, afro i tech house amb narrativa acurada i transicions impecables." },
-      { "kind": "Format III", "name": "Party Set",    "desc": "Open format per a festivals i esdeveniments privats — múltiples gèneres amb una història coherent i energia de peak-time." }
+      { "kind": "Format III", "name": "Party Set",    "desc": "Open format per a festivals i esdeveniments privats, múltiples gèneres amb una història coherent i energia de peak-time." }
     ]
   },
   "rider": {
@@ -190,19 +190,19 @@
   },
   "services": {
     "en": [
-      { "label": "Ceremony & cocktail", "name": "Ambient selection",     "desc": "Warm, melodic curation for arrivals, ceremony, and cocktail hour — elegant and unobtrusive." },
+      { "label": "Ceremony & cocktail", "name": "Ambient selection",     "desc": "Warm, melodic curation for arrivals, ceremony, and cocktail hour, elegant and unobtrusive." },
       { "label": "Dinner",              "name": "Curated dinner set",    "desc": "Deep grooves and soul-leaning house at conversation-friendly volume." },
       { "label": "Party",               "name": "Full dance-floor set",  "desc": "House-forward open format built to read the room and peak at the right moment." },
       { "label": "Corporate",           "name": "Brand & private events","desc": "Tailored sets for brand activations, product launches, and private corporate gatherings." }
     ],
     "es": [
-      { "label": "Ceremonia y cóctel", "name": "Selección ambiental",        "desc": "Curaduría cálida y melódica para llegadas, ceremonia y cóctel — elegante y discreta." },
+      { "label": "Ceremonia y cóctel", "name": "Selección ambiental",        "desc": "Curaduría cálida y melódica para llegadas, ceremonia y cóctel, elegante y discreta." },
       { "label": "Cena",               "name": "Set de cena curado",         "desc": "Grooves profundos y house con alma, a volumen apto para conversación." },
       { "label": "Fiesta",             "name": "Set de pista completo",      "desc": "Open format con base house, pensado para leer la sala y llegar al peak en el momento justo." },
       { "label": "Corporativo",        "name": "Marca y eventos privados",   "desc": "Sets a medida para activaciones de marca, lanzamientos de producto y eventos corporativos privados." }
     ],
     "ca": [
-      { "label": "Cerimònia i còctel", "name": "Selecció ambiental",              "desc": "Curadoria càlida i melòdica per a arribades, cerimònia i còctel — elegant i discreta." },
+      { "label": "Cerimònia i còctel", "name": "Selecció ambiental",              "desc": "Curadoria càlida i melòdica per a arribades, cerimònia i còctel, elegant i discreta." },
       { "label": "Sopar",              "name": "Set de sopar curat",              "desc": "Grooves profunds i house amb ànima, a volum apte per a conversa." },
       { "label": "Festa",              "name": "Set de pista complet",            "desc": "Open format amb base house, pensat per llegir la sala i arribar al peak en el moment just." },
       { "label": "Corporatiu",         "name": "Marca i esdeveniments privats",   "desc": "Sets a mida per a activacions de marca, llançaments de producte i esdeveniments corporatius privats." }

@@ -1,11 +1,12 @@
 {
   "name": "josepbernad.com",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Josep Bernad - Live & DJ Set",
   "private": true,
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
+    "build:favicons": "node scripts/generate-favicons.js",
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "test": "vitest run && playwright test"
@@ -13,6 +14,8 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@playwright/test": "^1.59.1",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5",
     "vitest": "^4.1.4"
   }
 }

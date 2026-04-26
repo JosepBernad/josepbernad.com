@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.8.0] - 2026-04-26
+
+### Added
+- Three new live dates: "Presentació Herbes Ecològiques" at Licors Moyà (May 8), "Mainly House Music at Kaafu" (May 24), and "Festa Tremolartà" at Na Batlessa (Jun 25).
+- `favicon.ico` and `apple-touch-icon.png` assets with passthrough copy in Eleventy config and `<link>` tags in `base.njk`.
+- `build:favicons` npm script and `generate-favicons.js` utility (`sharp` + `png-to-ico` deps).
+- Instagram pill-style link button styles in `.live-desc a` for event descriptions that include inline links.
+- Localized `event` and `venue` objects in `live.json` for upcoming dates; `live.njk` now renders them with lang fallback and `| safe` filter for HTML descriptions.
+
+### Changed
+- About bio rewritten in first-person voice across EN, ES, and CA.
+- Em dashes replaced with commas sitewide (about, contact, films, live, presskit, seo metadata, base.njk OG alt and JSON-LD).
+
 ## [1.7.0] - 2026-04-21
 
 ### Changed
