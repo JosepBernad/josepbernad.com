@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.9.0] - 2026-04-26
+
+### Added
+- Per-page JSON-LD structured data: `MusicEvent` for every upcoming show on `/live/`, `VideoObject` for every film on `/films/` and `/`, `ProfilePage` + `Person` on `/about/` linked to the existing `#musician` graph, and a localized `BreadcrumbList` on every non-home page.
+- Per-page Open Graph images: `/films/` uses the latest YouTube `maxresdefault.jpg`, `/about/` uses `about.webp`, `/press-kit/` uses the panoramic photo, others fall back to the default. `og:image:width` and `og:image:height` now declared.
+- `<lastmod>` on every sitemap entry: build date for static pages, latest film date for `/films/`, next upcoming event for `/live/`.
+- `<h2>Latest Films</h2>` (visually-hidden) above the home film grid for a complete document outline; localized to EN/ES/CA via new `latestFilms` key in `home.json`.
+- Self-hosted Sedan font: woff2 files at `src/css/fonts/`, `@font-face` declarations in `styles.css`, replacing the Google Fonts CDN dependency.
+- `.visually-hidden` CSS utility class.
+
+### Changed
+- Home `<h1>` now wraps the entire hero block (location, claim, name, subtitle) in a single semantic heading; visual layout unchanged via `.home-hero-heading` reset and `display: block` on inner spans.
+- Page titles and meta descriptions rewritten to lead with keywords (e.g. "House DJ Barcelona & Mallorca — Josep Bernad") across all pages and languages, replacing the prior brand-led format.
+- `og:type=profile` for `/about/` (was `article`).
+- Vidstack player CSS (3 stylesheets) and JS module are no longer shipped in the initial HTML — they're now lazy-loaded on the first film-card click and skipped entirely on mobile (which uses a YouTube iframe). Reduces initial payload by ~150 KB on home/films.
+- Image alt text upgraded across home, live, about, films, press-kit, and the video modal recommendations: panoramic banner → "Josep playing at night in Artà"; about portrait → "Young Josep playing a drum"; wedding photos → "Wedding performance at Restaurante Voro"; film thumbnails → `"{title} — Josep Bernad {tag} in {location}"`.
+
+### Removed
+- `<meta name="keywords">` (ignored by Google, removed from `base.njk`).
+- Google Fonts `preconnect`, `preload`, and stylesheet `<link>` tags.
+
 ## [1.8.0] - 2026-04-26
 
 ### Added

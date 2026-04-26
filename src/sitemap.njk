@@ -2,6 +2,10 @@
 permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
+{%- set buildDate = page.date.toISOString().split("T")[0] -%}
+{%- set filmsLastMod = (films.items[0].date + "-01") if films.items[0] else buildDate -%}
+{%- set upcomingFirst = (live.upcoming | upcomingOnly | first) -%}
+{%- set liveLastMod = upcomingFirst.date if upcomingFirst else buildDate -%}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -12,6 +16,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -21,6 +26,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/films/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/films/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/films/"/>
+    <lastmod>{{ filmsLastMod }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -30,6 +36,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/about/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/about/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/about/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -39,6 +46,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/contact/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/contact/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/contact/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -48,6 +56,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/live/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/live/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/live/"/>
+    <lastmod>{{ liveLastMod }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -57,6 +66,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/press-kit/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/press-kit/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/press-kit/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -68,6 +78,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -77,6 +88,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/films/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/films/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/films/"/>
+    <lastmod>{{ filmsLastMod }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -86,6 +98,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/about/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/about/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/about/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -95,6 +108,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/contact/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/contact/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/contact/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -104,6 +118,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/live/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/live/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/live/"/>
+    <lastmod>{{ liveLastMod }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -113,6 +128,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/press-kit/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/press-kit/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/press-kit/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -124,6 +140,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -133,6 +150,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/films/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/films/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/films/"/>
+    <lastmod>{{ filmsLastMod }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -142,6 +160,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/about/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/about/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/about/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -151,6 +170,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/contact/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/contact/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/contact/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -160,6 +180,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/live/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/live/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/live/"/>
+    <lastmod>{{ liveLastMod }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -169,6 +190,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="es" href="https://josepbernad.com/es/press-kit/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca/press-kit/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://josepbernad.com/press-kit/"/>
+    <lastmod>{{ buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

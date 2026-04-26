@@ -1,6 +1,7 @@
 {
   "en": {
     "subtitle": "Live & DJ Set",
+    "latestFilms": "Latest Films",
     "nav": {
       "films": "Films",
       "live": "Live",
@@ -28,6 +29,7 @@
   },
   "es": {
     "subtitle": "Live & DJ Set",
+    "latestFilms": "Últimos Films",
     "nav": {
       "films": "Films",
       "live": "Live",
@@ -55,6 +57,7 @@
   },
   "ca": {
     "subtitle": "Live & DJ Set",
+    "latestFilms": "Darrers Films",
     "nav": {
       "films": "Films",
       "live": "Live",

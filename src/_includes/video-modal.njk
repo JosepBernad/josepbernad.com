@@ -39,7 +39,7 @@
       {% for film in films.items %}
       <article class="video-rec-card" data-video-id="{{ film.videoId }}" data-title="{{ film.title }}" data-tags='{{ film.tags | dump | safe }}' data-location="{{ film.location }}" data-date="{{ film.date }}">
         <div class="video-rec-thumb">
-          <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }}" loading="lazy">
+          <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }} — Josep Bernad {{ film.tags[0] }} in {{ film.location }}" loading="lazy">
         </div>
         <div class="video-rec-info">
           <span class="video-rec-title">{{ film.title }}</span>
@@ -58,6 +58,34 @@
   let currentVideoId = null;
   let clearSrcTimeout = null;
   const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  // Vidstack is only needed on desktop (mobile uses a plain YouTube iframe).
+  // Lazy-load CSS+JS once, on the first card click, to avoid shipping ~150KB
+  // to visitors who never open a video.
+  let vidstackLoaded = false;
+  function loadVidstack() {
+    if (vidstackLoaded || isMobile) return;
+    vidstackLoaded = true;
+    const cssUrls = [
+      ['https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/base.min.css', 'sha384-OAC4m7kIvS04UyIdA88nuY6QVJnoEpooM/Vly/5rqo7Np6xQxklM1K6YpGF+EGCM'],
+      ['https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/default/theme.min.css', 'sha384-hlBtZ1GKj8b4wHGQ6G0nwJ2wDzNrXPs99ZQ64R6VHDpCCP/5omDvXCr3/Ie3A4uO'],
+      ['https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/default/layouts/video.min.css', 'sha384-7Z2jJdKMdsyBZCtw1CGvwBTnY10hGLUz550j/peT047zoW60/jvXMxDIDZN5ZFBc']
+    ];
+    cssUrls.forEach(([href, integrity]) => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.integrity = integrity;
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    });
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = 'https://cdn.jsdelivr.net/npm/vidstack@1.12.13/cdn/with-layouts/vidstack.js';
+    script.integrity = 'sha384-/htu1EzuPnth3HU2tWl2CLo3u/3aBKpcw4jM1n7p1Vkk4pgt6r5JQMcA3U7gEcH1';
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+  }
 
   function setTitle(el, text) {
     const parts = text.split('|');
@@ -110,6 +138,9 @@
   });
 
   window.openVideo = function(videoId, title, tags, location, date) {
+    // Lazy-load Vidstack on first open (desktop only).
+    loadVidstack();
+
     // Cancel any pending src-reset from a recent close so it doesn't blank the new video
     if (clearSrcTimeout) {
       clearTimeout(clearSrcTimeout);
@@ -156,24 +187,29 @@
       const iframe = document.getElementById('videoMobileIframe');
       const startParam = savedTime ? `&start=${savedTime}` : '';
       iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&playsinline=1&modestbranding=1${startParam}`;
-    } else if (player) {
-      firstPlay = true;
-      const onTitleChange = () => {
-        if (player.title) setTitle(titleEl, player.title);
-        player.removeEventListener('title-change', onTitleChange);
-      };
-      player.addEventListener('title-change', onTitleChange);
+    } else {
+      // Wait for Vidstack to define <media-player>; on first open the lazy
+      // loader above is what kicks this off, on subsequent opens it resolves
+      // immediately.
+      customElements.whenDefined('media-player').then(() => {
+        if (!player) player = document.getElementById('videoPlayer');
+        firstPlay = true;
+        const onTitleChange = () => {
+          if (player.title) setTitle(titleEl, player.title);
+          player.removeEventListener('title-change', onTitleChange);
+        };
+        player.addEventListener('title-change', onTitleChange);
 
-      const onCanPlay = () => {
-        // Restore saved progress
-        if (savedTime && Number(savedTime) > 0) {
-          player.currentTime = Number(savedTime);
-        }
-        player.play();
-        player.removeEventListener('can-play', onCanPlay);
-      };
-      player.addEventListener('can-play', onCanPlay);
-      player.src = `youtube/${videoId}`;
+        const onCanPlay = () => {
+          if (savedTime && Number(savedTime) > 0) {
+            player.currentTime = Number(savedTime);
+          }
+          player.play();
+          player.removeEventListener('can-play', onCanPlay);
+        };
+        player.addEventListener('can-play', onCanPlay);
+        player.src = `youtube/${videoId}`;
+      });
     }
   }
 

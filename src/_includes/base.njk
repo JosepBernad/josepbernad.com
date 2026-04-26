@@ -12,45 +12,69 @@
   {% set currentLang = urlLang | default('en') %}
   {% set pageKey = pageId | default('home') %}
   {% set seoData = seo[pageKey][currentLang] if seo[pageKey] and seo[pageKey][currentLang] else seo.home.en %}
-  
+
+  {# Per-page Open Graph image. Falls back to the site default. #}
+  {% set ogImageWidth = "1200" %}
+  {% set ogImageHeight = "630" %}
+  {% set ogImageUrl = "https://josepbernad.com/images/og-image.jpg" %}
+  {% if pageKey == 'films' and films.items[0] %}
+    {% set ogImageUrl = "https://img.youtube.com/vi/" + films.items[0].videoId + "/maxresdefault.jpg" %}
+    {% set ogImageWidth = "1280" %}
+    {% set ogImageHeight = "720" %}
+  {% elif pageKey == 'about' %}
+    {% set ogImageUrl = "https://josepbernad.com/images/about.webp" %}
+    {% set ogImageWidth = "2048" %}
+    {% set ogImageHeight = "1150" %}
+  {% elif pageKey == 'presskit' %}
+    {% set ogImageUrl = "https://josepbernad.com/images/JosepBernad-Panoramic.webp" %}
+    {% set ogImageWidth = "2660" %}
+    {% set ogImageHeight = "1140" %}
+  {% endif %}
+
+  {# og:type: profile for the about page (a person), website otherwise. #}
+  {% if pageKey == 'home' %}{% set ogType = "website" %}
+  {% elif pageKey == 'about' %}{% set ogType = "profile" %}
+  {% else %}{% set ogType = "website" %}{% endif %}
+
   <!-- SEO Title -->
   <title>{{ seoData.title }}</title>
-  
+
   <!-- Meta Description -->
   <meta name="description" content="{{ seoData.description }}">
-  
+
   <!-- Canonical URL -->
   <link rel="canonical" href="https://josepbernad.com{{ page.url }}">
-  
+
   <!-- Hreflang Tags for Multilingual SEO -->
   <link rel="alternate" hreflang="en" href="https://josepbernad.com{{ pagePath }}" />
   <link rel="alternate" hreflang="es" href="https://josepbernad.com/es{{ pagePath }}" />
   <link rel="alternate" hreflang="ca" href="https://josepbernad.com/ca{{ pagePath }}" />
   <link rel="alternate" hreflang="x-default" href="https://josepbernad.com{{ pagePath }}" />
-  
+
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="{% if pageKey == 'home' %}website{% else %}article{% endif %}">
+  <meta property="og:type" content="{{ ogType }}">
   <meta property="og:url" content="https://josepbernad.com{{ page.url }}">
   <meta property="og:title" content="{{ seoData.title }}">
   <meta property="og:description" content="{{ seoData.description }}">
-  <meta property="og:image" content="https://josepbernad.com/images/og-image.jpg">
+  <meta property="og:image" content="{{ ogImageUrl }}">
+  <meta property="og:image:width" content="{{ ogImageWidth }}">
+  <meta property="og:image:height" content="{{ ogImageHeight }}">
   <meta property="og:image:alt" content="Josep Bernad, DJ and Musician from Barcelona and Mallorca">
   <meta property="og:locale" content="{% if currentLang == 'es' %}es_ES{% elif currentLang == 'ca' %}ca_ES{% else %}en_US{% endif %}">
   {% if currentLang != 'en' %}<meta property="og:locale:alternate" content="en_US">{% endif %}
   {% if currentLang != 'es' %}<meta property="og:locale:alternate" content="es_ES">{% endif %}
   {% if currentLang != 'ca' %}<meta property="og:locale:alternate" content="ca_ES">{% endif %}
-  
+
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://josepbernad.com{{ page.url }}">
   <meta name="twitter:title" content="{{ seoData.title }}">
   <meta name="twitter:description" content="{{ seoData.description }}">
-  <meta name="twitter:image" content="https://josepbernad.com/images/og-image.jpg">
-  
+  <meta name="twitter:image" content="{{ ogImageUrl }}">
+
   <!-- Additional SEO -->
   <meta name="author" content="Josep Bernad">
   <meta name="robots" content="index, follow">
-  <meta name="keywords" content="Josep Bernad, DJ, musician, house music, Barcelona, Mallorca, live set, electronic music">
   
   <!-- Theme bootstrap: set data-theme before paint to avoid FOUC on the theme toggle. -->
   <script>
@@ -76,23 +100,13 @@
   <link rel="preload" as="image" href="/images/bg-dark-mobile.webp" media="(max-width: 767px) and (prefers-color-scheme: dark)">
   <link rel="preload" as="image" href="/images/bg-dark-desktop.webp" media="(min-width: 768px) and (prefers-color-scheme: dark)">
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
-  
+  <!-- Fonts (self-hosted Sedan, see /css/styles.css @font-face) -->
+  <link rel="preload" as="font" type="font/woff2" href="/css/fonts/sedan-regular-latin.woff2" crossorigin>
+
   <!-- Styles -->
   <link rel="stylesheet" href="/css/styles.css">
 
-  {% if pageId == 'films' or pageId == 'home' %}
-  <!-- Vidstack Player CSS (pinned to 1.12.13) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/base.min.css" integrity="sha384-OAC4m7kIvS04UyIdA88nuY6QVJnoEpooM/Vly/5rqo7Np6xQxklM1K6YpGF+EGCM" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/default/theme.min.css" integrity="sha384-hlBtZ1GKj8b4wHGQ6G0nwJ2wDzNrXPs99ZQ64R6VHDpCCP/5omDvXCr3/Ie3A4uO" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@1.12.13/player/styles/default/layouts/video.min.css" integrity="sha384-7Z2jJdKMdsyBZCtw1CGvwBTnY10hGLUz550j/peT047zoW60/jvXMxDIDZN5ZFBc" crossorigin="anonymous">
-  <!-- Vidstack Player JS (Web Components with layouts) -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/vidstack@1.12.13/cdn/with-layouts/vidstack.js" integrity="sha384-/htu1EzuPnth3HU2tWl2CLo3u/3aBKpcw4jM1n7p1Vkk4pgt6r5JQMcA3U7gEcH1" crossorigin="anonymous"></script>
-  {% endif %}
+  {# Vidstack is loaded lazily on the first film-card click — see video-modal.njk. #}
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -167,6 +181,136 @@
     ]
   }
   </script>
+
+  {# Per-page structured data. Multiple JSON-LD blocks are valid. #}
+  {% if pageKey != 'home' %}
+  {% set breadcrumbLabels = {
+    'films': { 'en': 'Films', 'es': 'Films', 'ca': 'Films' },
+    'about': { 'en': 'About', 'es': 'Sobre mí', 'ca': 'Sobre mi' },
+    'contact': { 'en': 'Contact', 'es': 'Contacto', 'ca': 'Contacte' },
+    'live': { 'en': 'Live', 'es': 'En vivo', 'ca': 'En directe' },
+    'presskit': { 'en': 'Press Kit', 'es': 'Press Kit', 'ca': 'Press Kit' }
+  } %}
+  {% set homeLabels = { 'en': 'Home', 'es': 'Inicio', 'ca': 'Inici' } %}
+  {% set crumbLabel = breadcrumbLabels[pageKey][currentLang] if breadcrumbLabels[pageKey] else seoData.title %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": {{ homeLabels[currentLang] | dump | safe }},
+        "item": "https://josepbernad.com{{ langPrefix }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ crumbLabel | dump | safe }},
+        "item": "https://josepbernad.com{{ page.url }}"
+      }
+    ]
+  }
+  </script>
+  {% endif %}
+
+  {% if pageKey == 'films' or pageKey == 'home' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {% for film in films.items %}
+      {
+        "@type": "VideoObject",
+        "name": {{ film.title | dump | safe }},
+        "description": {{ ((film.tags | join(", ")) + " — recorded in " + film.location) | dump | safe }},
+        "thumbnailUrl": "https://img.youtube.com/vi/{{ film.videoId }}/maxresdefault.jpg",
+        "uploadDate": "{{ film.date }}-01",
+        "contentUrl": {{ film.url | dump | safe }},
+        "embedUrl": "https://www.youtube.com/embed/{{ film.videoId }}",
+        "publisher": {
+          "@type": "MusicGroup",
+          "@id": "https://josepbernad.com/#musician",
+          "name": "Josep Bernad"
+        }
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+
+  {% if pageKey == 'live' %}
+  {% set upcomingEvents = live.upcoming | upcomingOnly %}
+  {% if upcomingEvents.length %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {% for ev in upcomingEvents %}
+      {% set evName = ev.event[currentLang] if ev.event[currentLang] else ev.event %}
+      {% set hh = ev.time | replace("h", "") | trim %}
+      {% set hhPadded = hh if hh|length == 2 else "0" + hh %}
+      {
+        "@type": "MusicEvent",
+        "name": {{ evName | dump | safe }},
+        "startDate": "{{ ev.date }}T{{ hhPadded }}:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": {{ ev.venue[currentLang] | dump | safe }},
+          "hasMap": {{ ev.map | dump | safe }}
+        },
+        "performer": {
+          "@type": "MusicGroup",
+          "@id": "https://josepbernad.com/#musician",
+          "name": "Josep Bernad"
+        },
+        "organizer": {
+          "@type": "Person",
+          "name": "Josep Bernad",
+          "url": "https://josepbernad.com"
+        },
+        "description": {{ (ev.description[currentLang] | striptags) | dump | safe }},
+        "url": "https://josepbernad.com{{ page.url }}",
+        "image": "https://josepbernad.com/images/og-image.jpg"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+  {% endif %}
+
+  {% if pageKey == 'about' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Josep Bernad",
+      "url": "https://josepbernad.com{{ page.url }}",
+      "image": "https://josepbernad.com/images/about.webp",
+      "jobTitle": "Musician, DJ, Software Engineer",
+      "description": {{ about[currentLang].hero.sub | striptags | dump | safe }},
+      "homeLocation": { "@type": "Place", "name": "Barcelona, Spain" },
+      "birthPlace": { "@type": "Place", "name": "Mallorca, Spain" },
+      "performerIn": { "@id": "https://josepbernad.com/#musician" },
+      "sameAs": [
+        "https://www.instagram.com/djosepbernad/",
+        "https://www.youtube.com/@JosepBernad",
+        "https://open.spotify.com/artist/1f320LpftKzOM47I0RgMfJ",
+        "https://soundcloud.com/djosepbernad",
+        "https://www.linkedin.com/in/josepbernad/",
+        "https://github.com/JosepBernad"
+      ]
+    }
+  }
+  </script>
+  {% endif %}
 </head>
 <body>
   {% include "header.njk" %}

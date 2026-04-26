@@ -14,10 +14,12 @@ eleventyComputed:
 ---
 
 <div class="home-hero">
-  <p class="home-location">Mainly House Music</p>
-  <p class="home-claim">Barcelona // Mallorca</p>
-  <h1 class="title">Josep Bernad</h1>
-  <p class="subtitle" data-i18n="subtitle">Live & DJ Set</p>
+  <h1 class="home-hero-heading">
+    <span class="home-location">Mainly House Music</span>
+    <span class="home-claim">Barcelona // Mallorca</span>
+    <span class="title">Josep Bernad</span>
+    <span class="subtitle" data-i18n="subtitle">Live & DJ Set</span>
+  </h1>
 
   {% set nextShow = live.upcoming | upcomingOnly | first %}
   {% if nextShow %}
@@ -66,13 +68,14 @@ eleventyComputed:
 </div>
 
 <!-- Latest Films -->
-<section class="home-films">
+<section class="home-films" aria-labelledby="home-films-heading">
+  <h2 id="home-films-heading" class="visually-hidden">{{ home[currentLang].latestFilms }}</h2>
   <div class="home-films-grid">
     {% for film in films.items %}
     {% if loop.index0 == 0 or loop.index0 == 1 or loop.index0 == 4 %}
     <article class="home-film-card{% if film.tags[0] == 'Live Set' %} film-card--live{% endif %}" data-video-id="{{ film.videoId }}" data-title="{{ film.title }}" data-tags='{{ film.tags | dump | safe }}' data-location="{{ film.location }}" data-date="{{ film.date }}">
       <div class="film-thumbnail">
-        <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }}" loading="lazy" width="480" height="360">
+        <img src="https://img.youtube.com/vi/{{ film.videoId }}/hqdefault.jpg" alt="{{ film.title }} — Josep Bernad {{ film.tags[0] }} in {{ film.location }}" loading="lazy" width="480" height="360">
         <div class="film-play">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5v14l11-7z"/>
@@ -93,7 +96,7 @@ eleventyComputed:
 </section>
 
 <section class="home-panoramic">
-  <img src="/images/JosepBernad-Panoramic.webp" alt="Josep Bernad" loading="lazy">
+  <img src="/images/JosepBernad-Panoramic.webp" alt="Josep playing at night in Artà" loading="lazy">
   <div class="home-panoramic-overlay" id="newsletter-banner">
     <p class="newsletter-text" data-i18n="newsletter.cta">Stay Updated</p>
     <form class="newsletter-form" id="newsletter-form">
