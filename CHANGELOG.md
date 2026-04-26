@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.10.1] - 2026-04-27
+
+### Changed
+- Narrow the no-em-dash rule in `CLAUDE.md` to public-facing text only (anything under `src/` that ships to readers). Internal artifacts (commit messages, `CHANGELOG.md`, code comments, test descriptions, repo docs) are now explicitly out of scope. The test in `tests/unit/no-em-dash.test.js` already only scans `src/`, so enforcement matches the new wording.
+
 ## [1.10.0] - 2026-04-27
 
 ### Added

@@ -1,14 +1,19 @@
 # Project conventions for Claude
 
-## Typography: never write em-dash or en-dash
+## Typography: never write em-dash or en-dash in public text
 
-Do not use em-dash (`—`, U+2014) or en-dash (`–`, U+2013) anywhere in this
-project. They read as AI-generated and look out of place against the rest of
-the copy.
+Do not use em-dash (`—`, U+2014) or en-dash (`–`, U+2013) in any text that
+ships to readers of the site. They read as AI-generated and look out of
+place against the rest of the copy.
 
-This rule applies to **all** files: user-facing content (`src/_data/*.json`,
-`src/pages/*.njk`, `src/_includes/*.njk`, `src/llms*.njk`, etc.), code
-comments, test descriptions, commit messages, and changelog entries.
+**In scope** (no long dashes): user-facing content rendered into the site:
+`src/_data/*.json`, `src/pages/*.njk`, `src/_includes/*.njk`,
+`src/llms*.njk`, and any other source under `src/` that becomes part of a
+shipped page, JSON-LD payload, sitemap, or `llms.txt`.
+
+**Out of scope** (long dashes are fine): internal/developer-only artifacts
+that never reach the public site: commit messages, `CHANGELOG.md`, code
+comments, test descriptions, this file, and other repo docs.
 
 Use these instead, depending on intent:
 
