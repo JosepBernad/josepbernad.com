@@ -11,9 +11,9 @@
       "time": "19h",
       "map": "https://maps.app.goo.gl/MYD1CPgP2MgNMuk78",
       "description": {
-        "en": "Licors Moyà will open herb season with a slow afternoon in the heart of Artà.<br><a href=\"https://www.instagram.com/sonia_santandreu_ilus/\" target=\"_blank\" rel=\"noopener\">Sonia Santandreu</a> will paint the new ecological herbs onto glass while the music plays and the afternoon stretches on.",
-        "es": "Licors Moyà abrirá la temporada de hierbas con una tarde tranquila en el corazón de Artà.<br><a href=\"https://www.instagram.com/sonia_santandreu_ilus/\" target=\"_blank\" rel=\"noopener\">Sonia Santandreu</a> pintará las nuevas hierbas ecológicas sobre el vidrio mientras la música suena y la tarde se alarga.",
-        "ca": "Licors Moyà obrirà la temporada d'herbes amb una tarda tranquil·la al cor d'Artà.<br><a href=\"https://www.instagram.com/sonia_santandreu_ilus/\" target=\"_blank\" rel=\"noopener\">Sonia Santandreu</a> pintarà les noves herbes ecològiques damunt el vidre mentre la música sona i la tarda s'allarga."
+        "en": "Licors Moyà will open herb season with a slow afternoon in the heart of Artà.<br><span class=\"live-desc-gap\" aria-hidden=\"true\"></span><a href=\"https://www.instagram.com/sonia_santandreu_ilus/\" target=\"_blank\" rel=\"noopener\">Sonia Santandreu</a> will paint the new ecological herbs onto glass while the music plays and the afternoon stretches on.",
+        "es": "Licors Moyà abrirá la temporada de hierbas con una tarde tranquila en el corazón de Artà.<br><span class=\"live-desc-gap\" aria-hidden=\"true\"></span><a href=\"https://www.instagram.com/sonia_santandreu_ilus/\" target=\"_blank\" rel=\"noopener\">Sonia Santandreu</a> pintará las nuevas hierbas ecológicas sobre el vidrio mientras la música suena y la tarde se alarga.",
+        "ca": "Licors Moyà obrirà la temporada d'herbes amb una tarda tranquil·la al cor d'Artà.<br><span class=\"live-desc-gap\" aria-hidden=\"true\"></span><a href=\"https://www.instagram.com/sonia_santandreu_ilus/\" target=\"_blank\" rel=\"noopener\">Sonia Santandreu</a> pintarà les noves herbes ecològiques damunt el vidre mentre la música sona i la tarda s'allarga."
       }
     },
     {
@@ -93,7 +93,184 @@
       }
     }
   ],
-  "past": [],
+  "past": [
+    {
+      "date": "2026-04-26",
+      "event": {
+        "en": "Mainly House Music at Angels",
+        "es": "Mainly House Music en Angels",
+        "ca": "Mainly House Music a Angels"
+      },
+      "venue": {
+        "en": "Angels, Cala Rajada",
+        "es": "Angels, Cala Rajada",
+        "ca": "Angels, Cala Rajada"
+      },
+      "time": "21:00",
+      "tracklist": [
+        { "artist": "berlioz, Ted Jasper", "title": "nyc in 1940" },
+        { "artist": "Parcels", "title": "Reflex (Manqo Afro House Remix)" },
+        { "artist": "Juan Luis Guerra 4.40", "title": "Burbujas de Amor (IMA Afro House Remix)" },
+        { "artist": "Robbie Williams", "title": "Feel (Disla & Danis Afro House Remix)" },
+        { "artist": "Earth, Wind & Fire", "title": "September (Hoax Afro House Remix)" },
+        { "artist": "Bonga", "title": "Mona Ki Ngi Xica (Everything Counts Remix)" },
+        { "artist": "Fred Again..", "title": "Turn On The Lights (RoyJ Afro House Remix)" },
+        { "artist": "Mika", "title": "Relax, Take It Easy (Arthur Miro Afro House Remix)" },
+        { "artist": "Alejandro Sanz", "title": "Corazon Partio (Karlo & Corkidi Afro House Remix)" },
+        { "artist": "Pink Floyd", "title": "Wish You Were Here (Liboz Afro House Remix)" },
+        { "artist": "Hugel, Toto La Momposina", "title": "La Verdolaga" },
+        { "artist": "&ME, Rampa, Adam Port, Keinemusik, chuala", "title": "Say What" },
+        { "artist": "Paul Kalkbrenner", "title": "Sky And Sand (Faul & Wad Afro House Remix)" },
+        { "artist": "Drake, Kyla, Wizkid", "title": "One Dance (Deni Afro House Remix)" },
+        { "artist": "Raffa Guido", "title": "Famax" },
+        { "artist": "The Police", "title": "Every Breath You Take (Simone Vitullo & Seraphiel Afro House Remix)" },
+        { "artist": "Disclosure, Eliza Doolittle", "title": "You & Me (Rivo Afro House Remix)" },
+        { "artist": "Dennis Ferrer", "title": "Hey Hey (Jack Back Afro House Remix)" },
+        { "artist": "Red Hot Chili Peppers", "title": "Snow (Hey Oh) (Markuss Afro House Remix)" },
+        { "artist": "Bad Bunny", "title": "DtMF (Karlo & Imlaylow Afro House Remix)" },
+        { "artist": "Parcels", "title": "Somethinggreater (Gaspard Augé & Victor Le Masne Remix)" },
+        { "artist": "PAWSA", "title": "TOO COOL TO BE CARELESS" },
+        { "artist": "Sting", "title": "Englishman In New York (Amedeo Picone Remix)" },
+        { "artist": "Santana, TOBEHONEST", "title": "Evil Ways" },
+        { "artist": "Gnarls Barkley", "title": "Crazy (Anthony Jimenez Remix)" },
+        { "artist": "Vintage Culture, Maverick Sabre, Tom Breu", "title": "Weak" },
+        { "artist": "Jaded", "title": "Welcome To The People" },
+        { "artist": "Fred again.., The Blessed Madonna", "title": "Marea (we've lost dancing)" },
+        { "artist": "Juan Magan, Marcos Rodriguez", "title": "Bora Bora (Kalma Remix)" },
+        { "artist": "Kendrick Lamar", "title": "Bitch, Don't Kill My Vibe (Liquid Rose & Trace Remix)" },
+        { "artist": "Tones & I", "title": "Dance Monkey (Groove Safari Remix)" },
+        { "artist": "Moby", "title": "Natural Blues (BLOND:ISH & Kiko Franco Remix)" },
+        { "artist": "Marshall Jefferson, Jaded, Miggy Dela Rosa", "title": "Freak" },
+        { "artist": "ATFC", "title": "U Got Me" },
+        { "artist": "El Gran Combo de Puerto Rico", "title": "Verano En NY (Toman Remix)" },
+        { "artist": "Jaded, Carlita", "title": "Zorro" },
+        { "artist": "Eric Prydz", "title": "Pjanoo" },
+        { "artist": "Disclosure, Anderson .Paak", "title": "NO CAP" },
+        { "artist": "Whitney Houston", "title": "It's Not Right But It's Ok (Mr. Belt & Wezol Remix)" },
+        { "artist": "Fred Again.., Skrillex, Four Tet, Loco & Jam", "title": "Baby again x Breathe (KREAM Mashup)" },
+        { "artist": "Buena Vista Social Club", "title": "Chan Chan (Lasko & Camilo Morales Remix)" },
+        { "artist": "Mochakk, Joni", "title": "Da Fonk" },
+        { "artist": "Bellaire", "title": "Take Five" },
+        { "artist": "Siwell", "title": "Sinnerman (2022 Extended Version)" },
+        { "artist": "Sasha Troy", "title": "DSCO" },
+        { "artist": "Sergio Mendes", "title": "Magdalenha (FLAKO STIK Remix)" }
+      ]
+    },
+    {
+      "date": "2025-08-31",
+      "event": "Sunset",
+      "venue": { "en": "Kaafu Beach Club, Cala Millor", "es": "Kaafu Beach Club, Cala Millor", "ca": "Kaafu Beach Club, Cala Millor" },
+      "videoId": "gzFcLZjel8M",
+      "videoTags": ["DJ Set", "Afro House", "House", "Tech House"],
+      "tracklist": [
+        { "artist": "Paul Kalkbrenner", "title": "Sky And Sand (Faul & Wad Remix)" },
+        { "artist": "The Police", "title": "Every Breath You Take (Simone Vitullo & Seraphiel Remix)" },
+        { "artist": "Juan Luis Guerra", "title": "Vale La Pena (David Eusse Remix)" },
+        { "artist": "Tom Misch", "title": "South Of The River (Detroit Swindle Remix)" },
+        { "artist": "Jesus Fernandez", "title": "La Samba" },
+        { "artist": "Cristobal Tapia de Veer", "title": "The White Lotus Theme (Enamour Remix)" },
+        { "artist": "Sasha Troy", "title": "DSCO" },
+        { "artist": "Alex Hosking, Mr. Belt & Wezol, Millean.", "title": "and it felt like.." },
+        { "artist": "Adala, FISHER", "title": "Yeah The Pluges (Ruyex Mashup)" },
+        { "artist": "Ca7triel & Paco Amoroso", "title": "EL ÚNICO (Laureano Remix)" },
+        { "artist": "Santana", "title": "Evil Ways (TOBEHONEST Remix)" }
+      ]
+    },
+    {
+      "date": "2024-08-08",
+      "event": "Drum House",
+      "venue": { "en": "Artà, Mallorca", "es": "Artà, Mallorca", "ca": "Artà, Mallorca" },
+      "videoId": "63OOTQeLW_s",
+      "videoTags": ["Live Set", "House", "Latin House", "Percussion", "Drums"],
+      "tracklist": [
+        { "artist": "Sergio Mendes", "title": "Mas Que Nada (Illusionize Remix)" },
+        { "artist": "El Gran Combo de Puerto Rico", "title": "Brujeria (FLAKO STIK Remix)" },
+        { "artist": "Triveat", "title": "Cuba" },
+        { "artist": "Carlinhos Brown", "title": "Mariacaipirinha (Marcos Rodriguez Edit)" },
+        { "artist": "Josep Bernad", "title": "Demonis [UNRELEASED]" }
+      ]
+    },
+    {
+      "date": "2024-12-31",
+      "event": "Cozy Eve",
+      "venue": { "en": "Artà, Mallorca", "es": "Artà, Mallorca", "ca": "Artà, Mallorca" },
+      "videoId": "JGwp1_ienCY",
+      "videoTags": ["DJ Set", "Party Set", "Open Format", "House", "Melodic House"],
+      "tracklist": [
+        { "artist": "Inner Circle", "title": "Sweat (A La La La La Long)" },
+        { "artist": "Buena Vista Social Club", "title": "Chan Chan (Iseo & Dodosound Version)" },
+        { "artist": "Auxili, Green Valley", "title": "T'escric" },
+        { "artist": "La Sra. Tomasa, Ahyvin Bruno", "title": "Ella (Live Sessions)" },
+        { "artist": "Milky Chance", "title": "Reckless Child" },
+        { "artist": "Asaf Avidan, The Mojos", "title": "One Day / Reckoning Song (Wankelmut Remix)" },
+        { "artist": "Fred again.., The Blessed Madonna", "title": "Marea (we've lost dancing)" },
+        { "artist": "Paul Kalkbrenner", "title": "Sky And Sand (Josep Bernad Edit)" },
+        { "artist": "Jamie xx", "title": "Gosh (Jaap Ligthart Remix)" },
+        { "artist": "LATIN MAFIA, Humbe", "title": "Patadas de Ahogado (HUGEL Afro House Remix)" },
+        { "artist": "Dosem", "title": "Silent Drop" },
+        { "artist": "Celia Cruz", "title": "La Vida es un Carnaval (BURMAN BOYS Remix)" },
+        { "artist": "Rodrigo Amarante", "title": "Tuyo (Supernova & Javier Carddellino Remix)" },
+        { "artist": "Fred again..", "title": "Billie (loving arms)" },
+        { "artist": "Technotronic", "title": "Pump Up The Jam" },
+        { "artist": "Parcels", "title": "Lightenup (Alex Metric Remix)" },
+        { "artist": "Arctic Monkeys", "title": "Do I Wanna Know (Moonlight Remix)" },
+        { "artist": "Adriatique, Marino Cana, Delhia De France", "title": "Home" },
+        { "artist": "Muse", "title": "Undisclosed Desires" },
+        { "artist": "ZETAK, Suu, Blaumut", "title": "Pa amb Oli I Sal" },
+        { "artist": "ZOO", "title": "Aquesta vora" }
+      ]
+    },
+    {
+      "date": "2024-08-13",
+      "event": "Villa Ibiza",
+      "venue": { "en": "Sant Antoni, Ibiza", "es": "Sant Antoni, Ibiza", "ca": "Sant Antoni, Eivissa" },
+      "videoId": "ee_Ru5vYyFM",
+      "videoTags": ["DJ Set", "House", "Tech House"]
+    },
+    {
+      "date": "2024-07-14",
+      "event": "Partners in Crime",
+      "venue": { "en": "France", "es": "Francia", "ca": "França" },
+      "videoId": "ZnkXg-2UCJ0",
+      "videoTags": ["DJ Set", "Party Set", "Open Format", "House", "Pop"],
+      "tracklist": [
+        { "artist": "Las Ketchup", "title": "Asereje (FLAKO STIK Remix)" },
+        { "artist": "Whitney Houston", "title": "It's Not Right But It's Ok (Mr. Belt & Wezol Remix)" },
+        { "artist": "Mark Ronson, Amy Winehouse", "title": "Valerie (Andy Cato Remix)" },
+        { "artist": "Gnarls Barkley", "title": "Crazy (Anthony Jimenez Remix)" },
+        { "artist": "La Oreja De Van Gogh, Deorro", "title": "Rosas x Five Hours (Try It Mashup)" },
+        { "artist": "Melendi, Avicii", "title": "Caminando Por La Vida x The Nights (LST CNTRL Mahup)" },
+        { "artist": "La Maravillosa Orquesta del Alcohol, Jaymes Young", "title": "Heroes del Sabado x Infinity (LST CNTRL Mahup)" },
+        { "artist": "Natasha Bedingfield", "title": "Unwritten (BeatBreaker Remix)" },
+        { "artist": "Aitana", "title": "LAS BABYS (Marsal Ventura & Dj Sita Remix)" },
+        { "artist": "IZAL", "title": "Copacabana (Fake Dj Remix)" },
+        { "artist": "C. Tangana", "title": "Demasiadas Mujeres (BROSS Remix)" }
+      ]
+    },
+    {
+      "date": "2024-06-15",
+      "event": "Groovie Balcony",
+      "venue": { "en": "Eixample, Barcelona", "es": "Eixample, Barcelona", "ca": "Eixample, Barcelona" },
+      "videoId": "pKeDekFQJFo",
+      "videoTags": ["DJ Set", "House", "Funky House"],
+      "tracklist": [
+        { "artist": "Tom Misch, De La Soul", "title": "South Of The River (Detroit Swindle Remix)" },
+        { "artist": "Mochakk, Joni", "title": "Da Fonk" },
+        { "artist": "Bob Marley & The Wailers", "title": "No Woman No Cry (Mirco Caruso Remix)" },
+        { "artist": "El Gran Combo de Puerto Rico", "title": "Brujeria (Mikey Barreneche Remix)" },
+        { "artist": "Bellaire", "title": "Take Five" },
+        { "artist": "Dennis Cruz, Martina Camargo", "title": "El Sueño" }
+      ]
+    },
+    {
+      "date": "2024-04-01",
+      "dateApprox": true,
+      "event": "Afro House at Dinner",
+      "venue": { "en": "Eixample, Barcelona", "es": "Eixample, Barcelona", "ca": "Eixample, Barcelona" },
+      "videoId": "EZPxPgtPx7M",
+      "videoTags": ["DJ Set", "Afro House"]
+    }
+  ],
   "strings": {
     "en": {
       "hero": {
@@ -104,6 +281,9 @@
       "upcoming": "Upcoming",
       "past": "Past dates",
       "map": "Map",
+      "tracklist": "Tracklist",
+      "tracklistCopy": "Copy",
+      "tracklistCopied": "Copied",
       "emptyTitle": "No dates announced yet.",
       "emptyBody": "Follow for updates, new shows are posted here first."
     },
@@ -116,6 +296,9 @@
       "upcoming": "Próximos",
       "past": "Fechas anteriores",
       "map": "Mapa",
+      "tracklist": "Tracklist",
+      "tracklistCopy": "Copiar",
+      "tracklistCopied": "Copiado",
       "emptyTitle": "Aún no hay fechas anunciadas.",
       "emptyBody": "Síguelo para novedades, las nuevas fechas se publican aquí primero."
     },
@@ -128,6 +311,9 @@
       "upcoming": "Propers",
       "past": "Dates anteriors",
       "map": "Mapa",
+      "tracklist": "Tracklist",
+      "tracklistCopy": "Copia",
+      "tracklistCopied": "Copiat",
       "emptyTitle": "Encara no hi ha dates anunciades.",
       "emptyBody": "Segueix-lo per a novetats, les noves dates es publiquen aquí primer."
     }

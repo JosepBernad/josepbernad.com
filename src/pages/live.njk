@@ -68,34 +68,68 @@ eleventyComputed:
   <p class="live-section-label live-section-label--past">{{ s.past }}</p>
   <div class="live-list live-list--past">
     {% for ev in past %}
-    <article class="live-card is-past">
+{%- set evTitleSafe = ev.event[currentLang] if ev.event[currentLang] else ev.event -%}
+    <article class="live-card is-past{% if ev.tracklist %} has-tracklist{% endif %}{% if ev.videoId %} has-video{% endif %}{% if ev.dateApprox %} date-approx{% endif %}">
       <div class="live-date">
-        <span class="day">{{ ev.date | liveDay }}</span>
+        {% if not ev.dateApprox %}<span class="day">{{ ev.date | liveDay }}</span>{% endif %}
         <span class="month">{{ ev.date | liveMonth(currentLang) }}</span>
         <span class="year">{{ ev.date | liveYear }}</span>
       </div>
       <div class="live-info">
-        <h3 class="live-event">{{ ev.event[currentLang] if ev.event[currentLang] else ev.event }}</h3>
+        <h3 class="live-event">{{ evTitleSafe }}</h3>
         <p class="live-venue">{{ ev.venue[currentLang] }}</p>
       </div>
-      <div class="live-meta"><span class="live-time">{{ ev.time }}</span></div>
+      {% if ev.videoId %}
+      <div class="live-meta">
+        <button type="button" class="live-watch" data-video-id="{{ ev.videoId }}" aria-label="Watch {{ evTitleSafe }}">
+          <img src="https://img.youtube.com/vi/{{ ev.videoId }}/mqdefault.jpg" loading="lazy" alt="" width="160" height="90">
+          <span class="live-watch-play" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
+      </div>
+      {% endif %}
+      {% if ev.tracklist %}
+      <details class="live-tracklist">
+        <summary class="live-tracklist-summary">
+          <svg class="live-tracklist-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="live-tracklist-label">{{ s.tracklist }}</span>
+          <span class="live-tracklist-count">{{ ev.tracklist.length }}</span>
+        </summary>
+        <div class="live-tracklist-body">
+{%- set evTitle = ev.event[currentLang] if ev.event[currentLang] else ev.event -%}
+{%- set venueLine = ev.venue[currentLang] -%}
+{%- if ev.dateApprox -%}
+{%- set dateLine = (ev.date | liveMonth(currentLang)) + " " + (ev.date | liveYear) -%}
+{%- else -%}
+{%- set dateLine = (ev.date | liveDay) + " " + (ev.date | liveMonth(currentLang)) + " " + (ev.date | liveYear) -%}
+{%- endif -%}
+<pre class="live-tracklist-text">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  {{ evTitle | upper }}
+  {{ venueLine }}
+  {{ dateLine }}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━{% for t in ev.tracklist %}
+  {% if loop.index < 10 %}0{% endif %}{{ loop.index }}   <strong>{{ t.artist }}</strong> · {{ t.title }}{% endfor %}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  via josepbernad.com{{ currentPrefix }}/live</pre>
+          <button type="button" class="live-tracklist-copy" data-label="{{ s.tracklistCopy }}" data-label-copied="{{ s.tracklistCopied }}" aria-label="{{ s.tracklistCopy }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>{{ s.tracklistCopy }}</span>
+          </button>
+        </div>
+      </details>
+      {% endif %}
     </article>
     {% endfor %}
   </div>
   {% endif %}
 </div>
 
-<section class="home-panoramic">
-  <img src="/images/JosepBernad-Panoramic.webp" alt="Josep playing at night in Artà" loading="lazy">
-  <div class="home-panoramic-overlay" id="newsletter-banner">
-    <p class="newsletter-text" data-i18n="newsletter.cta">{{ home[currentLang].newsletter.cta }}</p>
-    <form class="newsletter-form" id="newsletter-form">
-      <input type="email" name="EMAIL" placeholder="{{ home[currentLang].newsletter.placeholder }}" data-i18n-placeholder="newsletter.placeholder" required>
-      <div style="position: absolute; left: -5000px;" aria-hidden="true">
-        <input type="text" name="b_ec19e426d1a78e9baa513bfaf_7a99017863" tabindex="-1" value="">
-      </div>
-      <button type="submit" data-i18n="newsletter.subscribe">{{ home[currentLang].newsletter.subscribe }}</button>
-    </form>
-    <p class="newsletter-status" id="newsletter-status"></p>
+<div class="live-video-modal" id="liveVideoModal" aria-hidden="true">
+  <button type="button" class="live-video-close" id="liveVideoClose" aria-label="Close video">&times;</button>
+  <div class="live-video-frame">
+    <iframe id="liveVideoIframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen frameborder="0" loading="lazy"></iframe>
   </div>
-</section>
+</div>
+
+{% include "newsletter-panoramic.njk" %}

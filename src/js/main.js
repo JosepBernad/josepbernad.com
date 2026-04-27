@@ -48,13 +48,6 @@ function getInitialTheme() {
 function setTheme(theme) {
   html.setAttribute('data-theme', theme);
   localStorage.setItem(THEME_KEY, theme);
-  // Update favicon
-  const favicon = document.getElementById('favicon');
-  if (favicon) {
-    favicon.href = theme === 'dark'
-      ? '/favicon-dark.svg'
-      : '/favicon-light.svg';
-  }
   const isDark = theme === 'dark';
   toggles.forEach((t) => {
     t.setAttribute('aria-pressed', String(isDark));
@@ -99,6 +92,11 @@ if (navToggle && siteHeader) {
   // Close on nav link click
   siteHeader.querySelectorAll('.site-nav__link').forEach(link => {
     link.addEventListener('click', () => setOpen(false));
+  });
+  // Close on outside click (scrim / page background)
+  document.addEventListener('click', (e) => {
+    if (!siteHeader.hasAttribute('data-menu-open')) return;
+    if (!siteHeader.contains(e.target)) setOpen(false);
   });
   // Close if viewport grows past mobile breakpoint
   window.matchMedia('(min-width: 701px)').addEventListener('change', (e) => {
@@ -287,3 +285,204 @@ if (newsletterBanner) {
     });
   }
 }
+
+// Tracklist copy buttons on /live
+document.querySelectorAll('.live-tracklist-copy').forEach((btn) => {
+  btn.addEventListener('click', async () => {
+    const body = btn.closest('.live-tracklist-body');
+    const pre = body && body.querySelector('.live-tracklist-text');
+    if (!pre) return;
+    const text = pre.textContent;
+    const labelEl = btn.querySelector('span');
+    const original = btn.dataset.label || (labelEl && labelEl.textContent);
+    const copied = btn.dataset.labelCopied || 'Copied';
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      btn.classList.add('is-copied');
+      if (labelEl) labelEl.textContent = copied;
+      setTimeout(() => {
+        btn.classList.remove('is-copied');
+        if (labelEl && original) labelEl.textContent = original;
+      }, 1800);
+    } catch (e) {
+      // silent fail, user can still select and copy manually
+    }
+  });
+});
+
+// Lightweight video modal on /live
+const liveVideoModal = document.getElementById('liveVideoModal');
+if (liveVideoModal) {
+  const liveVideoIframe = document.getElementById('liveVideoIframe');
+  const liveVideoClose = document.getElementById('liveVideoClose');
+
+  function openLiveVideo(videoId) {
+    liveVideoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&modestbranding=1`;
+    liveVideoModal.classList.add('is-open');
+    liveVideoModal.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLiveVideo() {
+    liveVideoModal.classList.remove('is-open');
+    liveVideoModal.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    setTimeout(() => { liveVideoIframe.src = ''; }, 250);
+  }
+
+  document.querySelectorAll('.live-watch').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.videoId;
+      if (id) openLiveVideo(id);
+    });
+  });
+
+  liveVideoClose.addEventListener('click', closeLiveVideo);
+  liveVideoModal.addEventListener('click', (e) => {
+    if (e.target === liveVideoModal) closeLiveVideo();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && liveVideoModal.classList.contains('is-open')) closeLiveVideo();
+  });
+}
+
+// Parallax effect on the panoramic newsletter image
+{
+  const sections = document.querySelectorAll('.home-panoramic[data-parallax]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (sections.length && !reduceMotion) {
+    const STRENGTH = 0.18;
+    const targets = [];
+    sections.forEach((section) => {
+      const img = section.querySelector('img');
+      if (img) targets.push({ section, img, inView: false });
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const t = targets.find((x) => x.section === entry.target);
+        if (t) t.inView = entry.isIntersecting;
+      });
+      schedule();
+    }, { threshold: 0 });
+    targets.forEach((t) => io.observe(t.section));
+
+    let ticking = false;
+    function update() {
+      ticking = false;
+      const vh = window.innerHeight;
+      targets.forEach((t) => {
+        if (!t.inView) return;
+        const rect = t.section.getBoundingClientRect();
+        const sectionCenter = rect.top + rect.height / 2;
+        const denom = vh / 2 + rect.height / 2;
+        const progress = (sectionCenter - vh / 2) / denom;
+        const offset = progress * rect.height * STRENGTH;
+        t.img.style.setProperty('--parallax-y', `${offset.toFixed(2)}px`);
+      });
+    }
+    function schedule() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    update();
+  }
+}
+
+// About-page TL;DR helper popover: close on X click, Escape, or click outside
+(function initGlanceTip() {
+  const tip = document.querySelector('.about-glance-tip');
+  if (!tip) return;
+
+  function close() {
+    if (tip.open) tip.open = false;
+  }
+
+  tip.addEventListener('click', (e) => {
+    if (e.target.closest('[data-glance-tip-close]')) {
+      e.preventDefault();
+      close();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && tip.open) close();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!tip.open) return;
+    if (!tip.contains(e.target)) close();
+  });
+})();
+
+(function () {
+  function enhanceDetails(item, summary, content) {
+    if (!summary || !content) return;
+    item.classList.add('is-enhanced');
+
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (item.dataset.animating === '1') return;
+
+      const isOpen = item.open;
+      item.dataset.animating = '1';
+
+      if (!isOpen) {
+        item.open = true;
+        const target = content.scrollHeight;
+        content.style.height = '0px';
+        void content.offsetHeight;
+        const onEnd = (ev) => {
+          if (ev.propertyName !== 'height') return;
+          content.removeEventListener('transitionend', onEnd);
+          content.style.height = '';
+          delete item.dataset.animating;
+        };
+        content.addEventListener('transitionend', onEnd);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            content.style.height = target + 'px';
+          });
+        });
+      } else {
+        const start = content.scrollHeight;
+        content.style.height = start + 'px';
+        void content.offsetHeight;
+        content.style.height = '0px';
+        const onEnd = (ev) => {
+          if (ev.propertyName !== 'height') return;
+          content.removeEventListener('transitionend', onEnd);
+          item.open = false;
+          content.style.height = '';
+          delete item.dataset.animating;
+        };
+        content.addEventListener('transitionend', onEnd);
+      }
+    });
+  }
+
+  document.querySelectorAll('.page-faq-item').forEach((item) => {
+    enhanceDetails(item, item.querySelector('.page-faq-q'), item.querySelector('.page-faq-a'));
+  });
+
+  document.querySelectorAll('.live-tracklist').forEach((item) => {
+    enhanceDetails(item, item.querySelector('.live-tracklist-summary'), item.querySelector('.live-tracklist-body'));
+  });
+})();

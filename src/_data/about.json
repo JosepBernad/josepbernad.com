@@ -6,6 +6,9 @@
       "sub": "Musician, DJ, and software engineer, writing House music between Barcelona and Mallorca."
     },
     "glanceLabel": "TL;DR",
+    "glanceHelpLabel": "What does TL;DR mean?",
+    "glanceHelpClose": "Close",
+    "glanceHelp": "TL;DR stands for \"too long; didn't read\". It's a quick summary so you get the gist without reading the whole bio.",
     "glance": "Josep Bernad is a house music DJ and multi-instrumentalist from Mallorca, based in Barcelona. He performs three formats: a Live Set with live instruments, a House DJ Set, and a Party Set (Open Format). He plays at clubs, festivals, beach clubs, weddings, and corporate events. He is also a software engineer and speaks Catalan, Spanish, and English.",
     "bio1": "I'm <strong>Josep Bernad</strong>, a <strong>musician and DJ</strong> from <strong>Mallorca</strong> based in <strong>Barcelona</strong>, and also a <strong>software engineer</strong>, a combination that lets me merge advanced technology with creativity in everything I produce. I trained from a young age as a <strong>drummer</strong> and later as a <strong>multi-instrumentalist</strong>, and my personal project dives into <strong>electronic music</strong>, mainly <strong>House</strong>, blending contemporary digital textures with deep influences and an elegant sonic aesthetic. Working between Barcelona and Mallorca, I keep expanding my catalogue of original productions, always aiming to deliver a distinctive and solid musical experience.",
     "bio2": "I present three live formats: a <strong>Live Set</strong> featuring my own music performed with live instruments; a <strong>House DJ Set</strong> built around an extensive and carefully curated music library; and a <strong>Party Set (Open Format)</strong> designed for parties and festivals, where I mix multiple genres while keeping a coherent narrative and flawless transitions.",
@@ -49,6 +52,9 @@
       "sub": "Músico, DJ e ingeniero de software, escribiendo House entre Barcelona y Mallorca."
     },
     "glanceLabel": "TL;DR",
+    "glanceHelpLabel": "¿Qué significa TL;DR?",
+    "glanceHelpClose": "Cerrar",
+    "glanceHelp": "TL;DR viene del inglés \"too long; didn't read\" (demasiado largo, no lo leí). Es un resumen breve para captar lo esencial sin leer toda la biografía.",
     "glance": "Josep Bernad es DJ de house y multi-instrumentista mallorquín, afincado en Barcelona. Presenta tres formatos: Live Set con instrumentos en vivo, House DJ Set y Party Set (Open Format). Actúa en clubs, festivales, beach clubs, bodas y eventos corporativos. Es también ingeniero de software y habla catalán, castellano e inglés.",
     "bio1": "Soy <strong>Josep Bernad</strong>, <strong>músico y DJ</strong> de <strong>Mallorca</strong> afincado en <strong>Barcelona</strong>, y también <strong>ingeniero de software</strong>: una combinación que me permite fusionar tecnología avanzada con creatividad en todas mis producciones. Me formé desde pequeño como <strong>baterista</strong> y posteriormente como <strong>multi-instrumentista</strong>, y mi proyecto personal se sumerge en la <strong>música electrónica</strong>, principalmente <strong>House</strong>, mezclando texturas digitales contemporáneas con influencias profundas y una estética sonora elegante. Trabajando entre Barcelona y Mallorca, continúo expandiendo mi catálogo de producciones originales, siempre buscando ofrecer una experiencia musical distintiva y sólida.",
     "bio2": "Presento tres formatos en directo: un <strong>Live Set</strong> con mi propia música interpretada con instrumentos en vivo; un <strong>House DJ Set</strong> construido alrededor de una extensa y cuidadosamente curada biblioteca musical; y un <strong>Party Set (Open Format)</strong> diseñado para fiestas y festivales, donde mezclo múltiples géneros manteniendo una narrativa coherente y transiciones impecables.",
@@ -92,6 +98,9 @@
       "sub": "Músic, DJ i enginyer de software, escrivint House entre Barcelona i Mallorca."
     },
     "glanceLabel": "TL;DR",
+    "glanceHelpLabel": "Què significa TL;DR?",
+    "glanceHelpClose": "Tanca",
+    "glanceHelp": "TL;DR ve de l'anglès \"too long; didn't read\" (massa llarg, no ho he llegit). És un resum breu per captar l'essencial sense llegir tota la biografia.",
     "glance": "Josep Bernad és DJ de house i multi-instrumentista mallorquí, establert a Barcelona. Presenta tres formats: Live Set amb instruments en viu, House DJ Set i Party Set (Open Format). Actua en clubs, festivals, beach clubs, casaments i esdeveniments corporatius. És també enginyer de software i parla català, castellà i anglès.",
     "bio1": "Sóc en <strong>Josep Bernad</strong>, <strong>músic i DJ</strong> de <strong>Mallorca</strong> establert a <strong>Barcelona</strong>, i també <strong>enginyer de software</strong>: una combinació que em permet fusionar tecnologia avançada amb creativitat en totes les meves produccions. Em vaig formar des de petit com a <strong>bateria</strong> i posteriorment com a <strong>multi-instrumentista</strong>, i el meu projecte personal s'endinsa en la <strong>música electrònica</strong>, principalment <strong>House</strong>, barrejant textures digitals contemporànies amb influències profundes i una estètica sonora elegant. Treballant entre Barcelona i Mallorca, continuo expandint el meu catàleg de produccions originals, sempre buscant oferir una experiència musical distintiva i sòlida.",
     "bio2": "Presento tres formats en directe: un <strong>Live Set</strong> amb la meva pròpia música interpretada amb instruments en viu; un <strong>House DJ Set</strong> construït al voltant d'una extensa i acuradament curada biblioteca musical; i un <strong>Party Set (Open Format)</strong> dissenyat per a festes i festivals, on barrejo múltiples gèneres mantenint una narrativa coherent i transicions impecables.",

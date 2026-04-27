@@ -24,7 +24,24 @@ eleventyComputed:
 
 {% if about[currentLang].glance %}
 <aside class="section-container about-glance" aria-label="{{ about[currentLang].glanceLabel }}">
-  <span class="about-glance-label">{{ about[currentLang].glanceLabel }}</span>
+  <span class="about-glance-label">
+    <span class="about-glance-label-text">{{ about[currentLang].glanceLabel }}</span>
+    {% if about[currentLang].glanceHelp %}
+    <details class="about-glance-tip">
+      <summary class="about-glance-tip-toggle" aria-label="{{ about[currentLang].glanceHelpLabel }}" title="{{ about[currentLang].glanceHelpLabel }}">
+        <span aria-hidden="true">i</span>
+      </summary>
+      <span class="about-glance-tip-content" role="tooltip">
+        <span class="about-glance-tip-text">{{ about[currentLang].glanceHelp }}</span>
+        <button type="button" class="about-glance-tip-close" data-glance-tip-close aria-label="{{ about[currentLang].glanceHelpClose }}" title="{{ about[currentLang].glanceHelpClose }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </span>
+    </details>
+    {% endif %}
+  </span>
   <p class="about-glance-text">{{ about[currentLang].glance }}</p>
 </aside>
 {% endif %}

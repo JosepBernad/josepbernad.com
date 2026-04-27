@@ -1,0 +1,14 @@
+<section class="home-panoramic" data-parallax>
+  <img src="/images/JosepBernad-Panoramic.webp" alt="Josep playing at night in Artà" loading="lazy">
+  <div class="home-panoramic-overlay" id="newsletter-banner">
+    <p class="newsletter-text" data-i18n="newsletter.cta">{{ home[currentLang].newsletter.cta }}</p>
+    <form class="newsletter-form" id="newsletter-form">
+      <input type="email" name="EMAIL" placeholder="{{ home[currentLang].newsletter.placeholder }}" data-i18n-placeholder="newsletter.placeholder" required>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_ec19e426d1a78e9baa513bfaf_7a99017863" tabindex="-1" value="">
+      </div>
+      <button type="submit" data-i18n="newsletter.subscribe">{{ home[currentLang].newsletter.subscribe }}</button>
+    </form>
+    <p class="newsletter-status" id="newsletter-status"></p>
+  </div>
+</section>

@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.0] - 2026-04-27
+
+### Added
+- Parallax effect on the panoramic newsletter image: the image drifts as the visitor scrolls past it. Driven by an `IntersectionObserver` (only animates while in view) and a `requestAnimationFrame`-throttled scroll listener, with `prefers-reduced-motion` opting out via CSS. Image is scaled (`1.4`) to absorb the translation so no edges reveal.
+- Reusable `_includes/newsletter-panoramic.njk` partial. Both `home.njk` and `live.njk` now `{% include %}` the same markup instead of duplicating the panoramic + newsletter block.
+- `/about` TL;DR helper: an `i` info disclosure next to the `TL;DR` label expands a small popover explaining what `TL;DR` means (with a close button), localized in EN/ES/CA via new `glanceHelpLabel`, `glanceHelpClose`, and `glanceHelp` keys in `src/_data/about.json`.
+- `/live` past events now support tracklists and video previews. New per-event optional fields in `src/_data/live.json`: `tracklist` (array of `{ artist, title }`), `videoId` (YouTube ID for an inline preview that opens a modal player), `videoTags`, and `dateApprox` (renders month + year only). First past entries seeded: `Mainly House Music at Angels` (Cala Rajada, 2026-04-26, 46-track tracklist), `Sunset at Kaafu Beach Club` (Cala Millor, 2025-08-31), and others.
+- `/live` tracklist UI: each tracklist is a collapsible `<details>` with track count, a monospaced numbered list inside an ASCII frame (event title, venue, date, `via josepbernad.com/live` footer), and a `Copy` button that writes the formatted text to the clipboard.
+- `/live` video modal: a fixed-position `<dialog>`-style overlay (`#liveVideoModal`) with a YouTube `<iframe>` that loads on demand when a past event's preview thumbnail is clicked.
+
+### Changed
+- `/contact` form footer: `Send` button moved to the right and the form-note (`I usually reply within a few hours` / `Te respondo en pocas horas` / `Et responc en poques hores`) is stacked directly underneath it.
+- `/contact` form-note copy rewritten in first person and a warmer, more direct tone across EN/ES/CA, with a trailing 🤙.
+- `/contact` socials: `LinkedIn` and `GitHub` pushed to their own row via a zero-height `flex-basis: 100%` break, separating them visually from the music socials (Instagram, YouTube, SoundCloud, Spotify).
+- `/contact` reCAPTCHA disclaimer is no longer pinned to the viewport bottom; it now flows in the document at the end of the contact card and right-aligns inside the section container.
+- `/films` card layout: date and location moved into a single meta line (`{date} · {location}`) above the title inside `.film-info`, replacing the previous absolutely-positioned `live-location` / `live-date` corners. Play button promoted to a semantic `<span aria-hidden>` with the SVG, so the click target is the whole card.
+- `/press-kit` bio length toggle now crossfades between short/long copy with an animated container height (driven by `ResizeObserver`) instead of toggling `[hidden]`. Both copies stay in the DOM stacked; the inactive one is `aria-hidden`. Falls back to a `resize` listener when `ResizeObserver` is unavailable.
+- `/live` first event description (Licors Moyà): the `<br>` paragraph break now uses a dedicated `live-desc-gap` spacer span so the second paragraph has a proper visual gap matching the rest of the layout.
+
+### Fixed
+- `/live` bottom spacing: the panoramic newsletter section was not sitting flush to the page bottom because the `.live-video-modal` was the actual `:last-child` of the body, defeating the existing `:has(.home-panoramic:last-child)` rule that strips bottom padding. Reordered the modal above the panoramic so the rule applies again. The modal is `position: fixed`, so DOM order has no visual impact.
+- `/contact` form-note `Typically replies in hours` was unreadable in dark mode because the rule only set `opacity` on top of an inherited (black) text color. Now uses explicit per-theme colors matching the rest of the form's secondary text (`rgba(245,245,245,0.7)` dark, `rgba(26,26,26,0.6)` light).
+
 ## [1.10.1] - 2026-04-27
 
 ### Changed

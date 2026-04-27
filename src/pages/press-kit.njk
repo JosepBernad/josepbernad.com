@@ -43,8 +43,10 @@ eleventyComputed:
         </div>
       </div>
       <div>
-        <div class="pk-bio-copy" id="bio-copy-short" data-len="short">{{ bioShort | safe }}</div>
-        <div class="pk-bio-copy" id="bio-copy-long" data-len="long" hidden>{{ bioLong | safe }}</div>
+        <div class="pk-bio-copy-stack" id="bio-copy-stack">
+          <div class="pk-bio-copy is-active" id="bio-copy-short" data-len="short">{{ bioShort | safe }}</div>
+          <div class="pk-bio-copy" id="bio-copy-long" data-len="long" aria-hidden="true">{{ bioLong | safe }}</div>
+        </div>
         <button type="button" class="pk-copy-btn" id="bio-copy-btn">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           <span id="bio-copy-label" aria-live="polite">{{ s.bioCopy }}</span>
@@ -236,27 +238,48 @@ eleventyComputed:
 <script>
 (function() {
   const toggle = document.getElementById('bio-toggle');
+  const stack = document.getElementById('bio-copy-stack');
   const shortEl = document.getElementById('bio-copy-short');
   const longEl = document.getElementById('bio-copy-long');
   const copyBtn = document.getElementById('bio-copy-btn');
   const copyLabel = document.getElementById('bio-copy-label');
-  if (!toggle || !shortEl || !longEl || !copyBtn) return;
+  if (!toggle || !stack || !shortEl || !longEl || !copyBtn) return;
 
   const COPY = {{ s.bioCopy | dump | safe }};
   const COPIED = {{ s.bioCopied | dump | safe }};
   let currentLen = 'short';
 
+  stack.classList.add('is-enhanced');
+  function syncHeight() {
+    const active = currentLen === 'short' ? shortEl : longEl;
+    stack.style.height = active.offsetHeight + 'px';
+  }
+  syncHeight();
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(syncHeight);
+    ro.observe(shortEl);
+    ro.observe(longEl);
+  } else {
+    window.addEventListener('resize', syncHeight);
+  }
+
   toggle.addEventListener('click', function(e) {
     const btn = e.target.closest('button[data-len]');
     if (!btn) return;
+    if (btn.dataset.len === currentLen) return;
     currentLen = btn.dataset.len;
     toggle.querySelectorAll('button').forEach(function(b) {
       const active = b.dataset.len === currentLen;
       b.classList.toggle('active', active);
       b.setAttribute('aria-selected', active ? 'true' : 'false');
     });
-    shortEl.hidden = currentLen !== 'short';
-    longEl.hidden = currentLen !== 'long';
+    const activeEl = currentLen === 'short' ? shortEl : longEl;
+    const inactiveEl = currentLen === 'short' ? longEl : shortEl;
+    activeEl.classList.add('is-active');
+    inactiveEl.classList.remove('is-active');
+    activeEl.setAttribute('aria-hidden', 'false');
+    inactiveEl.setAttribute('aria-hidden', 'true');
+    stack.style.height = activeEl.offsetHeight + 'px';
   });
 
   copyBtn.addEventListener('click', function() {
