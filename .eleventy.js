@@ -1,3 +1,5 @@
+const { buildRider } = require("./scripts/build-rider.js");
+
 const MONTHS_SHORT = {
   en: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
   es: ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"],
@@ -14,6 +16,26 @@ function parseISODate(str) {
 }
 
 module.exports = function(eleventyConfig) {
+  // Localhost-only dev pages live under src/dev/. Ignore them in
+  // production / one-off builds; only emit during `eleventy --serve`.
+  if (process.env.ELEVENTY_RUN_MODE !== "serve") {
+    eleventyConfig.ignores.add("src/dev/**");
+  } else {
+    // Regenerate the rider PDFs on every rebuild so editing
+    // src/_data/presskit.json live-refreshes the localhost preview.
+    // The PDFs land in src/press-kit/ (passthrough-copied), so we must
+    // tell the watcher to ignore them — otherwise writing the PDFs
+    // re-triggers the build and we get an infinite loop.
+    eleventyConfig.watchIgnores.add("src/press-kit/josep-bernad-rider-*.pdf");
+    eleventyConfig.on("eleventy.before", async () => {
+      try {
+        await buildRider();
+      } catch (err) {
+        console.error("[rider] build failed:", err);
+      }
+    });
+  }
+
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");

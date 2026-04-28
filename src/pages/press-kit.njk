@@ -18,6 +18,7 @@ eleventyComputed:
 {% set formats = presskit.formats[currentLang] %}
 {% set rider = presskit.rider[currentLang] %}
 {% set services = presskit.services[currentLang] %}
+{% set lockups = s.logosLockups %}
 
 <div class="section-container page-hero-wrap">
   <div class="contact-hero">
@@ -78,23 +79,72 @@ eleventyComputed:
       <span class="pk-section-num">03</span>
       <h2 class="pk-section-title">{{ s.logosTitle }}</h2>
     </div>
-    <div class="pk-logo-grid">
-      <a class="pk-logo" href="/press-kit/logo-light.svg" download>
-        <div class="pk-logo-frame light-bg"><img src="/images/JosepBernad-Logo.svg" alt="Logo on light background"></div>
-        <div class="pk-logo-meta"><span>{{ s.logosLight }}</span><span class="pk-logo-ext">SVG</span></div>
-      </a>
-      <a class="pk-logo" href="/press-kit/logo-dark.svg" download>
-        <div class="pk-logo-frame dark-bg"><img src="/images/JosepBernad-Logo.svg" alt="Logo on dark background" style="filter:invert(1)"></div>
-        <div class="pk-logo-meta"><span>{{ s.logosDark }}</span><span class="pk-logo-ext">SVG</span></div>
-      </a>
-      <a class="pk-logo" href="/press-kit/logo-light.png" download>
-        <div class="pk-logo-frame light-bg"><img src="/images/JosepBernad-Logo.svg" alt="Logo on light background"></div>
-        <div class="pk-logo-meta"><span>{{ s.logosLight }}</span><span class="pk-logo-ext">PNG</span></div>
-      </a>
-      <a class="pk-logo" href="/press-kit/logo-dark.png" download>
-        <div class="pk-logo-frame dark-bg"><img src="/images/JosepBernad-Logo.svg" alt="Logo on dark background" style="filter:invert(1)"></div>
-        <div class="pk-logo-meta"><span>{{ s.logosDark }}</span><span class="pk-logo-ext">PNG</span></div>
-      </a>
+    <div class="pk-logo-studio" id="pk-logo-studio" data-color="black" data-asset="wordmark">
+      <div class="pk-logo-stage">
+        <img class="pk-logo-stage-img" id="pk-logo-stage-img" src="/press-kit/josep-bernad-wordmark-black.svg" alt="Logo preview">
+
+        <div class="pk-logo-downloads">
+          <a class="pk-logo-format pk-logo-format-all" href="/press-kit/josep-bernad-press-kit.zip" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg>
+            <span class="pk-logo-format-name">{{ s.logosDownloadAll }}</span>
+          </a>
+          <a class="pk-logo-format" data-format="svg" href="/press-kit/josep-bernad-wordmark-black.svg" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="pk-logo-format-name">SVG</span>
+            <span class="pk-logo-format-meta">{{ s.logosFormatPrint }}</span>
+          </a>
+          <a class="pk-logo-format" data-format="png" href="/press-kit/josep-bernad-wordmark-black.png" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="pk-logo-format-name">PNG</span>
+            <span class="pk-logo-format-meta">{{ s.logosFormatSocial }}</span>
+          </a>
+        </div>
+
+        <div class="pk-logo-overlay">
+          <div class="pk-logo-color-floater">
+            <div class="pk-logo-toggle" id="pk-logo-color" role="tablist" aria-label="{{ s.logosColorLabel }}">
+              <button type="button" class="active" data-color="black" role="tab" aria-selected="true">
+                <span class="pk-logo-swatch pk-logo-swatch-black" aria-hidden="true"></span>
+                {{ s.logosBlack }}
+              </button>
+              <button type="button" data-color="white" role="tab" aria-selected="false">
+                <span class="pk-logo-swatch pk-logo-swatch-white" aria-hidden="true"></span>
+                {{ s.logosWhite }}
+              </button>
+            </div>
+          </div>
+
+          <div class="pk-logo-bar">
+            <div class="pk-logo-bar-row pk-logo-bar-row-chips">
+              <span class="pk-logo-bar-label">{{ s.logosLockupLabel }}</span>
+              <div class="pk-logo-chip-scroll" id="pk-logo-lockups" role="radiogroup" aria-label="{{ s.logosLockupLabel }}">
+                {% for lk in lockups %}
+                  {% if not lk.dev %}
+                    {% set chipLabel = lk.short or (lk.name.split(" · ") | last) %}
+                    <button type="button" class="pk-logo-chip{% if lk.id == 'wordmark' %} active{% endif %}" data-asset="{{ lk.id }}" data-guidance="{{ lk.guidance }}" title="{{ lk.name }}" role="radio" aria-checked="{% if lk.id == 'wordmark' %}true{% else %}false{% endif %}" aria-label="{{ lk.name }}">
+                      <span class="pk-logo-chip-thumb"><img src="/press-kit/josep-bernad-{{ lk.id }}-black.svg" alt="" loading="lazy"></span>
+                      <span class="pk-logo-chip-name">{{ chipLabel }}</span>
+                    </button>
+                  {% endif %}
+                {% endfor %}
+                <span class="pk-logo-chip-break" data-dev="true" hidden aria-hidden="true"></span>
+                {% for lk in lockups %}
+                  {% if lk.dev %}
+                    {% set chipLabel = lk.short or (lk.name.split(" · ") | last) %}
+                    <button type="button" class="pk-logo-chip is-dev" data-asset="{{ lk.id }}" data-guidance="{{ lk.guidance }}" title="{{ lk.name }}" role="radio" aria-checked="false" aria-label="{{ lk.name }}" data-dev="true" hidden>
+                      <span class="pk-logo-chip-thumb"><img src="/press-kit/josep-bernad-{{ lk.id }}-black.svg" alt="" loading="lazy"></span>
+                      <span class="pk-logo-chip-name">
+                        {{ chipLabel }} <span class="pk-logo-chip-tag">DEV</span>
+                      </span>
+                    </button>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <p class="pk-logo-guidance" id="pk-logo-guidance" aria-live="polite">{{ lockups[0].guidance }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -103,6 +153,10 @@ eleventyComputed:
     <div class="pk-section-head">
       <span class="pk-section-num">04</span>
       <h2 class="pk-section-title">{{ s.riderTitle }}</h2>
+      <a class="pk-rider-dev-link" href="/dev/rider/" target="_blank" rel="noopener" data-dev="true" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        Preview <span class="pk-logo-chip-tag">DEV</span>
+      </a>
     </div>
     <div class="pk-rider-wrap">
       <div class="pk-rider-block">
@@ -112,13 +166,17 @@ eleventyComputed:
         </div>
         <ul class="pk-rider-list">
           {% for item in rider.djList %}
-          <li>
-            <span class="pk-rider-qty">{{ item.qty }}</span>
-            <span class="pk-rider-item">
-              <span class="pk-rider-item-name">{{ item.name }}</span>
-              <span class="pk-rider-item-meta">{{ item.meta }}</span>
-            </span>
-          </li>
+            {% if item.divider %}
+              <li class="pk-rider-divider" aria-hidden="true"></li>
+            {% else %}
+              <li>
+                <span class="pk-rider-qty">{{ item.qty }}</span>
+                <span class="pk-rider-item">
+                  <span class="pk-rider-item-name">{{ item.name }}</span>
+                  <span class="pk-rider-item-meta">{{ item.meta }}</span>
+                </span>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </div>
@@ -129,18 +187,25 @@ eleventyComputed:
         </div>
         <ul class="pk-rider-list">
           {% for item in rider.liveList %}
-          <li>
-            <span class="pk-rider-qty">{{ item.qty }}</span>
-            <span class="pk-rider-item">
-              <span class="pk-rider-item-name">{{ item.name }}</span>
-              <span class="pk-rider-item-meta">{{ item.meta }}</span>
-            </span>
-          </li>
+            {% if item.divider %}
+              <li class="pk-rider-divider" aria-hidden="true"></li>
+            {% else %}
+              <li>
+                <span class="pk-rider-qty">{{ item.qty }}</span>
+                <span class="pk-rider-item">
+                  <span class="pk-rider-item-name">{{ item.name }}</span>
+                  <span class="pk-rider-item-meta">{{ item.meta }}</span>
+                </span>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
         <div class="pk-rider-foot">
+          {% if rider.guestsNote %}
+          <p class="pk-rider-note pk-rider-note-guests">{{ rider.guestsNote }}</p>
+          {% endif %}
           <p class="pk-rider-note">{{ rider.note }}</p>
-          <a class="pk-rider-download" href="/press-kit/josep-bernad-rider.pdf" download>
+          <a class="pk-rider-download" href="/press-kit/josep-bernad-rider-{{ currentLang }}.pdf" download>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             {{ rider.download }}
           </a>
@@ -236,6 +301,16 @@ eleventyComputed:
 </div>
 
 <script>
+// Reveal localhost-only affordances (e.g. dev logo chips, /dev/rider/ link).
+(function() {
+  const isLocalhost = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].includes(location.hostname)
+    || location.hostname.endsWith('.local');
+  if (!isLocalhost) return;
+  document.querySelectorAll('[data-dev][hidden]').forEach(function(el) {
+    el.removeAttribute('hidden');
+  });
+})();
+
 (function() {
   const toggle = document.getElementById('bio-toggle');
   const stack = document.getElementById('bio-copy-stack');
@@ -321,6 +396,98 @@ eleventyComputed:
         }, 1500);
       });
     }
+  });
+})();
+
+(function() {
+  const studio = document.getElementById('pk-logo-studio');
+  if (!studio) return;
+  const stageImg = document.getElementById('pk-logo-stage-img');
+  const colorToggle = document.getElementById('pk-logo-color');
+  const chipScroll = document.getElementById('pk-logo-lockups');
+  const guidanceEl = document.getElementById('pk-logo-guidance');
+  const formats = studio.querySelectorAll('.pk-logo-format');
+  if (!stageImg || !colorToggle || !chipScroll || !formats.length) return;
+
+  const isLocalhost = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].includes(location.hostname)
+    || location.hostname.endsWith('.local');
+  if (isLocalhost) {
+    chipScroll.querySelectorAll('[data-dev]').forEach(function(el) {
+      el.removeAttribute('hidden');
+    });
+  }
+
+  const ASSET_PREFIX = '/press-kit/josep-bernad-';
+
+  function fileFor(asset, color, format) {
+    return ASSET_PREFIX + asset + '-' + color + '.' + format;
+  }
+
+  function chips() {
+    return Array.from(chipScroll.querySelectorAll('.pk-logo-chip'))
+      .filter(function(b) { return !b.hasAttribute('hidden'); });
+  }
+
+  function refresh() {
+    const asset = studio.dataset.asset;
+    const color = studio.dataset.color;
+    stageImg.src = fileFor(asset, color, 'svg');
+    formats.forEach(function(a) {
+      const fmt = a.dataset.format;
+      const href = fileFor(asset, color, fmt);
+      a.setAttribute('href', href);
+      a.setAttribute('download', href.split('/').pop());
+    });
+  }
+
+  function setColor(color) {
+    if (studio.dataset.color === color) return;
+    studio.dataset.color = color;
+    colorToggle.querySelectorAll('button').forEach(function(b) {
+      const active = b.dataset.color === color;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    refresh();
+  }
+
+  function setAsset(asset) {
+    if (studio.dataset.asset === asset) return;
+    studio.dataset.asset = asset;
+    let activeChip = null;
+    chipScroll.querySelectorAll('.pk-logo-chip').forEach(function(b) {
+      const active = b.dataset.asset === asset;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-checked', active ? 'true' : 'false');
+      if (active) activeChip = b;
+    });
+    if (activeChip && guidanceEl) {
+      guidanceEl.textContent = activeChip.dataset.guidance || '';
+    }
+    refresh();
+  }
+
+  colorToggle.addEventListener('click', function(e) {
+    const btn = e.target.closest('button[data-color]');
+    if (!btn) return;
+    setColor(btn.dataset.color);
+  });
+
+  chipScroll.addEventListener('click', function(e) {
+    const btn = e.target.closest('button[data-asset]');
+    if (!btn) return;
+    setAsset(btn.dataset.asset);
+  });
+
+  chipScroll.addEventListener('keydown', function(e) {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const buttons = chips();
+    const i = buttons.findIndex(function(b) { return b === document.activeElement; });
+    if (i === -1) return;
+    e.preventDefault();
+    const next = e.key === 'ArrowRight' ? (i + 1) % buttons.length : (i - 1 + buttons.length) % buttons.length;
+    buttons[next].focus();
+    setAsset(buttons[next].dataset.asset);
   });
 })();
 
