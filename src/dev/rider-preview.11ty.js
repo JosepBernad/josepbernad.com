@@ -34,7 +34,8 @@ module.exports = class RiderPreview {
   .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #0a0a0a; color: #fff; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: #34d399; }
   h1 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.2px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-  .tabs { display: inline-flex; gap: 4px; padding: 3px; background: #f0efed; border-radius: 8px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .toolbar { display: inline-flex; gap: 12px; align-items: center; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .tabs { display: inline-flex; gap: 4px; padding: 3px; background: #f0efed; border-radius: 8px; }
   .tab { font: inherit; font-size: 12px; font-weight: 600; padding: 5px 12px; border: 0; background: transparent; border-radius: 6px; cursor: pointer; color: #6b6b6b; letter-spacing: 1px; }
   .tab.active { background: #fff; color: #0a0a0a; box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
   .tab:not(.active):hover { color: #0a0a0a; }
@@ -52,11 +53,17 @@ module.exports = class RiderPreview {
 <body>
   <header>
     <span class="pill"><span class="dot"></span>Rider preview</span>
-    <h1 id="filename">josep-bernad-rider-en.pdf</h1>
-    <div class="tabs" id="tabs" role="tablist" aria-label="Rider language">
-      <button class="tab active" data-lang="en" role="tab" aria-selected="true">EN</button>
-      <button class="tab" data-lang="ca" role="tab" aria-selected="false">CA</button>
-      <button class="tab" data-lang="es" role="tab" aria-selected="false">ES</button>
+    <h1 id="filename">josep-bernad-rider-dj-en.pdf</h1>
+    <div class="toolbar">
+      <div class="tabs" id="kinds" role="tablist" aria-label="Rider kind">
+        <button class="tab active" data-kind="dj" role="tab" aria-selected="true">DJ</button>
+        <button class="tab" data-kind="live" role="tab" aria-selected="false">LIVE</button>
+      </div>
+      <div class="tabs" id="langs" role="tablist" aria-label="Rider language">
+        <button class="tab active" data-lang="en" role="tab" aria-selected="true">EN</button>
+        <button class="tab" data-lang="ca" role="tab" aria-selected="false">CA</button>
+        <button class="tab" data-lang="es" role="tab" aria-selected="false">ES</button>
+      </div>
     </div>
     <div class="hint">
       <span>Edit <code>src/_data/presskit.json</code> &rarr; save &rarr; auto-reload</span>
@@ -70,47 +77,60 @@ module.exports = class RiderPreview {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           Print
         </button>
-        <a id="download" class="icon" href="/press-kit/josep-bernad-rider-en.pdf" download title="Download">
+        <a id="download" class="icon" href="/press-kit/josep-bernad-rider-dj-en.pdf" download title="Download">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download
         </a>
       </div>
-      <iframe id="pdf" src="/press-kit/josep-bernad-rider-en.pdf?t=${cacheBust}#toolbar=0&amp;navpanes=0&amp;scrollbar=0" title="Rider PDF preview"></iframe>
+      <iframe id="pdf" src="/press-kit/josep-bernad-rider-dj-en.pdf?t=${cacheBust}#toolbar=0&amp;navpanes=0&amp;scrollbar=0" title="Rider PDF preview"></iframe>
     </div>
   </main>
   <script>
     (function() {
       var iframe = document.getElementById('pdf');
       var filename = document.getElementById('filename');
-      var tabs = document.getElementById('tabs');
+      var kinds = document.getElementById('kinds');
+      var langs = document.getElementById('langs');
       var reload = document.getElementById('reload');
       var printBtn = document.getElementById('print');
       var download = document.getElementById('download');
-      var current = 'en';
+      var currentLang = 'en';
+      var currentKind = 'dj';
 
-      function setLang(lang, refresh) {
-        current = lang;
-        var name = 'josep-bernad-rider-' + lang + '.pdf';
+      function refresh() {
+        var name = 'josep-bernad-rider-' + currentKind + '-' + currentLang + '.pdf';
         filename.textContent = name;
         var bust = Date.now();
         iframe.src = '/press-kit/' + name + '?t=' + bust + '#toolbar=0&navpanes=0&scrollbar=0';
         download.href = '/press-kit/' + name;
         download.setAttribute('download', name);
-        Array.prototype.forEach.call(tabs.querySelectorAll('.tab'), function(b) {
-          var active = b.dataset.lang === lang;
+      }
+
+      function syncTabs(group, attr, value) {
+        Array.prototype.forEach.call(group.querySelectorAll('.tab'), function(b) {
+          var active = b.dataset[attr] === value;
           b.classList.toggle('active', active);
           b.setAttribute('aria-selected', active ? 'true' : 'false');
         });
       }
 
-      tabs.addEventListener('click', function(e) {
+      kinds.addEventListener('click', function(e) {
         var btn = e.target.closest('.tab');
-        if (!btn) return;
-        if (btn.dataset.lang === current) return;
-        setLang(btn.dataset.lang, true);
+        if (!btn || btn.dataset.kind === currentKind) return;
+        currentKind = btn.dataset.kind;
+        syncTabs(kinds, 'kind', currentKind);
+        refresh();
       });
 
-      reload.addEventListener('click', function() { setLang(current, true); });
+      langs.addEventListener('click', function(e) {
+        var btn = e.target.closest('.tab');
+        if (!btn || btn.dataset.lang === currentLang) return;
+        currentLang = btn.dataset.lang;
+        syncTabs(langs, 'lang', currentLang);
+        refresh();
+      });
+
+      reload.addEventListener('click', refresh);
 
       printBtn.addEventListener('click', function() {
         try {

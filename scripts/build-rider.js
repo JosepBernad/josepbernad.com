@@ -1,10 +1,13 @@
 /**
  * Generate the technical rider PDFs from src/_data/presskit.json.
  *
- * Outputs (one per language):
- *   src/press-kit/josep-bernad-rider-en.pdf
- *   src/press-kit/josep-bernad-rider-es.pdf
- *   src/press-kit/josep-bernad-rider-ca.pdf
+ * Two PDFs per language — one for the DJ Set, one for the Live Set:
+ *   src/press-kit/josep-bernad-rider-dj-en.pdf
+ *   src/press-kit/josep-bernad-rider-dj-es.pdf
+ *   src/press-kit/josep-bernad-rider-dj-ca.pdf
+ *   src/press-kit/josep-bernad-rider-live-en.pdf
+ *   src/press-kit/josep-bernad-rider-live-es.pdf
+ *   src/press-kit/josep-bernad-rider-live-ca.pdf
  *
  * Run: node scripts/build-rider.js
  */
@@ -17,6 +20,10 @@ const PKG_PATH = path.join(__dirname, "..", "package.json");
 const OUT_DIR = path.join(__dirname, "..", "src", "press-kit");
 const FILE_PREFIX = "josep-bernad-rider-";
 const LANGS = ["en", "es", "ca"];
+const KINDS = [
+  { id: "dj", listKey: "djList", nameKey: "djName", badgeKey: "djBadge", showGuests: false },
+  { id: "live", listKey: "liveList", nameKey: "liveName", badgeKey: "liveBadge", showGuests: true },
+];
 
 // Wordmark asset embedded in every rider PDF. Built by build-presskit.js
 // from src/press-kit-source/wordmark.svg before this script runs.
@@ -38,8 +45,8 @@ function loadFresh(p) {
   return JSON.parse(fs.readFileSync(p, "utf8"));
 }
 
-function outputFor(lang) {
-  return path.join(OUT_DIR, `${FILE_PREFIX}${lang}.pdf`);
+function outputFor(kind, lang) {
+  return path.join(OUT_DIR, `${FILE_PREFIX}${kind}-${lang}.pdf`);
 }
 
 function rule(doc, x, y, w, color = INK, weight = 0.6) {
@@ -62,7 +69,6 @@ function caps(doc, text, x, y, opts = {}) {
   });
 }
 
-const COLUMN_HEADER_H = 32; // title row (18) + rule + 14 spacing
 const QTY_W = 56;
 const MIN_DIVIDER_GAP = 28;
 
@@ -70,19 +76,6 @@ function splitOnDivider(list) {
   const idx = list.findIndex((it) => it.divider);
   if (idx < 0) return { inputs: list, outputs: [] };
   return { inputs: list.slice(0, idx), outputs: list.slice(idx + 1) };
-}
-
-function measureItemHeight(doc, item, itemW) {
-  if (item.divider) return MIN_DIVIDER_GAP;
-  if (item.meta) {
-    doc.font("Helvetica").fontSize(9);
-    return 13 + doc.heightOfString(item.meta, { width: itemW }) + 10;
-  }
-  return 22;
-}
-
-function measureItemsHeight(doc, items, itemW) {
-  return items.reduce((sum, it) => sum + measureItemHeight(doc, it, itemW), 0);
 }
 
 function renderItem(doc, item, x, y, colW, drawRule = true) {
@@ -110,7 +103,7 @@ function renderItem(doc, item, x, y, colW, drawRule = true) {
   return newY;
 }
 
-function renderColumn(doc, x, yStart, colW, title, badge, list, containerBottom) {
+function renderList(doc, x, yStart, colW, title, badge, list) {
   let y = yStart;
 
   caps(doc, title, x, y, { size: 11, color: INK, spacing: 2.5, width: colW });
@@ -120,7 +113,6 @@ function renderColumn(doc, x, yStart, colW, title, badge, list, containerBottom)
   rule(doc, x, y, colW, INK, 0.6);
   y += 14;
 
-  const itemW = colW - QTY_W;
   const { inputs, outputs } = splitOnDivider(list);
   const hasOutputs = outputs.length > 0;
 
@@ -132,33 +124,31 @@ function renderColumn(doc, x, yStart, colW, title, badge, list, containerBottom)
   }
 
   if (hasOutputs) {
-    const outputsH = measureItemsHeight(doc, outputs, itemW);
-    // Anchor outputs to the shared container bottom; never overlap inputs.
-    const anchored = containerBottom != null ? containerBottom - outputsH : y + MIN_DIVIDER_GAP;
-    y = Math.max(y + MIN_DIVIDER_GAP, anchored);
-    for (const item of outputs) {
-      y = renderItem(doc, item, x, y, colW);
+    y += MIN_DIVIDER_GAP;
+    for (let i = 0; i < outputs.length; i++) {
+      const isLast = i === outputs.length - 1;
+      y = renderItem(doc, outputs[i], x, y, colW, !isLast);
     }
   }
 
   return y;
 }
 
-function buildOne(lang, presskit, pkg) {
+function buildOne(kind, lang, presskit, pkg) {
   const rider = presskit.rider[lang];
   const s = presskit.strings[lang];
   const labels = rider.pdfLabels || { note: "Note", backline: "Backline", booking: "Booking" };
-  const out = outputFor(lang);
+  const out = outputFor(kind.id, lang);
 
   const M = 56;
   const doc = new PDFDocument({
     size: "A4",
     margin: M,
     info: {
-      Title: `Josep Bernad - ${s.riderTitle}`,
+      Title: `Josep Bernad - ${s.riderTitle} - ${rider[kind.nameKey]}`,
       Author: "Josep Bernad",
-      Subject: s.riderTitle,
-      Keywords: "rider, dj set, live set, technical, booking",
+      Subject: `${s.riderTitle} - ${rider[kind.nameKey]}`,
+      Keywords: `rider, ${kind.id} set, technical, booking`,
       Creator: "josepbernad.com",
       Producer: "josepbernad.com",
     },
@@ -196,30 +186,9 @@ function buildOne(lang, presskit, pkg) {
   rule(doc, M, y, CW, INK, 0.8);
   y += 28;
 
-  // === Two columns ===
-  const gap = 32;
-  const colW = (CW - gap) / 2;
-  const itemW = colW - QTY_W;
-
-  // Pre-measure both columns to determine a shared container bottom.
-  // Outputs (post-divider items) get anchored to that bottom in each column.
-  const djSplit = splitOnDivider(rider.djList);
-  const liveSplit = splitOnDivider(rider.liveList);
-  const djInputsH = measureItemsHeight(doc, djSplit.inputs, itemW);
-  const djOutputsH = measureItemsHeight(doc, djSplit.outputs, itemW);
-  const liveInputsH = measureItemsHeight(doc, liveSplit.inputs, itemW);
-  const liveOutputsH = measureItemsHeight(doc, liveSplit.outputs, itemW);
-  const itemsStartY = y + COLUMN_HEADER_H;
-  const colHeight = Math.max(
-    djInputsH + MIN_DIVIDER_GAP + djOutputsH,
-    liveInputsH + MIN_DIVIDER_GAP + liveOutputsH,
-  );
-  const containerBottom = itemsStartY + colHeight;
-
-  const djEnd = renderColumn(doc, M, y, colW, rider.djName, rider.djBadge, rider.djList, containerBottom);
-  const liveEnd = renderColumn(doc, M + colW + gap, y, colW, rider.liveName, rider.liveBadge, rider.liveList, containerBottom);
-
-  y = Math.max(djEnd, liveEnd) + 18;
+  // === Single full-width list for this kind ===
+  y = renderList(doc, M, y, CW, rider[kind.nameKey], rider[kind.badgeKey], rider[kind.listKey]);
+  y += 18;
 
   // === Notes ===
   rule(doc, M, y, CW, INK, 0.6);
@@ -233,7 +202,7 @@ function buildOne(lang, presskit, pkg) {
   doc.text(rider.note, M + labelW, y, { width: noteW });
   y = doc.y + 12;
 
-  if (rider.guestsNote && labels.guests) {
+  if (kind.showGuests && rider.guestsNote && labels.guests) {
     caps(doc, labels.guests, M, y + 1, { size: 8, color: MUTED, spacing: 2 });
     doc.font("Helvetica").fontSize(10).fillColor(INK);
     doc.text(rider.guestsNote, M + labelW, y, { width: noteW });
@@ -286,12 +255,14 @@ async function buildRider() {
   const pkg = loadFresh(PKG_PATH);
   const outputs = [];
   for (const lang of LANGS) {
-    outputs.push(await buildOne(lang, presskit, pkg));
+    for (const kind of KINDS) {
+      outputs.push(await buildOne(kind, lang, presskit, pkg));
+    }
   }
   return outputs;
 }
 
-module.exports = { buildRider, outputFor, LANGS, OUT_DIR, FILE_PREFIX };
+module.exports = { buildRider, outputFor, LANGS, KINDS, OUT_DIR, FILE_PREFIX };
 
 if (require.main === module) {
   buildRider()

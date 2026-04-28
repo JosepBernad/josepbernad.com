@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.13.0] - 2026-04-28
+
+### Changed
+- Press-kit rider downloads split per set: instead of a single combined PDF with both DJ and Live columns, each rider block on `/press-kit` now has its own download button pointing at a dedicated single-column PDF. `scripts/build-rider.js` now emits six files (`josep-bernad-rider-{dj,live}-{en,es,ca}.pdf`), with the live PDFs including the guests note and DJ PDFs omitting it. `src/_data/presskit.json` replaces the single `download` string with `djDownload` / `liveDownload` per language. The `/dev/rider/` localhost preview gains a DJ/LIVE toggle alongside the EN/CA/ES tabs. The public `josep-bernad-press-kit.zip` now bundles all six rider PDFs.
+
 ## [1.12.1] - 2026-04-28
 
 ### Fixed

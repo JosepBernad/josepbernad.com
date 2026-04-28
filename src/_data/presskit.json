@@ -200,7 +200,8 @@
       "note": "Full stage plot and input list available on request.",
       "guestsNote": "The Live Set occasionally features guest musicians. Items marked 'if applicable' scale with the final lineup, confirmed at booking.",
       "globalNote": "Can adapt to house backline when agreed in advance 🤙",
-      "download": "Full rider (PDF)",
+      "djDownload": "DJ rider (PDF)",
+      "liveDownload": "Live rider (PDF)",
       "pdfLabels": { "note": "Note", "guests": "Guests", "backline": "Backline", "booking": "Booking" }
     },
     "es": {
@@ -231,7 +232,8 @@
       "note": "Stage plot e input list completos disponibles bajo petición.",
       "guestsNote": "El Live Set incluye ocasionalmente músicos invitados. Los elementos 'si aplica' se ajustan al grupo final, a confirmar en la reserva.",
       "globalNote": "Se puede adaptar al backline de la sala si se acuerda con antelación 🤙",
-      "download": "Rider completo (PDF)",
+      "djDownload": "Rider DJ (PDF)",
+      "liveDownload": "Rider Live (PDF)",
       "pdfLabels": { "note": "Nota", "guests": "Invitados", "backline": "Backline", "booking": "Booking" }
     },
     "ca": {
@@ -262,7 +264,8 @@
       "note": "Stage plot i input list complets disponibles sota petició.",
       "guestsNote": "El Live Set inclou ocasionalment músics convidats. Els elements 'si aplica' s'ajusten al grup final, a confirmar a la reserva.",
       "globalNote": "Es pot adaptar al backline de la sala si s'acorda amb antelació 🤙",
-      "download": "Rider complet (PDF)",
+      "djDownload": "Rider DJ (PDF)",
+      "liveDownload": "Rider Live (PDF)",
       "pdfLabels": { "note": "Nota", "guests": "Convidats", "backline": "Backline", "booking": "Booking" }
     }
   },
