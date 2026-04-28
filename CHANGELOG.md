@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.12.1] - 2026-04-28
+
+### Fixed
+- `/press-kit` dev-only affordances (engineering wordmark chips and the `/dev/rider/` Preview link) leaked onto production. Their `hidden` attribute was overridden by author CSS rules setting `display: inline-flex`, so the localhost-detection script that should have *revealed* them on dev was instead the only thing keeping them hidden, and it never ran on production. Added a defensive `[hidden] { display: none !important; }` in `src/css/styles.css` so the UA-stylesheet semantics of `[hidden]` win over per-component display rules.
+
 ## [1.12.0] - 2026-04-28
 
 ### Added
